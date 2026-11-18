@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://mailfix.vercel.app/sitemap.xml
+Sitemap: https://mailfix.vercel.app/rss.xml
+Host: https://mailfix.vercel.app
