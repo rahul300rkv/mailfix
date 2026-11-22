@@ -165,7 +165,7 @@
       "name": "Is the Government increment calculator different?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "For Central Government (CG) employees, salary increment is calculated at 3% of the Basic Pay as per the 7th Pay Commission. Use the Govt Increment tab to compute this — it works differently from private sector percentage hikes."
+        "text": "Central Government employees generally receive an annual increment based on the applicable pay-matrix rules, not a percentage of total CTC. This page currently calculates private-sector CTC percentage or fixed-amount hikes; it does not calculate a government pay-matrix increment."
       }
     },
     {
@@ -583,11 +583,16 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
             <label for="incValue" id="incLabel">Increment %</label>
             <input type="number" id="incValue" placeholder="15" oninput="calculate()"/>
           </div>
-          <div class="form-group full">
-            <label for="bonus">Additional one-time bonus (₹) <span>optional</span></label>
-            <input type="number" id="bonus" placeholder="0" oninput="calculate()"/>
+          <div class="form-group">
+            <label for="professionalTax">Monthly professional tax (₹) <span>default 0</span></label>
+            <input type="number" id="professionalTax" min="0" value="0" oninput="calculate()"/>
+          </div>
+          <div class="form-group">
+            <label for="bonus">Additional one-time bonus (₹) <span>optional; shown separately</span></label>
+            <input type="number" id="bonus" min="0" placeholder="0" oninput="calculate()"/>
           </div>
         </div>
+        <p style="font-size:12px;color:var(--muted);margin:12px 0;line-height:1.6">Take-home is an estimate using the FY 2025-26 new tax regime and an assumed CTC split (40% basic, capped PF and 4.81% gratuity provision). Enter your monthly professional tax. Actual salary structure, other income, deductions and surcharge may change the result.</p>
         <div style="background:var(--green-xs);border:2px solid var(--green);border-radius:10px;padding:14px;margin-top:8px">
           <div style="font-size:12px;font-weight:700;color:var(--green-dk);margin-bottom:8px">📊 Industry benchmarks (India 2025-26)</div>
           <div style="font-size:12px;font-weight:600;color:var(--ink);line-height:1.8">
@@ -638,15 +643,23 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 <footer><div class="footer-inner"><div class="footer-top"><div class="footer-logo">MailFix</div><div class="footer-links"><a href="/">Email Tool</a><a href="/ctc-calculator">Salary Calc</a><a href="/income-tax-slabs">Tax Slabs</a><a href="/how-ctc-is-calculated">CTC Guide</a><a href="/new-vs-old-tax-regime">Tax Regime</a><a href="/salary-glossary">Glossary</a><a href="/city-compare">City Compare</a><a href="/whatsapp-dhanda">WA Dhanda</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/sitemap">Sitemap</a> <a href="/privacy">Privacy Policy</a></div></div><div class="footer-copy">© 2026 MailFix. Free Tools for Indian Professionals.</div></div></footer>
 <script>
   function fmt(n){return '₹'+Math.round(Math.abs(n)).toLocaleString('en-IN')}
-  function estInhand(ctc){
-    const basic=ctc*.4,pf=Math.min(basic,180000)*.12,grat=basic*.0481;
-    const gross=ctc-pf-grat;
-    let ti=Math.max(0,gross-pf-75000),tax=0;
-    const slabs=[[400000,0],[800000,.05],[1200000,.1],[1600000,.15],[2000000,.2],[2400000,.25],[1e9,.3]];
-    let prev=0;
-    for(const [lim,rate] of slabs){if(ti<=prev)break;tax+=(Math.min(ti,lim)-prev)*rate;prev=lim;}
-    if(ti<=1200000)tax=0; tax*=1.04;
-    return(gross-pf-2400-tax)/12;
+  // Illustrative CTC split: 40% basic, employer PF capped at ₹15,000/month,
+  // and gratuity provision at 4.81% of basic. Employee PF is deducted once from cash pay.
+  function estInhand(ctc, monthlyProfessionalTax){
+    const basic=ctc*.40;
+    const pfWageBase=Math.min(basic,180000);
+    const employeePF=pfWageBase*.12;
+    const employerPF=pfWageBase*.12;
+    const gratuity=basic*.0481;
+    const cashSalary=Math.max(0,ctc-employerPF-gratuity);
+    const taxable=Math.max(0,cashSalary-75000);
+    const slabs=[[400000,0],[800000,.05],[1200000,.10],[1600000,.15],[2000000,.20],[2400000,.25],[Infinity,.30]];
+    let tax=0,previous=0;
+    for(const [limit,rate] of slabs){if(taxable<=previous)break;tax+=(Math.min(taxable,limit)-previous)*rate;previous=limit;}
+    if(taxable<=1200000)tax=0;
+    else tax=Math.min(tax,taxable-1200000); // Section 87A marginal relief above ₹12 lakh
+    tax*=1.04; // 4% cess; surcharge is not modelled
+    return Math.max(0,(cashSalary-employeePF-tax-monthlyProfessionalTax)/12);
   }
   function toggleInput(){
     const t=document.getElementById('incType').value;
@@ -654,18 +667,27 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     document.getElementById('incValue').placeholder=t==='percent'?'15':'100000';
   }
   function calculate(){
-    const cur=parseFloat(document.getElementById('currentCTC').value)||0;
-    const val=parseFloat(document.getElementById('incValue').value)||0;
-    const bonus=parseFloat(document.getElementById('bonus').value)||0;
+    const cur=Number(document.getElementById('currentCTC').value);
+    const val=Number(document.getElementById('incValue').value);
+    const bonusRaw=document.getElementById('bonus').value.trim();
+    const bonus=bonusRaw===''?0:Number(bonusRaw);
+    const professionalTax=Number(document.getElementById('professionalTax').value);
     const t=document.getElementById('incType').value;
-    if(!cur||!val){
+    if(!Number.isFinite(cur)||cur<=0||!Number.isFinite(val)||val<=0||
+       !Number.isFinite(bonus)||bonus<0||!Number.isFinite(professionalTax)||professionalTax<0){
+      document.getElementById('empty-state').textContent='Enter a positive CTC and increment, and non-negative bonus and professional tax.';
       document.getElementById('empty-state').style.display='block';
       document.getElementById('results').style.display='none';return;
     }
     const incAmt=t==='percent'?cur*(val/100):val;
     const incPct=t==='percent'?val:(incAmt/cur)*100;
     const newCTC=cur+incAmt;
-    const prevMo=estInhand(cur),newMo=estInhand(newCTC),diff=newMo-prevMo;
+    if(!Number.isFinite(newCTC)||newCTC<=0){
+      document.getElementById('empty-state').textContent='Please enter a valid increment amount.';
+      document.getElementById('empty-state').style.display='block';
+      document.getElementById('results').style.display='none';return;
+    }
+    const prevMo=estInhand(cur,professionalTax),newMo=estInhand(newCTC,professionalTax),diff=newMo-prevMo;
     document.getElementById('empty-state').style.display='none';
     document.getElementById('results').style.display='block';
     document.getElementById('newCTC').textContent=fmt(newCTC);
