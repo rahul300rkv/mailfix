@@ -149,7 +149,7 @@
       "name": "What cost factors does the comparison include?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The comparison accounts for average 1BHK/2BHK rent, monthly groceries and dining costs, local transport expenses, and a general urban cost index. It is based on aggregate consumer data for each city tier."
+        "text": "The comparison uses editable illustrative monthly rent, commute and food estimates, plus professional tax entered by the user. City costs vary by neighbourhood, household and lifestyle."
       }
     },
     {
@@ -173,7 +173,7 @@
       "name": "How often is the cost of living data updated?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The cost of living indices are reviewed periodically based on consumer price data and rental market trends. The data reflects approximate 2025-26 averages for each city."
+        "text": "The preset rent, commute and food amounts are indicative estimates, not live market quotes or official city averages. Users should replace them with their own expected costs."
       }
     }
   ]
@@ -545,7 +545,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 <div class="page-hero" style="padding-bottom:28px">
   <div class="page-badge">🏙️ Salary Calculator</div>
   <h1>City Salary <span class="accent">Comparison</span></h1>
-  <p class="page-sub">Is 10 LPA in Indore better than 15 LPA in Bangalore? Compare real monthly savings after rent, commute and food.</p>
+  <p class="page-sub">Compare estimated monthly take-home and living costs across Indian cities. Adjust the expense and professional-tax inputs to match your situation.</p>
 </div>
 <div class="form-wrap">
 
@@ -610,6 +610,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
           <div class="form-group"><label for="rent1">Rent (₹/mo)</label><input type="number" id="rent1" oninput="compare()"/></div>
           <div class="form-group"><label for="commute1">Commute (₹/mo)</label><input type="number" id="commute1" oninput="compare()"/></div>
           <div class="form-group full"><label for="food1">Food (₹/mo)</label><input type="number" id="food1" oninput="compare()"/></div>
+          <div class="form-group full"><label for="pt1">Professional tax (₹/mo) <span>enter your state amount; default ₹0</span></label><input type="number" id="pt1" min="0" value="0" oninput="compare()"/></div>
         </div>
       </div>
       <div>
@@ -618,9 +619,11 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
           <div class="form-group"><label for="rent2">Rent (₹/mo)</label><input type="number" id="rent2" oninput="compare()"/></div>
           <div class="form-group"><label for="commute2">Commute (₹/mo)</label><input type="number" id="commute2" oninput="compare()"/></div>
           <div class="form-group full"><label for="food2">Food (₹/mo)</label><input type="number" id="food2" oninput="compare()"/></div>
+          <div class="form-group full"><label for="pt2">Professional tax (₹/mo) <span>enter your state amount; default ₹0</span></label><input type="number" id="pt2" min="0" value="0" oninput="compare()"/></div>
         </div>
       </div>
     </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6">Estimate only: assumes the FY 2025-26 new tax regime, 40% basic pay, capped employee/employer PF and a 4.81% gratuity provision. State professional tax is entered separately. Actual CTC structure, tax, surcharge, other income and deductions can change take-home. City costs are editable illustrative estimates.</p>
   </div>
 
   <div class="output-section">
@@ -683,23 +686,28 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 
   function fmt(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
 
-  function calcInhand(ctc) {
-    const basic = ctc * 0.4;
-    const pf = Math.min(basic, 180000) * 0.12;
+  // Illustrative salary structure: 40% basic, employer PF at the statutory
+  // ₹15,000/month wage ceiling, and gratuity provision at 4.81% of basic.
+  function calcInhand(ctc, monthlyProfessionalTax) {
+    const basic = ctc * 0.40;
+    const pfWageBase = Math.min(basic, 180000);
+    const employeePF = pfWageBase * 0.12;
+    const employerPF = pfWageBase * 0.12;
     const gratuity = basic * 0.0481;
-    const gross = ctc - pf - gratuity;
-    const taxable = Math.max(0, gross - pf - 75000);
-    let tax = 0;
-    const slabs = [[400000,0],[800000,.05],[1200000,.1],[1600000,.15],[2000000,.2],[2400000,.25],[Infinity,.3]];
-    let prev = 0;
-    for (const [lim, rate] of slabs) {
-      if (taxable <= prev) break;
-      tax += (Math.min(taxable, lim) - prev) * rate;
-      prev = lim;
+    const cashSalary = Math.max(0, ctc - employerPF - gratuity);
+    const taxable = Math.max(0, cashSalary - 75000);
+    const slabs = [[400000,0],[800000,.05],[1200000,.10],[1600000,.15],[2000000,.20],[2400000,.25],[Infinity,.30]];
+    let tax = 0, previous = 0;
+    for (const [limit, rate] of slabs) {
+      if (taxable <= previous) break;
+      tax += (Math.min(taxable, limit) - previous) * rate;
+      previous = limit;
     }
+    // Resident-individual rebate and marginal relief under the FY 2025-26 new regime.
     if (taxable <= 1200000) tax = 0;
-    tax *= 1.04;
-    return (gross - pf - 2400 - tax) / 12;
+    else tax = Math.min(tax, taxable - 1200000);
+    tax *= 1.04; // 4% health and education cess; surcharge is not modelled.
+    return Math.max(0, (cashSalary - employeePF - tax - monthlyProfessionalTax) / 12);
   }
 
   function fillCity(cityId) {
@@ -710,6 +718,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     document.getElementById('rent' + suffix).value = d.rent;
     document.getElementById('commute' + suffix).value = d.commute;
     document.getElementById('food' + suffix).value = d.food;
+    document.getElementById('pt' + suffix).value = 0;
   }
 
   function compare() {
@@ -723,18 +732,27 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
       document.getElementById('results').style.display = 'none'; return;
     }
 
-    const monthlyInhand = calcInhand(ctc);
-    const rent1 = parseFloat(document.getElementById('rent1').value) || c1d.rent;
-    const commute1 = parseFloat(document.getElementById('commute1').value) || c1d.commute;
-    const food1 = parseFloat(document.getElementById('food1').value) || c1d.food;
-    const rent2 = parseFloat(document.getElementById('rent2').value) || c2d.rent;
-    const commute2 = parseFloat(document.getElementById('commute2').value) || c2d.commute;
-    const food2 = parseFloat(document.getElementById('food2').value) || c2d.food;
-
+    const readAmount = (id, fallback) => {
+      const raw = document.getElementById(id).value;
+      return raw.trim() === '' ? fallback : Number(raw);
+    };
+    const rent1 = readAmount('rent1', c1d.rent), commute1 = readAmount('commute1', c1d.commute);
+    const food1 = readAmount('food1', c1d.food), pt1 = readAmount('pt1', 0);
+    const rent2 = readAmount('rent2', c2d.rent), commute2 = readAmount('commute2', c2d.commute);
+    const food2 = readAmount('food2', c2d.food), pt2 = readAmount('pt2', 0);
+    const amounts = [rent1,commute1,food1,pt1,rent2,commute2,food2,pt2];
+    if (amounts.some(n => !Number.isFinite(n) || n < 0)) {
+      document.getElementById('empty-state').textContent = 'Please enter valid, non-negative monthly costs.';
+      document.getElementById('empty-state').style.display = 'block';
+      document.getElementById('results').style.display = 'none';
+      return;
+    }
+    const monthlyInhand1 = calcInhand(ctc, pt1);
+    const monthlyInhand2 = calcInhand(ctc, pt2);
     const totalCost1 = rent1 + commute1 + food1;
     const totalCost2 = rent2 + commute2 + food2;
-    const savings1 = monthlyInhand - totalCost1;
-    const savings2 = monthlyInhand - totalCost2;
+    const savings1 = monthlyInhand1 - totalCost1;
+    const savings2 = monthlyInhand2 - totalCost2;
 
     document.getElementById('empty-state').style.display = 'none';
     document.getElementById('results').style.display = 'block';
@@ -749,11 +767,12 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     document.getElementById('card2').style.borderColor = savings2 > savings1 ? 'var(--green)' : 'var(--black)';
 
     const rows = [
-      { label: 'Monthly In-Hand', v1: monthlyInhand, v2: monthlyInhand, neutral: true },
+      { label: 'Monthly In-Hand (after state professional tax)', v1: monthlyInhand1, v2: monthlyInhand2, neutral: true },
       { label: 'Rent', v1: -rent1, v2: -rent2 },
       { label: 'Commute', v1: -commute1, v2: -commute2 },
       { label: 'Food', v1: -food1, v2: -food2 },
-      { label: 'Total Expenses', v1: -totalCost1, v2: -totalCost2 },
+      { label: 'Professional Tax', v1: -pt1, v2: -pt2 },
+      { label: 'Total Living Expenses', v1: -totalCost1, v2: -totalCost2 },
       { label: 'Monthly Savings', v1: savings1, v2: savings2, bold: true },
       { label: 'Annual Savings', v1: savings1 * 12, v2: savings2 * 12, bold: true },
     ];
