@@ -20,6 +20,8 @@
 <meta name="twitter:image" content="https://mailfix.vercel.app/og-image.png"/>
 <link rel="alternate" hreflang="en-IN" href="https://mailfix.vercel.app/full-and-final-settlement"/>
 <link rel="alternate" hreflang="x-default" href="https://mailfix.vercel.app/full-and-final-settlement"/>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3532554351654388" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
@@ -225,8 +227,17 @@ footer{background:white;border-top:3px solid var(--black);padding:48px 24px;font
 .fnf-faq summary{font-weight:800;cursor:pointer}
 .fnf-faq p{font-size:13px;color:var(--muted);margin-top:9px}
 </style>
+<style id="breadcrumb-navigation-styles">
+.breadcrumb{padding:10px 24px;border-bottom:1px solid rgba(0,0,0,.12);font-size:12px}
+.breadcrumb-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.breadcrumb a{font-weight:600;text-decoration:none;color:inherit}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb-sep{opacity:.65}
+.breadcrumb [aria-current="page"]{opacity:.75}
+</style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 <nav aria-label="Primary">
   <div class="nav-inner">
     <a href="/" class="logo">
@@ -296,6 +307,7 @@ footer{background:white;border-top:3px solid var(--black);padding:48px 24px;font
     </div>
   </div>
 </nav>
+<nav class="breadcrumb" aria-label="Breadcrumb"><div class="breadcrumb-inner"><a href="/">🏠 Home</a><span class="breadcrumb-sep" aria-hidden="true">›</span><span aria-current="page">Full and Final Settlement Calculator</span></div></nav>
 <main id="main-content">
 <section class="page-hero">
   <div class="page-badge">💼 Salary &amp; Exit Calculator</div>
@@ -328,7 +340,7 @@ footer{background:white;border-top:3px solid var(--black);padding:48px 24px;font
             <div class="fnf-field"><label for="serviceMonths">Additional service months</label><input id="serviceMonths" type="number" min="0" max="11" step="1" value="0"/></div>
             <div class="fnf-field"><label for="gratuityWage">Last-drawn monthly gratuity wage base (₹)</label><input id="gratuityWage" type="number" min="0" step="any" value="0"/><span class="fnf-help">Use the statutory wage definition, not automatically basic salary alone.</span></div>
           </div>
-          <div class="fnf-note">The estimate applies the general five-year continuous-service condition to regular employees and the Ministry's one-year clarification to directly employed fixed-term employees. Contract labour engaged through a contractor is treated separately. Death, disablement, special awards and enhanced employer benefits are not modelled here.</div>
+          <div class="fnf-note">The estimate applies the general five-year continuous-service condition to regular employees and the Ministry's one-year clarification to directly employed fixed-term employees. Contract labour engaged through a contractor is treated separately. Death, disablement, special awards and enhanced employer benefits are not modelled here. See the <a href="https://www.labour.gov.in/static/uploads/2026/03/a4ccf4c6d97c4f1f36a6d83f8c64213d.pdf" target="_blank" rel="noopener noreferrer">Ministry of Labour and Employment's Labour Codes FAQs</a> for the official clarification.</div>
           <div class="fnf-section-title">4. Notice recovery and other deductions</div>
           <div class="fnf-grid-fields">
             <div class="fnf-field"><label for="noticeDays">Notice shortfall days confirmed by HR</label><input id="noticeDays" type="number" min="0" step="1" value="0"/><span class="fnf-help">Enter the shortfall after any employer-approved adjustment.</span></div>
