@@ -603,7 +603,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
           </div>
           <div class="form-group full">
             <div class="toggle-row">
-              <div><div class="toggle-label">PF Applicable</div><div class="toggle-sub">Employee &amp; Employer PF deduction</div></div>
+              <div><div class="toggle-label">PF Applicable</div><div class="toggle-sub">12% employee + 12% employer; PF wage capped at ₹15,000/month in this estimate</div></div>
               <label class="toggle"><input type="checkbox" id="togglePF" checked onchange="calculate()"/><span class="toggle-slider"></span></label>
             </div>
           </div>
@@ -627,9 +627,13 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
             <div><div class="toggle-label">HRA Exemption</div><div class="toggle-sub">If you pay rent</div></div>
             <label class="toggle"><input type="checkbox" id="toggleHRA" checked onchange="calculate()"/><span class="toggle-slider"></span></label>
           </div>
-          <div class="toggle-row">
-            <div><div class="toggle-label">80D (Health Insurance)</div><div class="toggle-sub">Up to ₹25,000</div></div>
-            <label class="toggle"><input type="checkbox" id="toggle80d" onchange="calculate()"/><span class="toggle-slider"></span></label>
+          <div class="form-group">
+            <label for="deduction80d">Eligible 80D Deduction (₹/year) <span>Enter amount after age-based limits</span></label>
+            <input type="number" id="deduction80d" min="0" value="0" oninput="calculate()"/>
+          </div>
+          <div class="form-group">
+            <label for="professionalTax">Annual Professional Tax (₹) <span>Use your state’s actual amount; enter 0 if not applicable</span></label>
+            <input type="number" id="professionalTax" min="0" value="2400" oninput="calculate()"/>
           </div>
         </div>
       </div>
@@ -663,7 +667,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 </div></div>
 <div class="section-faq"><div class="section-faq-inner">
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-list"><details class="faq-item"><summary>What is CTC and how is it different from in-hand salary?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">CTC (Cost to Company) is the total amount a company spends on you annually, including your salary, PF contributions, gratuity, and other benefits. Your in-hand (take-home) salary is what actually gets credited to your bank after all deductions like employee PF, professional tax, and income tax.</div></details><details class="faq-item"><summary>Which tax regime should I choose — New or Old?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">The New Regime (default from FY 2023-24) has lower slab rates but no deductions. The Old Regime allows deductions like 80C (₹1.5L), HRA exemption, and 80D. If your total deductions exceed ₹3.75 lakh, the Old Regime usually saves more tax.</div></details><details class="faq-item"><summary>Is PF deduction mandatory for all employees?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">PF is mandatory if your basic salary is below ₹15,000/month and your employer has 20+ employees. If your basic exceeds ₹15,000, PF contribution is optional but you can voluntarily continue at 12% of basic.</div></details><details class="faq-item"><summary>How is HRA exemption calculated?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">HRA exemption is the lowest of: (1) actual HRA received, (2) 50% of basic for metro / 40% for non-metro, or (3) rent paid minus 10% of basic salary. This tool uses the standard method — use the dedicated HRA calculator for detailed rent-based exemption.</div></details><details class="faq-item"><summary>Does the calculator account for FY 2025-26 tax slabs?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. The calculator uses the latest FY 2025-26 income tax slabs for both New and Old regimes, including the ₹12 lakh tax-free limit under the new regime after Section 87A rebate.</div></details></div>
+  <div class="faq-list"><details class="faq-item"><summary>What is CTC and how is it different from in-hand salary?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">CTC (Cost to Company) is the total amount a company spends on you annually, including your salary, PF contributions, gratuity, and other benefits. Your in-hand (take-home) salary is what actually gets credited to your bank after all deductions like employee PF, professional tax, and income tax.</div></details><details class="faq-item"><summary>Which tax regime should I choose — New or Old?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">The New Regime (default from FY 2023-24) has lower slab rates but no deductions. The Old Regime allows deductions like 80C (₹1.5L), HRA exemption, and 80D. If your total deductions exceed ₹3.75 lakh, the Old Regime usually saves more tax.</div></details><details class="faq-item"><summary>Is PF deduction mandatory for all employees?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">PF is mandatory if your basic salary is below ₹15,000/month and your employer has 20+ employees. If your basic exceeds ₹15,000, PF contribution is optional but you can voluntarily continue at 12% of basic.</div></details><details class="faq-item"><summary>How is HRA exemption calculated?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">HRA exemption is the lowest of: (1) actual HRA received, (2) 50% of basic for metro / 40% for non-metro, and (3) rent paid minus 10% of basic salary. Enter your annual rent in this calculator to estimate it. HRA exemption is available only under the old regime.</div></details><details class="faq-item"><summary>Does the calculator account for FY 2025-26 tax slabs?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. The calculator uses the latest FY 2025-26 income tax slabs for both New and Old regimes, including the ₹12 lakh tax-free limit under the new regime after Section 87A rebate.</div></details></div>
 </div></div>
 
 <div class="related-guides"><div class="related-guides-inner">
@@ -732,7 +736,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     const gratuity = basic * 0.0481;
     const gross = ctc - employerPF - gratuity;
     const specialAllowance = Math.max(0, gross - basic - hra);
-    const profTax = Math.min(2400, gross * 0.002);
+    const profTax = Math.max(0, parseFloat(document.getElementById('professionalTax').value) || 0);
     const stdDeduction = taxRegime === 'new' ? 75000 : 50000;
 
     let taxableIncome;
@@ -748,7 +752,8 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
         const hraExemption = Math.min(hra, Math.max(0, annualRent - basic * 0.10), basic * (isMetro ? 0.50 : 0.40));
         deductions += hraExemption;
       }
-      if (document.getElementById('toggle80d').checked) deductions += 25000;
+      const deduction80d = Math.max(0, parseFloat(document.getElementById('deduction80d').value) || 0);
+      deductions += deduction80d;
       taxableIncome = Math.max(0, gross - deductions - profTax);
     }
 
@@ -769,8 +774,8 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
         { label: 'Special Allowance', sub: 'Balance of gross salary', amount: specialAllowance, type: 'positive' },
       ]},
       { section: 'Deductions', items: [
-        ...(pfApplicable ? [{ label: 'Employer PF', sub: '12% of basic (part of CTC, not in-hand)', amount: employerPF, type: 'negative' }] : []),
-        ...(pfApplicable ? [{ label: 'Employee PF', sub: '12% of basic (your contribution)', amount: employeePF, type: 'negative' }] : []),
+        ...(pfApplicable ? [{ label: 'Employer PF', sub: '12% of PF wage (assumed capped at ₹15,000/month; part of CTC)', amount: employerPF, type: 'negative' }] : []),
+        ...(pfApplicable ? [{ label: 'Employee PF', sub: '12% of PF wage (assumed capped at ₹15,000/month)', amount: employeePF, type: 'negative' }] : []),
         { label: 'Gratuity (est.)', sub: '4.81% of basic — part of CTC', amount: gratuity, type: 'negative' },
         { label: 'Professional Tax', sub: 'State govt. tax', amount: profTax, type: 'negative' },
         { label: 'Income Tax (TDS)', sub: taxRegime === 'new' ? 'New regime FY 2025-26' : 'Old regime FY 2025-26', amount: incomeTax, type: 'negative' },
