@@ -376,6 +376,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
           <a href="/sip-calculator">SIP &amp; Step-Up Calc</a>
           <a href="/nps-calculator">NPS Pension Calc</a>
           <a href="/salary-breakup-calculator">Salary Breakup</a>
+          <a href="/new-labour-code-salary-guide">New Labour Code Guide</a>
           <a href="/ctc-calculator">CTC to In-Hand</a>
           <a href="/city-compare">City Salary Compare</a>
           <a href="/hra-calculator">HRA Exemption</a>
@@ -437,6 +438,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     <a href="/paraphrase" class="mobile-link">✍️ Paraphrase Tool</a>
     <p class="mobile-section-label">Calculators</p>
     <a href="/salary-breakup-calculator" class="mobile-link">🧩 Salary Breakup</a>
+    <a href="/new-labour-code-salary-guide" class="mobile-link">📘 New Labour Code Guide</a>
     <a href="/ctc-calculator" class="mobile-link">💰 CTC to In-Hand</a>
     <a href="/city-compare" class="mobile-link">🏙️ City Compare</a>
     <a href="/hra-calculator" class="mobile-link">🏠 HRA Exemption</a>
@@ -477,16 +479,16 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 </div>
 <div class="sb-subhead">Employer contributions and benefits</div>
 <div class="sb-fields">
-<div class="sb-field"><label for="pfMode">Employer PF wage basis</label><select id="pfMode"><option value="capped">Statutory wage ceiling assumption (₹15,000/month)</option><option value="actual">12% of full basic salary</option><option value="off">No employer PF included</option></select></div>
+<div class="sb-field"><label for="pfMode">Employer PF wage basis</label><select id="pfMode"><option value="capped">Statutory wage ceiling assumption (₹25,000/month)</option><option value="actual">12% of full basic salary</option><option value="off">No employer PF included</option></select></div>
 <div class="sb-field"><label for="insurance">Annual employer insurance / benefits (₹)</label><input id="insurance" type="number" min="0" step="500" value="12000"/></div>
 <div class="sb-field"><label for="npsPercent">Employer NPS (% of basic)</label><input id="npsPercent" type="number" min="0" max="20" step="0.5" value="0"/></div>
-<div class="sb-field"><label for="employeePfMode">Employee PF deduction</label><select id="employeePfMode"><option value="same">Same basis as employer PF</option><option value="capped">12% on ₹15,000/month ceiling</option><option value="actual">12% of full basic</option><option value="off">No employee PF deduction</option></select></div>
+<div class="sb-field"><label for="employeePfMode">Employee PF deduction</label><select id="employeePfMode"><option value="same">Same basis as employer PF</option><option value="capped">12% on ₹25,000/month ceiling</option><option value="actual">12% of full basic</option><option value="off">No employee PF deduction</option></select></div>
 <div class="sb-field"><label for="professionalTax">Monthly professional tax (₹)</label><input id="professionalTax" type="number" min="0" step="10" value="0"/></div>
 <div class="sb-field"><label for="otherMonthly">Other monthly deductions (₹)</label><input id="otherMonthly" type="number" min="0" step="100" value="0"/><span class="sb-help">Enter employee-side deductions other than PF and professional tax.</span></div>
 </div>
 <div class="sb-subhead">CTC inclusion choices</div>
 <div class="sb-toggle"><input id="includeGratuity" type="checkbox" checked/><label for="includeGratuity">Include employer gratuity provision in CTC<small>Indicative annual accrual using 15/26 of monthly basic for a year of service; actual eligibility and wage basis can differ.</small></label></div>
-<div class="sb-note">This model assumes variable pay, bonus, employer PF, gratuity provision, insurance and employer NPS are included within the stated CTC. If your employer quotes any item outside CTC, remove it from this model. The PF ceiling option is a modelling assumption, not a decision on your statutory coverage or actual payroll practice.</div>
+<div class="sb-note">This model assumes variable pay, bonus, employer PF, gratuity provision, insurance and employer NPS are included within the stated CTC. If your employer quotes any item outside CTC, remove it from this model. The capped PF option uses a ₹25,000 monthly wage-ceiling assumption, reflecting the Ministry FAQ compilation dated 25 October 2026 (which cites a notification dated 17 September 2026). Actual PF coverage, effective date, contribution basis and payroll treatment must be confirmed against the applicable EPFO notification and your employer.</div>
 <div class="sb-actions"><button class="sb-btn primary" type="button" onclick="calculateSalaryBreakup()">Calculate breakup</button><button class="sb-btn secondary" type="button" onclick="resetSalaryBreakup()">Reset</button></div>
 </div>
 </section>
@@ -512,6 +514,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 <a href="/how-ctc-is-calculated">How CTC Is Calculated</a>
 <a href="/salary-glossary">Salary Terms Glossary</a>
 <a href="/full-and-final-settlement">Full &amp; Final Settlement Calculator</a>
+<a href="/new-labour-code-salary-guide">New Labour Code Salary Guide</a>
 </div>
 </div>
 <section class="sb-faq">
@@ -529,7 +532,7 @@ const salaryBreakupDefaults={annualCtc:1200000,basicPercent:40,hraPercent:50,var
 const salaryInputIds=Object.keys(salaryBreakupDefaults);
 const moneyINR=new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0});
 function sbValue(id){const el=document.getElementById(id);const n=Number(el.value);return Number.isFinite(n)&&n>=0?n:0;}
-function sbPF(monthlyBasic,mode){if(mode==="off")return 0;const wage=mode==="capped"?Math.min(monthlyBasic,15000):monthlyBasic;return wage*.12;}
+function sbPF(monthlyBasic,mode){if(mode==="off")return 0;const wage=mode==="capped"?Math.min(monthlyBasic,25000):monthlyBasic;return wage*.12;}
 function sbMoney(v){return moneyINR.format(Math.round(v));}
 function calculateSalaryBreakup(){
  const ctc=sbValue("annualCtc"),basicPct=Math.min(100,sbValue("basicPercent"))/100,hraPct=Math.min(100,sbValue("hraPercent"))/100;
@@ -545,7 +548,7 @@ function calculateSalaryBreakup(){
  const employerPfRate=pfMode==="actual"?.12*basicPct:(pfMode==="capped"?null:0);
  const gratuityRate=includeGratuity?(15/26/12)*basicPct:0;
  const npsRate=npsPct*basicPct;
- const cappedPfAnnual=pfMode==="capped"?15000*.12*12:0;
+ const cappedPfAnnual=pfMode==="capped"?25000*.12*12:0;
  const fixedGross=(ctc-variable-bonus-insurance-cappedPfAnnual)/(1+(employerPfRate||0)+gratuityRate+npsRate);
  const basic=fixedGross*basicPct,hra=basic*hraPct,special=fixedGross-basic-hra;
  const employerPf=pfMode==="capped"?cappedPfAnnual:(pfMode==="actual"?basic*.12:0);
