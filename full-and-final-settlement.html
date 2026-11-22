@@ -307,6 +307,30 @@ footer{background:white;border-top:3px solid var(--black);padding:48px 24px;font
     </div>
   </div>
 </nav>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <a href="/" class="logo">Mailflix</a>
+    <button aria-label="Close menu" class="close-btn" id="closeMobileBtn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobile-panel-body">
+    <div class="mobile-section-label">Calculators</div>
+    <a href="/full-and-final-settlement" class="mobile-link">Full &amp; Final Settlement</a>
+    <a href="/notice-period-calculator" class="mobile-link">Notice Period Buyout</a>
+    <a href="/sip-calculator" class="mobile-link">SIP &amp; Step-Up Calculator</a>
+    <a href="/nps-calculator" class="mobile-link">NPS Pension Calculator</a>
+    <a href="/ctc-calculator" class="mobile-link">CTC to In-Hand</a>
+    <a href="/hra-calculator" class="mobile-link">HRA Exemption</a>
+    <a href="/leave-encashment" class="mobile-link">Leave Encashment</a>
+    <div class="mobile-section-label">Documents</div>
+    <a href="/form-12bb" class="mobile-link">Form 12BB Generator</a>
+    <a href="/resignation" class="mobile-link">Resignation Kit</a>
+    <a href="/rent-receipt" class="mobile-link">Rent Receipt</a>
+    <a href="/gst-invoice" class="mobile-link">GST Invoice</a>
+    <a href="/" class="mobile-cta" style="margin-top:10px">Back to Homepage</a>
+  </div>
+</div>
 <nav class="breadcrumb" aria-label="Breadcrumb"><div class="breadcrumb-inner"><a href="/">🏠 Home</a><span class="breadcrumb-sep" aria-hidden="true">›</span><span aria-current="page">Full and Final Settlement Calculator</span></div></nav>
 <main id="main-content">
 <section class="page-hero">
@@ -438,6 +462,26 @@ function resetFnf(){fnfIds.forEach(id=>{const el=document.getElementById(id);el.
 fnfIds.forEach(id=>document.getElementById(id).addEventListener("input",calculateFnf));
 fnfIds.forEach(id=>document.getElementById(id).addEventListener("change",calculateFnf));
 calculateFnf();
+</script>
+<script>
+// Mobile Drawer handlers
+const _mp = document.getElementById("mobilePanel");
+const _mb = document.getElementById("mobileMenuBtn");
+const _cb = document.getElementById("closeMobileBtn");
+if(_mp && _mb && _cb) {
+  _mb.addEventListener("click", ()=>{ _mp.classList.add("open"); document.body.style.overflow="hidden"; });
+  _cb.addEventListener("click", ()=>{ _mp.classList.remove("open"); document.body.style.overflow=""; });
+  _mp.querySelectorAll(".mobile-link,.mobile-cta").forEach(a=>a.addEventListener("click",()=>{ _mp.classList.remove("open"); document.body.style.overflow=""; }));
+}
+</script>
+<script>
+(function(){var p=document.getElementById('mobilePanel'),b=document.getElementById('mobileMenuBtn');
+if(!p||!b)return;
+function sync(){var o=p.classList.contains('open');b.setAttribute('aria-expanded',o?'true':'false');p.inert=!o;}
+if(window.MutationObserver)new MutationObserver(sync).observe(p,{attributes:true,attributeFilter:['class']});
+sync();
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&p.classList.contains('open')){var c=document.getElementById('closeMobileBtn');if(c)c.click();b.focus();}});
+})();
 </script>
 </body>
 </html>
