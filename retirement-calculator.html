@@ -574,9 +574,10 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
           <div class="form-group full"><label for="corpus">Existing Corpus (₹) <span>PF, FD, MF etc.</span></label><input type="number" id="corpus" placeholder="0" oninput="calculate()"/></div>
           <div class="form-group"><label for="returnRate">Expected Return (%/yr)</label><input type="number" id="returnRate" value="12" oninput="calculate()"/></div>
           <div class="form-group"><label for="inflation">Inflation (%/yr)</label><input type="number" id="inflation" value="6" oninput="calculate()"/></div>
-          <div class="form-group full"><label for="retireExpenses">Monthly Expenses at Retirement (₹)</label><input type="number" id="retireExpenses" placeholder="50000" oninput="calculate()"/></div>
+          <div class="form-group full"><label for="retireExpenses">Current Monthly Expenses (₹)</label><input type="number" id="retireExpenses" placeholder="50000" oninput="calculate()"/></div>
           <div class="form-group full"><label for="lifeExp">Life Expectancy</label><input type="number" id="lifeExp" value="80" oninput="calculate()"/></div>
         </div>
+        <p id="calc-error" role="alert" style="display:none;color:#B91C1C;font-size:13px;font-weight:700;margin-top:12px"></p>
       </div>
     </div>
     <div class="result-panel">
@@ -593,7 +594,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
           <div class="bd-row"><span class="k">Required corpus</span><span class="v" id="r-required">₹0</span></div>
           <div class="bd-row"><span class="k">Monthly expenses (inflation-adjusted)</span><span class="v" id="r-inflExp">₹0</span></div>
           <div class="bd-row"><span class="k">Corpus surplus / shortfall</span><span class="v" id="r-surplus">₹0</span></div>
-          <div class="bd-row"><span class="k">Safe withdrawal rate (4%)</span><span class="v" id="r-swr">₹0/mo</span></div>
+          <div class="bd-row"><span class="k">Illustrative 4% withdrawal estimate</span><span class="v" id="r-swr">₹0/mo</span></div>
         </div>
         <div id="verdictBox" style="margin-top:12px;padding:14px;border:2px solid var(--black);border-radius:10px;font-size:13px;font-weight:600"></div>
       </div>
@@ -627,64 +628,54 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     return fmt(n);
   }
   function calculate(){
-    const age=parseFloat(document.getElementById('age').value)||0;
-    const retireAge=parseFloat(document.getElementById('retireAge').value)||60;
-    const monthlySavings=parseFloat(document.getElementById('savings').value)||0;
-    const existing=parseFloat(document.getElementById('corpus').value)||0;
-    const retRate=parseFloat(document.getElementById('returnRate').value)/100||0.12;
-    const infRate=parseFloat(document.getElementById('inflation').value)/100||0.06;
-    const retireExp=parseFloat(document.getElementById('retireExpenses').value)||0;
-    const lifeExp=parseFloat(document.getElementById('lifeExp').value)||80;
-    if(!age||!monthlySavings||!retireExp){
-      document.getElementById('empty-state').style.display='block';
-      document.getElementById('results').style.display='none';return;
+    const el=id=>document.getElementById(id);
+    const error=el('calc-error');
+    const age=Number(el('age').value), retireAge=Number(el('retireAge').value);
+    const monthlySavings=Number(el('savings').value);
+    const existing=el('corpus').value.trim()===''?0:Number(el('corpus').value);
+    const retPct=Number(el('returnRate').value), infPct=Number(el('inflation').value);
+    const currentExpenses=Number(el('retireExpenses').value), lifeExp=Number(el('lifeExp').value);
+    const fail=message=>{error.textContent=message;error.style.display='block';el('empty-state').style.display='block';el('results').style.display='none';};
+    error.style.display='none';
+    if(![age,retireAge,monthlySavings,existing,retPct,infPct,currentExpenses,lifeExp].every(Number.isFinite)){
+      fail('Please enter valid numbers in all fields.');return;
     }
-    const years=retireAge-age;
-    const postRetYears=lifeExp-retireAge;
-    if(years<=0){
-      document.getElementById('empty-state').style.display='block';
-      document.getElementById('results').style.display='none';return;
+    if(age<=0||retireAge<=age||monthlySavings<0||existing<0||retPct<=-100||infPct<0||currentExpenses<=0||lifeExp<=retireAge){
+      fail('Check your inputs: retirement must be after your current age and before life expectancy; savings and corpus cannot be negative; return must be above -100%; inflation cannot be negative; and expenses must be positive.');return;
     }
-    // FV of monthly savings (SIP formula)
-    const monthlyRate=retRate/12;
-    const n=years*12;
-    const fvSavings=monthlySavings*((Math.pow(1+monthlyRate,n)-1)/monthlyRate)*(1+monthlyRate);
-    // FV of existing corpus
-    const fvExisting=existing*Math.pow(1+retRate,years);
+    const years=retireAge-age, postRetYears=lifeExp-retireAge;
+    const n=Math.round(years*12), pm=Math.round(postRetYears*12);
+    const annualReturn=retPct/100, annualInflation=infPct/100;
+    const monthlyRate=Math.pow(1+annualReturn,1/12)-1;
+    const savingsFactor=Math.abs(monthlyRate)<1e-12?n:(Math.pow(1+monthlyRate,n)-1)/monthlyRate;
+    const fvSavings=monthlySavings*savingsFactor;
+    const fvExisting=existing*Math.pow(1+annualReturn,years);
     const totalCorpus=fvSavings+fvExisting;
-    // Inflation-adjusted monthly expenses at retirement
-    const adjExp=retireExp*Math.pow(1+infRate,years);
-    // Required corpus (annuity formula with real return)
-    const realRate=(retRate-infRate)/(1+infRate);
-    const monthlyReal=realRate/12;
-    const pm=postRetYears*12;
-    const required=monthlyReal>0
-      ? adjExp*(1-Math.pow(1+monthlyReal,-pm))/monthlyReal
-      : adjExp*pm;
-    const surplus=totalCorpus-required;
-    const swr=totalCorpus*0.04/12;
-    document.getElementById('empty-state').style.display='none';
-    document.getElementById('results').style.display='block';
-    document.getElementById('r-corpus').textContent=fmtCr(totalCorpus);
-    document.getElementById('r-years').textContent=years+' years';
-    document.getElementById('r-fromSavings').textContent=fmtCr(fvSavings);
-    document.getElementById('r-fromExisting').textContent=fmtCr(fvExisting);
-    document.getElementById('r-required').textContent=fmtCr(required);
-    document.getElementById('r-inflExp').textContent=fmt(adjExp)+'/mo';
-    document.getElementById('r-surplus').textContent=(surplus>=0?'+':'-')+fmtCr(surplus);
-    document.getElementById('r-surplus').className='v '+(surplus>=0?'pos':'neg');
-    document.getElementById('r-swr').textContent=fmt(swr)+'/mo';
-    const hero=document.getElementById('hero');
-    const verdict=document.getElementById('verdictBox');
+    // Inflate today's expenses once, then discount future withdrawals at nominal returns.
+    const adjExp=currentExpenses*Math.pow(1+annualInflation,years);
+    // Monthly withdrawals are assumed at month-end through the selected life expectancy.
+    const required=Math.abs(monthlyRate)<1e-12?adjExp*pm:adjExp*(1-Math.pow(1+monthlyRate,-pm))/monthlyRate;
+    const surplus=totalCorpus-required, swr=totalCorpus*0.04/12;
+    el('empty-state').style.display='none';el('results').style.display='block';
+    el('r-corpus').textContent=fmtCr(totalCorpus);
+    el('r-years').textContent=years+' years';
+    el('r-fromSavings').textContent=fmtCr(fvSavings);
+    el('r-fromExisting').textContent=fmtCr(fvExisting);
+    el('r-required').textContent=fmtCr(required);
+    el('r-inflExp').textContent=fmt(adjExp)+'/mo';
+    el('r-surplus').textContent=(surplus>=0?'+':'-')+fmtCr(surplus);
+    el('r-surplus').className='v '+(surplus>=0?'pos':'neg');
+    el('r-swr').textContent=fmt(swr)+'/mo';
+    const hero=el('hero'),verdict=el('verdictBox');
     if(surplus>=0){
       hero.style.background='var(--green-xs)';hero.style.borderColor='var(--green)';
       verdict.style.background='var(--green-xs)';verdict.style.borderColor='var(--green)';
-      verdict.textContent='✅ You are on track! Your projected corpus covers your retirement needs with a surplus of '+fmtCr(surplus)+'.';
+      verdict.textContent='Your projected corpus covers the modelled retirement withdrawals, with an estimated surplus of '+fmtCr(surplus)+'. This is a projection, not a guarantee.';
     }else{
       hero.style.background='var(--red-lt)';hero.style.borderColor='var(--black)';
       verdict.style.background='var(--red-lt)';verdict.style.borderColor='var(--black)';
-      const extraNeeded=Math.abs(surplus/((Math.pow(1+monthlyRate,n)-1)/monthlyRate*(1+monthlyRate)));
-      verdict.textContent='⚠️ Shortfall of '+fmtCr(Math.abs(surplus))+'. Consider increasing monthly savings by ~'+fmt(extraNeeded)+' or retiring later.';
+      const extraNeeded=Math.abs(surplus)/savingsFactor;
+      verdict.textContent='Projected shortfall: '+fmtCr(Math.abs(surplus))+'. An estimated additional monthly investment of '+fmt(extraNeeded)+' may close the gap under the same assumptions.';
     }
   }
 
