@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#6E1E33"/>
+<title>EPF Calculator India 2026 – Employee & Employer PF | MailFix</title>
+<link rel="canonical" href="https://mailfix.vercel.app/pf-calculator"/>
+<meta name="description" content="Calculate monthly EPF deductions, employer PF, EPS pension contribution and EDLI estimate using India's revised ₹25,000 wage ceiling. Free PF calculator for India."/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<meta property="og:type" content="website"/><meta property="og:url" content="https://mailfix.vercel.app/pf-calculator"/>
+<meta property="og:title" content="EPF Calculator India 2026 | MailFix"/><meta property="og:description" content="Estimate employee PF, employer EPF, EPS and EDLI contributions with flexible wage and membership assumptions."/>
+<meta property="og:image" content="https://mailfix.vercel.app/og-image.png"/><meta property="og:site_name" content="MailFix"/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EPF Calculator India 2026"/><meta name="twitter:description" content="Calculate monthly and annual PF contributions using the revised wage ceiling."/><meta name="twitter:image" content="https://mailfix.vercel.app/og-image.png"/>
+<link rel="alternate" hreflang="en-IN" href="https://mailfix.vercel.app/pf-calculator"/><link rel="alternate" hreflang="x-default" href="https://mailfix.vercel.app/pf-calculator"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"EPF Calculator India","url":"https://mailfix.vercel.app/pf-calculator","description":"Free Indian EPF calculator for employee contribution, employer EPF, EPS pension and EDLI estimates.","applicationCategory":"FinanceApplication","operatingSystem":"Any — runs in web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"MailFix","url":"https://mailfix.vercel.app/"},"inLanguage":"en-IN","isAccessibleForFree":true}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mailfix.vercel.app/"},{"@type":"ListItem","position":2,"name":"EPF Calculator","item":"https://mailfix.vercel.app/pf-calculator"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the EPF wage ceiling in India in 2026?","acceptedAnswer":{"@type":"Answer","text":"The Central Government notified ₹25,000 per month as the wage ceiling for Chapter III of the Code on Social Security, 2020, effective 17 September 2026. The ceiling is relevant to coverage and scheme calculations; membership history and applicable scheme provisions still matter."}},
+{"@type":"Question","name":"How much do employees and employers contribute to EPF?","acceptedAnswer":{"@type":"Answer","text":"The standard contribution rate is generally 12% from the employee and 12% from the employer, subject to applicable establishment categories and scheme rules. The employer's share may be split between EPS and EPF for eligible pension-scheme members."}},
+{"@type":"Question","name":"Is the employer's full 12% deposited into EPF?","acceptedAnswer":{"@type":"Answer","text":"Not always. For an eligible EPS member, 8.33% of pensionable wages is diverted to EPS, subject to the pensionable wage ceiling and scheme rules; the balance of the employer's 12% goes to EPF. If EPS does not apply, the employer's contribution is credited to EPF as per the applicable rules."}},
+{"@type":"Question","name":"Can an employee earning above ₹25,000 still have PF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Existing EPF members generally continue membership when wages later exceed the ceiling. A person joining for the first time above the applicable ceiling may be excluded from mandatory membership if the scheme's exclusion conditions are met. Employer policy, prior membership and scheme provisions must be checked."}},
+{"@type":"Question","name":"Does this calculator include PF interest?","acceptedAnswer":{"@type":"Answer","text":"No. It estimates monthly and annual contributions only. Actual account balances depend on deposits, interest rates declared for each financial year, posting dates, withdrawals and EPFO account records."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#86243E;--green-dk:#6E1E33;--green-xs:#E3E9DF;--black:#1E1317;--paper:#EFF2EC;--white:#FCFDFB;--muted:#525D52;--border:#C3CEC0;--card:#FCFDFB;--shadow:4px 4px 0 #1E1317;--shadow-sm:2px 2px 0 #1E1317;--orange:#FFF0E8;--font:'Plus Jakarta Sans',sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--paper);color:#191718;font-size:16px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--green-dk)}.skip-link{position:absolute;left:-9999px}.skip-link:focus{left:12px;top:12px;background:white;padding:10px;z-index:999}
+nav{position:sticky;top:0;z-index:10;background:rgba(252,253,251,.96);border-bottom:2px solid var(--black)}.nav-inner{max-width:1100px;margin:auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:21px;font-weight:800;color:var(--black);text-decoration:none;letter-spacing:-.5px}.logo span{color:var(--green)}.nav-links{display:flex;gap:18px}.nav-links a{font-size:13px;font-weight:800;text-decoration:none;color:var(--muted)}.nav-links a:hover{text-decoration:underline}.nav-cta{background:var(--green);color:white!important;border:2px solid var(--black);padding:8px 14px;border-radius:8px;box-shadow:var(--shadow-sm)}
+.breadcrumb{max-width:1100px;margin:auto;padding:14px 24px;font-size:12px;color:var(--muted)}.breadcrumb a{text-decoration:none;font-weight:700}.hero{text-align:center;padding:38px 20px 26px}.badge{display:inline-block;background:var(--green-xs);border:1.5px solid var(--black);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:800;margin-bottom:14px}.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.15;letter-spacing:-1.5px;font-weight:800}.hero h1 span{color:var(--green)}.hero p{max-width:760px;margin:12px auto 0;color:var(--muted);font-size:16px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px 58px}.intro{max-width:900px;margin:0 auto 18px;color:var(--muted);font-size:14px}.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:22px;align-items:start}.card{background:var(--card);border:2px solid var(--black);border-radius:15px;box-shadow:var(--shadow);overflow:hidden}.card-head{padding:15px 19px;background:var(--green-xs);border-bottom:2px solid var(--black);display:flex;justify-content:space-between;gap:10px;font-size:14px;font-weight:800}.card-body{padding:20px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800}.field input,.field select{width:100%;padding:11px 12px;border:1.5px solid var(--border);border-radius:8px;background:white;font:600 14px var(--font);color:var(--black)}.field input:focus,.field select:focus{outline:2px solid var(--green);outline-offset:1px}.help{font-size:11px;color:var(--muted);line-height:1.45}.subhead{font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:800;color:var(--green-dk);margin:22px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--border)}.note,.warning{padding:13px 14px;border:1.5px solid var(--black);border-radius:10px;font-size:12px;line-height:1.65;margin-top:16px}.note{background:var(--green-xs)}.warning{background:var(--orange);display:none}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:2px solid var(--black);border-radius:8px;padding:10px 16px;font:800 13px var(--font);cursor:pointer}.btn.primary{background:var(--green);color:white;box-shadow:var(--shadow-sm)}.btn.secondary{background:white;color:var(--black)}.btn:hover{transform:translateY(-1px)}
+.result-top{background:var(--green-dk);color:white;border-radius:11px;padding:18px;margin-bottom:17px}.result-top .label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;opacity:.85;font-weight:800}.result-top .amount{font-size:34px;font-weight:800;letter-spacing:-1px;margin:2px 0}.result-top .sub{font-size:11px;opacity:.9}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}.metric{border:1px solid var(--border);border-radius:9px;padding:11px}.metric small{display:block;color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.metric strong{font-size:19px;display:block;margin-top:3px}.table-wrap{overflow-x:auto}.result-table{width:100%;border-collapse:collapse;font-size:12px;min-width:400px}.result-table th,.result-table td{padding:10px 8px;border-bottom:1px solid var(--border);text-align:right}.result-table th:first-child,.result-table td:first-child{text-align:left}.result-table th{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}.result-table tr.total td{font-weight:800;border-top:2px solid var(--black)}.result-foot{font-size:11px;color:var(--muted);line-height:1.55;margin-top:14px}.related,.faq{max-width:900px;margin:28px auto 0}.related h2,.faq h2{font-size:21px;margin-bottom:12px}.related-links{display:flex;gap:9px;flex-wrap:wrap}.related-links a{background:var(--green-xs);border:1.5px solid var(--black);border-radius:8px;padding:8px 11px;text-decoration:none;font-size:12px;font-weight:800}.faq details{background:white;border:1.5px solid var(--border);border-radius:9px;padding:13px 15px;margin:9px 0}.faq summary{font-weight:800;font-size:13px;cursor:pointer}.faq p{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.7}footer{border-top:2px solid var(--black);background:var(--white);padding:24px;text-align:center;color:var(--muted);font-size:12px}footer a{font-weight:800;text-decoration:none;margin:0 7px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.nav-links{gap:9px}.nav-links a{font-size:11px}.nav-cta{display:none}}@media(max-width:520px){.nav-inner{padding:0 16px}.nav-links a:nth-child(n+2){display:none}.wrap{padding-left:14px;padding-right:14px}.card{box-shadow:var(--shadow-sm)}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.card-body{padding:16px}.hero{padding-top:30px}.result-top .amount{font-size:30px}}
+@media print{nav,.breadcrumb,.hero,.intro,.inputs,.actions,.related,.faq,footer{display:none!important}body{background:white}.wrap{padding:0}.layout{display:block}.card{box-shadow:none;border:1px solid #777}.result-card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav aria-label="Primary"><div class="nav-inner"><a class="logo" href="/">Mailflix</a><div class="nav-links"><a href="/ctc-calculator">CTC Calculator</a><a href="/salary-breakup-calculator">Salary Breakup</a><a href="/new-labour-code-salary-guide">Labour Code Guide</a><a class="nav-cta" href="/#main-tool">Free Tools</a></div></div></nav>
+<div class="breadcrumb"><a href="/">Home</a> &nbsp;›&nbsp; <span aria-current="page">EPF Calculator</span></div>
+<header class="hero"><div class="badge">💰 EPF &amp; Pension Calculator · Updated November 2026</div><h1>EPF <span>Calculator</span></h1><p>Estimate your monthly employee PF deduction, employer EPF contribution, EPS pension share and EDLI contribution using the current wage-ceiling assumption.</p></header>
+<main id="main-content" class="wrap">
+<p class="intro">Enter your monthly PF wages (normally basic pay plus dearness allowance and retaining allowance, where applicable), membership status and contribution preferences. The result separates money credited to EPF from the employer's EPS pension contribution.</p>
+<div class="layout">
+<section class="card inputs" aria-labelledby="inputTitle"><div class="card-head"><span id="inputTitle">1. Enter your PF details</span><span>₹ INR / month</span></div><div class="card-body">
+<div class="fields">
+<div class="field full"><label for="pfWages">Monthly PF wages (statutory wage basis)</label><input id="pfWages" type="number" min="0" max="10000000" step="100" value="30000"/><span class="help">The statutory base commonly starts with basic pay, DA and retaining allowance, but the applicable wage definition and allowance treatment can affect it. Use the PF wage figure confirmed by payroll, not CTC or total gross salary.</span></div>
+<div class="field"><label for="membership">EPF membership situation</label><select id="membership"><option value="existing" selected>Already an EPF member / covered</option><option value="neweligible">First-time employee; wages up to ₹25,000</option><option value="newexcluded">First-time employee; wages above ₹25,000</option><option value="voluntary">Voluntary / employer-agreed coverage</option></select></div>
+<div class="field"><label for="wageBasis">Contribution wage basis</label><select id="wageBasis"><option value="ceiling" selected>Cap at ₹25,000 ceiling</option><option value="actual">Full PF wages entered</option></select></div>
+<div class="field"><label for="rate">Contribution rate</label><select id="rate"><option value="12" selected>12% (standard assumption)</option><option value="10">10% (eligible establishment category)</option></select><span class="help">Most covered establishments use 12%; 10% applies only to specified categories.</span></div>
+<div class="field"><label for="employeeRate">Employee contribution rate</label><select id="employeeRate"><option value="match" selected>Same as establishment rate</option><option value="12">12%</option><option value="10">10%</option><option value="15">15% (illustrative VPF)</option><option value="20">20% (illustrative VPF)</option></select></div>
+<div class="field"><label for="eps">EPS pension eligibility</label><select id="eps"><option value="yes" selected>Eligible EPS member</option><option value="no">Not an EPS member</option></select><span class="help">EPS eligibility depends on membership history and scheme rules; it is not selected solely by current salary.</span></div>
+<div class="field"><label for="edli">Include employer EDLI estimate?</label><select id="edli"><option value="yes" selected>Yes — 0.5% estimate</option><option value="no">No</option></select></div>
+</div>
+<div class="note"><strong>2026 ceiling:</strong> The Central Government notified ₹25,000 per month as the wage ceiling under Chapter III of the Code on Social Security, 2020, effective 17 September 2026. Existing membership, first-time joining status and applicable scheme rules still determine coverage. This calculator does not decide legal eligibility.</div>
+<div class="actions"><button class="btn primary" type="button" id="calculateBtn">Calculate PF</button><button class="btn secondary" type="button" id="resetBtn">Reset</button></div>
+</div></section>
+<aside class="card result-card" aria-live="polite"><div class="card-head"><span>2. Your PF estimate</span><span id="resultStatus">Illustrative estimate</span></div><div class="card-body">
+<div class="warning" id="warning" role="alert"></div>
+<div class="result-top"><div class="label">Monthly employee PF deduction</div><div class="amount" id="employeeMonthly">₹0</div><div class="sub" id="employeeAnnual">Annual employee contribution: ₹0</div></div>
+<div class="result-grid"><div class="metric"><small>Employer total PF share</small><strong id="employerMonthly">₹0</strong></div><div class="metric"><small>Employer EPS pension</small><strong id="epsMonthly">₹0</strong></div><div class="metric"><small>Employer EPF deposit</small><strong id="employerEpfMonthly">₹0</strong></div><div class="metric"><small>Annual EPF account inflow*</small><strong id="annualEpf">₹0</strong></div></div>
+<div class="table-wrap"><table class="result-table" aria-label="Monthly and annual provident fund contribution breakdown"><thead><tr><th>Contribution</th><th>Monthly</th><th>Annual</th></tr></thead><tbody>
+<tr><td>Employee EPF</td><td id="employeeEpfRow">₹0</td><td id="employeeEpfAnnual">₹0</td></tr><tr><td>Employer EPF</td><td id="employerEpfRow">₹0</td><td id="employerEpfAnnual">₹0</td></tr><tr><td>Employer EPS</td><td id="epsRow">₹0</td><td id="epsAnnual">₹0</td></tr><tr><td>Employer EDLI (estimate)</td><td id="edliRow">₹0</td><td id="edliAnnual">₹0</td></tr><tr class="total"><td>Total employer cost (PF + EDLI)</td><td id="employerTotalRow">₹0</td><td id="employerTotalAnnual">₹0</td></tr></tbody></table></div>
+<div class="result-foot">*Annual EPF account inflow adds the employee EPF contribution and employer EPF contribution; it excludes EPS pension, EDLI, interest, withdrawals and any VPF excess credited under separate accounting. Employer administrative charges are not included because the minimum charge is establishment-level, not an employee-level amount.</div>
+<div class="actions"><button class="btn secondary" type="button" onclick="window.print()">Print estimate</button></div>
+</div></aside>
+</div>
+<section class="related"><h2>Explore related salary tools</h2><div class="related-links"><a href="/salary-breakup-calculator">Salary Breakup Calculator</a><a href="/ctc-calculator">CTC to In-Hand Calculator</a><a href="/new-labour-code-salary-guide">New Labour Code Salary Guide</a><a href="/salary-glossary">Salary Terms Glossary</a><a href="/epf-withdrawal-guide">EPF Withdrawal Guide</a></div></section>
+<section class="related"><h2>Official references</h2><div class="related-links"><a href="https://www.pib.gov.in/Pressreleaseshare.aspx?PRID=2311536&amp;lang=2&amp;reg=48" target="_blank" rel="noopener noreferrer">Ministry / PIB: ₹25,000 wage ceiling announcement</a><a href="https://unifiedportal-emp.epfindia.gov.in/epfo/" target="_blank" rel="noopener noreferrer">EPFO employer portal and revised-ceiling FAQs</a><a href="https://www.epfindia.gov.in/site_docs/PDFs/Downloads_PDFs/EPFScheme.pdf" target="_blank" rel="noopener noreferrer">EPF Scheme: contribution provisions</a><a href="https://pmvbry-cdn.epfindia.gov.in/wp-content/uploads/2025/08/Annual_Report_2023-24.pdf" target="_blank" rel="noopener noreferrer">EPFO Annual Report: contribution-rate summary</a></div><p class="result-foot">The ₹25,000 ceiling is based on Gazette Notification S.O. 5109(E), effective 17 September 2026. The EPFO employer portal currently points to its revised-ceiling FAQs. Always confirm current scheme rules, membership status and payroll treatment with EPFO or your employer.</p></section>
+<section class="faq"><h2>EPF Calculator FAQs</h2>
+<details><summary>What is the EPF wage ceiling in India in 2026?</summary><p>The Central Government notified ₹25,000 per month as the wage ceiling for Chapter III of the Code on Social Security, 2020, effective 17 September 2026. Membership history and applicable scheme provisions still matter.</p></details>
+<details><summary>How much do employees and employers contribute to EPF?</summary><p>The standard rate is generally 12% from the employee and 12% from the employer, subject to applicable establishment categories and scheme rules. Certain specified categories use 10%.</p></details>
+<details><summary>Is the employer's full 12% deposited into EPF?</summary><p>Not always. For an eligible EPS member, 8.33% of pensionable wages is diverted to EPS, subject to the pensionable wage ceiling and scheme rules; the balance of the employer's share goes to EPF. If EPS does not apply, the employer's contribution is credited to EPF as per applicable rules.</p></details>
+<details><summary>Can an employee earning above ₹25,000 still have PF?</summary><p>Yes. Existing EPF members generally continue membership when wages later exceed the ceiling. A person joining for the first time above the applicable ceiling may be excluded from mandatory membership if the scheme's exclusion conditions are met. Confirm your history and eligibility with HR or EPFO.</p></details>
+<details><summary>Does this calculator include PF interest?</summary><p>No. It estimates contributions only. Actual balances depend on deposits, the interest rate declared for each financial year, posting dates, withdrawals and EPFO account records.</p></details>
+</section>
+</main>
+<footer><div><a href="/">MailFix</a><a href="/ctc-calculator">Salary Calculator</a><a href="/income-tax-slabs">Tax Slabs</a><a href="/new-labour-code-salary-guide">Labour Code Guide</a><a href="/sitemap">Sitemap</a><a href="/privacy">Privacy</a></div><p>© 2026 MailFix. Free Tools for Indian Professionals.</p></footer>
+<script>
+(function(){
+'use strict';
+const byId=id=>document.getElementById(id);
+const money=n=>'₹'+Math.round(Number.isFinite(n)?n:0).toLocaleString('en-IN');
+const set=(id,value)=>{byId(id).textContent=money(value)};
+function calculate(){
+ const wages=Math.max(0,Number(byId('pfWages').value)||0);
+ const membership=byId('membership').value;
+ const basis=byId('wageBasis').value;
+ const rate=Number(byId('rate').value)/100;
+ const empChoice=byId('employeeRate').value;
+ const employeeRate=empChoice==='match'?rate:Number(empChoice)/100;
+ const epsEligible=byId('eps').value==='yes';
+ const edliEnabled=byId('edli').value==='yes';
+ const ceiling=25000;
+ const covered=membership!=='newexcluded';
+ const contributionWage=basis==='actual'?wages:Math.min(wages,ceiling);
+ const employerWage=covered?contributionWage:0;
+ const employeeWage=covered?contributionWage:0;
+ const employeeTotal=Math.round(employeeWage*employeeRate);
+ const employerTotal=Math.round(employerWage*rate);
+ const eps=Math.round(epsEligible?Math.min(employerWage,ceiling)*0.0833:0);
+ const employerEpf=Math.max(0,employerTotal-eps);
+ const employeeEpf=employeeTotal;
+ const edli=edliEnabled?Math.round(Math.min(employerWage,ceiling)*0.005):0;
+ const employerCost=employerTotal+edli;
+ const annualEpf=(employeeEpf+employerEpf)*12;
+ const warning=byId('warning');
+ warning.style.display='none';warning.textContent='';
+ if(membership==='newexcluded'){
+   warning.style.display='block';
+   warning.textContent='This scenario assumes a first-time entrant whose PF wages exceed ₹25,000 and who has never been an EPF member. Under the applicable exclusion conditions, mandatory membership may not apply. The estimate is therefore set to zero; check prior membership, employer coverage and current EPFO rules before relying on this result.';
+ } else if(membership==='neweligible' && wages>ceiling){
+   warning.style.display='block';
+   warning.textContent='You selected the first-time employee scenario for wages up to ₹25,000, but the entered PF wages are above that ceiling. Recheck the wage figure and membership history. The calculator still shows the capped contribution as an illustration.';
+ } else if(wages>ceiling && basis==='ceiling'){
+   warning.style.display='block';
+   warning.textContent='Your entered PF wages exceed ₹25,000. This estimate caps the contribution wage at ₹25,000. Existing members may continue membership above the ceiling; whether contributions are capped or made on higher actual wages depends on the applicable scheme, employer practice and any valid higher-wage arrangement.';
+ } else if(basis==='actual' && wages>ceiling){
+   warning.style.display='block';
+   warning.textContent='You selected full PF wages above the ₹25,000 ceiling. This is an illustrative higher-wage contribution scenario, not an assumption that every employer must contribute on full wages. EPS remains capped at ₹25,000 in this model.';
+ }
+ if(empChoice!=='match' && employeeRate>rate){
+   const vpf=employeeTotal-Math.round(employeeWage*rate);
+   if(vpf>0){warning.style.display='block';warning.textContent+=(warning.textContent?' ':'')+'The employee rate exceeds the selected establishment rate. The excess is treated as illustrative VPF; the employer is not assumed to match this voluntary excess.';}
+ }
+ set('employeeMonthly',employeeTotal);set('employeeAnnual',employeeTotal*12);
+ set('employerMonthly',employerTotal);set('epsMonthly',eps);set('employerEpfMonthly',employerEpf);set('annualEpf',annualEpf);
+ set('employeeEpfRow',employeeEpf);set('employeeEpfAnnual',employeeEpf*12);set('employerEpfRow',employerEpf);set('employerEpfAnnual',employerEpf*12);set('epsRow',eps);set('epsAnnual',eps*12);set('edliRow',edli);set('edliAnnual',edli*12);set('employerTotalRow',employerCost);set('employerTotalAnnual',employerCost*12);
+ byId('employeeAnnual').textContent='Annual employee contribution: '+money(employeeTotal*12);
+ byId('resultStatus').textContent=covered?'Illustrative estimate':'Coverage may not apply';
+}
+function reset(){byId('pfWages').value=30000;byId('membership').value='existing';byId('wageBasis').value='ceiling';byId('rate').value='12';byId('employeeRate').value='match';byId('eps').value='yes';byId('edli').value='yes';calculate();}
+['pfWages','membership','wageBasis','rate','employeeRate','eps','edli'].forEach(id=>byId(id).addEventListener('input',calculate));
+byId('calculateBtn').addEventListener('click',calculate);byId('resetBtn').addEventListener('click',reset);calculate();
+})();
+</script>
+</body>
+</html>
