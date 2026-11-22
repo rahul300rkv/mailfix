@@ -602,6 +602,10 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
             </select>
           </div>
           <div class="form-group full">
+            <label for="professionalTax">Annual Professional Tax (₹) <span>Enter your state’s actual amount; 0 if not applicable</span></label>
+            <input type="number" id="professionalTax" min="0" value="2400" oninput="calculate()"/>
+          </div>
+          <div class="form-group full">
             <div class="toggle-row">
               <div><div class="toggle-label">PF Applicable</div><div class="toggle-sub">12% employee + 12% employer; PF wage capped at ₹15,000/month in this estimate</div></div>
               <label class="toggle"><input type="checkbox" id="togglePF" checked onchange="calculate()"/><span class="toggle-slider"></span></label>
@@ -631,10 +635,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
             <label for="deduction80d">Eligible 80D Deduction (₹/year) <span>Enter amount after age-based limits</span></label>
             <input type="number" id="deduction80d" min="0" value="0" oninput="calculate()"/>
           </div>
-          <div class="form-group">
-            <label for="professionalTax">Annual Professional Tax (₹) <span>Use your state’s actual amount; enter 0 if not applicable</span></label>
-            <input type="number" id="professionalTax" min="0" value="2400" oninput="calculate()"/>
-          </div>
+          
         </div>
       </div>
     </div>
