@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="theme-color" content="#6E1E33"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Full and Final Settlement Calculator India (F&amp;F) | MailFix</title>
+<link rel="canonical" href="https://mailfix.vercel.app/full-and-final-settlement"/>
+<meta name="description" content="Estimate your full and final settlement in India. Calculate unpaid salary, leave encashment, gratuity, notice recovery and other deductions with a clear breakdown."/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mailfix.vercel.app/full-and-final-settlement"/>
+<meta property="og:title" content="Full and Final Settlement Calculator India | MailFix"/>
+<meta property="og:description" content="Estimate unpaid salary, leave encashment, gratuity, notice recovery and deductions in your final settlement."/>
+<meta property="og:image" content="https://mailfix.vercel.app/og-image.png"/>
+<meta property="og:site_name" content="MailFix"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Full and Final Settlement Calculator India | MailFix"/>
+<meta name="twitter:description" content="Calculate your estimated final salary settlement with a transparent itemised breakdown."/>
+<meta name="twitter:image" content="https://mailfix.vercel.app/og-image.png"/>
+<link rel="alternate" hreflang="en-IN" href="https://mailfix.vercel.app/full-and-final-settlement"/>
+<link rel="alternate" hreflang="x-default" href="https://mailfix.vercel.app/full-and-final-settlement"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"Full and Final Settlement Calculator India","url":"https://mailfix.vercel.app/full-and-final-settlement","description":"Free in-browser estimate of an employee's full and final settlement in India, including unpaid salary, leave encashment, gratuity, notice recovery and deductions.","applicationCategory":"FinanceApplication","operatingSystem":"Any — runs in web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"MailFix","url":"https://mailfix.vercel.app/"},"inLanguage":"en-IN","isAccessibleForFree":true}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mailfix.vercel.app/"},{"@type":"ListItem","position":2,"name":"Full and Final Settlement Calculator","item":"https://mailfix.vercel.app/full-and-final-settlement"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is included in full and final settlement in India?","acceptedAnswer":{"@type":"Answer","text":"A final settlement may include unpaid salary, eligible leave encashment, gratuity where payable, approved incentives or reimbursements, and other contractual dues, less authorised recoveries such as notice pay, advances, loans and other deductions."}},
+{"@type":"Question","name":"Is notice period recovery mandatory in every resignation?","acceptedAnswer":{"@type":"Answer","text":"Notice obligations and recovery are generally governed by the employment contract, applicable service rules and law. The calculator uses the shortfall days and salary basis you enter; it does not decide whether a recovery is legally or contractually valid."}},
+{"@type":"Question","name":"Can I receive gratuity in my final settlement?","acceptedAnswer":{"@type":"Answer","text":"Gratuity may be payable on resignation or termination if the statutory eligibility conditions are met. The general continuous-service condition is five years, with statutory exceptions. A directly employed fixed-term employee is eligible after one year under the contract, as clarified by the Ministry of Labour and Employment."}},
+{"@type":"Question","name":"How is leave encashment calculated in the final settlement?","acceptedAnswer":{"@type":"Answer","text":"A common estimate is eligible monthly leave-encashment wages divided by the employer's applicable divisor, multiplied by the eligible leave days. The wage base, divisor and entitlement depend on applicable law, worker classification, state rules and employment terms."}},
+{"@type":"Question","name":"Is this final settlement amount guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. This is an estimate based on user-entered values and assumptions. The employer's final calculation may differ due to payroll cut-off, contract terms, statutory coverage, tax treatment, approved leave, wage definitions and authorised deductions."}}
+]}
+</script>
+<style>
+
+/* ─── SHARED DESIGN SYSTEM ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#86243E;--green-dk:#6E1E33;--green-lt:#D2DCD0;--green-xs:#E3E9DF;
+  --black:#1E1317;--white:#FCFDFB;--ink:#191718;--muted:#525D52;
+  --border:#C3CEC0;--paper:#EFF2EC;--tangerine:#FF6B2B;--tangerine-dk:#D94D14;--tangerine-lt:#FFF0E8;--card:#FCFDFB;
+  --red-lt:#FEF2F2;--red:#B91C1C;--blue-lt:#FFF0E8;--blue:#D94D14;
+  --shadow:4px 4px 0px 0px #1E1317;--shadow-sm:2px 2px 0px 0px #1E1317;--shadow-lg:6px 6px 0px 0px #1E1317;
+  --radius:12px;--font:"Plus Jakarta Sans",sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#A8B5A5;border-radius:4px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(252,253,251,.94);backdrop-filter:blur(10px);border-bottom:2px solid var(--black)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;letter-spacing:-.5px;color:var(--black);text-decoration:none}
+.logo-icon{width:34px;height:34px;background:var(--green);border:2px solid var(--black);border-radius:8px;display:flex;align-items:center;justify-content:center;transform:rotate(-3deg);box-shadow:var(--shadow-sm)}
+.logo-icon svg{width:18px;height:18px}
+.logo span{color:var(--green-dk)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-item{position:relative}
+.nav-trigger{display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:8px;font-size:14px;font-weight:700;color:var(--muted);background:none;border:none;cursor:pointer;font-family:var(--font);transition:color .15s,background .15s}
+.nav-trigger:hover{color:var(--black);background:#EAEEE7}
+.nav-trigger svg{width:14px;height:14px;transition:transform .2s}
+.nav-item:hover .nav-trigger svg{transform:rotate(180deg)}
+.dropdown-panel{display:none;position:absolute;top:100%;left:0;min-width:220px;background:var(--white);border:2px solid var(--black);border-radius:14px;box-shadow:var(--shadow);padding:10px 6px 6px;z-index:200}
+.nav-item::after{content:"";position:absolute;top:100%;left:0;width:100%;height:12px;display:block}
+.nav-item:hover .dropdown-panel,.dropdown-panel.open{display:flex;flex-direction:column}
+.dropdown-panel a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:700;color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.dropdown-panel a:hover{background:var(--green-xs);color:var(--black)}
+.nav-cta{padding:9px 20px;background:var(--green);color:white;font-size:13px;font-weight:800;border:2px solid var(--black);border-radius:10px;box-shadow:var(--shadow-sm);cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.nav-cta:hover{transform:translate(2px,2px);box-shadow:none;background:var(--tangerine);color:var(--black)}
+
+.mobile-toggle{display:none;background:white;border:2px solid var(--black);border-radius:8px;padding:6px;cursor:pointer;box-shadow:var(--shadow-sm);align-items:center}
+.mobile-toggle svg{width:22px;height:22px;display:block}
+.mobile-panel{display:none;position:fixed;inset:0;z-index:500;background:white;overflow-y:auto;transform:translateX(100%);transition:transform .28s ease;border-left:2px solid var(--black)}
+.mobile-panel.open{transform:translateX(0)}
+.mobile-panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:2px solid var(--black);background:var(--green-xs)}
+.mobile-panel-body{padding:24px 20px;display:flex;flex-direction:column;gap:10px}
+.mobile-link{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;border:2px solid var(--border);font-size:15px;font-weight:700;color:var(--ink);text-decoration:none}
+.mobile-link:hover{border-color:var(--green);background:var(--green-xs)}
+.mobile-cta{display:block;text-align:center;padding:14px;background:var(--green);color:white;font-weight:800;font-size:15px;border:2px solid var(--black);border-radius:12px;box-shadow:var(--shadow);text-decoration:none}
+.mobile-section-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#6F7B6F;margin-top:6px;padding:0 4px}
+.close-btn{background:white;border:2px solid var(--black);border-radius:8px;padding:6px;cursor:pointer;box-shadow:var(--shadow-sm)}
+.close-btn svg{width:20px;height:20px;display:block}
+
+/* PAGE HERO */
+.page-hero{max-width:900px;margin:0 auto;padding:50px 24px 36px;text-align:center}
+.page-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 18px;border:2px solid var(--black);border-radius:99px;background:white;box-shadow:var(--shadow-sm);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;color:var(--black)}
+h1{font-size:clamp(28px,4.5vw,48px);font-weight:800;line-height:1.15;letter-spacing:-1px;color:var(--black);margin-bottom:14px}
+h1 .accent{color:var(--green-dk)}
+.page-sub{font-size:16px;color:var(--muted);font-weight:500;max-width:620px;margin:0 auto;line-height:1.6}
+
+/* FORM WRAP */
+.form-wrap{max-width:960px;margin:0 auto;padding:0 24px 60px}
+.form-card{background:white;border:4px solid var(--black);border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden}
+.form-card-header{padding:18px 24px;border-bottom:2px solid var(--black);background:var(--green-xs);display:flex;align-items:center;justify-content:space-between}
+.form-card-title{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green-dk)}
+.form-body{padding:28px 24px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+label{font-size:13px;font-weight:700;color:var(--ink)}
+label span{font-weight:500;color:var(--muted);font-size:12px;margin-left:4px}
+input,select,textarea{width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:10px;font-family:var(--font);font-size:15px;font-weight:500;color:var(--ink);background:white;outline:none;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--green-dk);box-shadow:2px 2px 0px 0px var(--tangerine)}
+.hint-text{font-size:12px;color:var(--muted);margin-top:2px}
+
+.quick-btn-row{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.quick-btn{padding:4px 10px;border:1.5px solid var(--black);border-radius:6px;background:#EAEEE7;font-size:11px;font-weight:700;cursor:pointer;transition:background .15s}
+.quick-btn:hover{background:var(--green-lt)}
+
+.toggle-card{border:2px solid var(--border);border-radius:12px;padding:14px;background:#F5F7F3;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px}
+.toggle-card.active{border-color:var(--black);background:var(--green-xs)}
+.toggle-switch{position:relative;width:44px;height:24px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;inset:0;background:#A8B5A5;border-radius:24px;transition:.2s;border:2px solid var(--black)}
+.slider:before{position:absolute;content:"";height:14px;width:14px;left:3px;bottom:3px;background:white;border-radius:50%;transition:.2s;border:1px solid #1E1317}
+input:checked + .slider{background:var(--green)}
+input:checked + .slider:before{transform:translateX(20px)}
+
+/* RESULTS BOX */
+.results-box{margin-top:24px;border:3px solid var(--black);border-radius:16px;background:#EAEEE7;overflow:hidden;box-shadow:var(--shadow)}
+.results-header{padding:14px 20px;background:var(--black);color:white;display:flex;justify-content:space-between;align-items:center}
+.results-title{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;padding:20px}
+.res-card{background:white;border:2px solid var(--black);border-radius:12px;padding:16px;box-shadow:2px 2px 0 #1E1317}
+.res-card.highlight{background:var(--green-xs);border-color:var(--green-dk)}
+.res-card.warn{background:var(--red-lt);border-color:var(--red)}
+.res-label{font-size:11px;font-weight:800;text-transform:uppercase;color:var(--muted);letter-spacing:.05em}
+.res-val{font-size:22px;font-weight:800;color:var(--black);margin-top:4px;line-height:1.2}
+.res-sub{font-size:12px;color:var(--muted);margin-top:4px}
+
+.calc-breakdown{padding:16px 20px;border-top:2px dashed var(--border);background:white;font-size:14px}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #E1E7DD}
+.breakdown-row.total{border-top:2px solid var(--black);border-bottom:none;margin-top:8px;padding-top:10px;font-size:16px;font-weight:800}
+
+/* EMAIL GENERATOR DRAWER */
+.email-gen-box{margin-top:28px;border:2px solid var(--black);border-radius:14px;background:#ffffff;padding:20px;box-shadow:var(--shadow-sm)}
+.email-gen-title{font-size:15px;font-weight:800;color:var(--black);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.email-preview-box{background:#EAEEE7;border:1.5px solid var(--border);border-radius:8px;padding:16px;font-size:13px;line-height:1.7;white-space:pre-wrap;font-family:monospace;color:#2B2628}
+.copy-btn{margin-top:12px;padding:10px 18px;background:var(--green);color:#ffffff;border:2px solid var(--black);border-radius:8px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:var(--shadow-sm);transition:transform .1s,box-shadow .1s}
+.copy-btn:hover{transform:translate(2px,2px);box-shadow:none}
+
+/* CONTENT & FAQ */
+.seo-section{max-width:960px;margin:0 auto 80px;padding:0 24px}
+.seo-box{background:white;border:3px solid var(--black);border-radius:20px;box-shadow:var(--shadow-lg);padding:36px 30px}
+.seo-box h2{font-size:24px;font-weight:800;color:var(--black);margin:24px 0 12px}
+.seo-box h2:first-child{margin-top:0}
+.seo-box h3{font-size:18px;font-weight:800;color:var(--black);margin:20px 0 8px}
+.seo-box p{font-size:15px;color:#363133;line-height:1.75;margin-bottom:14px}
+.seo-box ul{margin-left:22px;margin-bottom:16px;color:#363133}
+.seo-box li{margin-bottom:8px;font-size:15px}
+
+.rule-alert{background:#FFF0E8;border:2px solid #D94D14;border-radius:10px;padding:16px;margin:18px 0;font-size:14px;color:#6E1E33;line-height:1.6}
+.rule-alert strong{color:#1E1317}
+
+.faq-item{border:2px solid var(--black);border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:2px 2px 0 #1E1317}
+.faq-q{padding:16px 20px;font-weight:800;font-size:15px;background:white;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q svg{width:18px;height:18px;transition:transform .2s}
+.faq-item.open .faq-q svg{transform:rotate(180deg)}
+.faq-a{display:none;padding:16px 20px;background:#EAEEE7;border-top:1px solid #C3CEC0;font-size:14px;line-height:1.7;color:#363133}
+.faq-item.open .faq-a{display:block}
+
+/* FOOTER */
+footer{background:white;border-top:3px solid var(--black);padding:48px 24px;font-size:14px;color:var(--muted)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{color:var(--ink);text-decoration:none;font-weight:700}
+.footer-links a:hover{color:var(--tangerine-dk)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .mobile-toggle{display:flex}
+  .mobile-panel{display:block}
+  .form-grid{grid-template-columns:1fr}
+  .seo-box{padding:24px 18px}
+}
+
+.fnf-wrap{max-width:1100px;margin:0 auto;padding:0 24px 72px}
+.fnf-intro{max-width:850px;margin:0 auto 24px;color:var(--muted);font-size:14px}
+.fnf-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
+@media(max-width:820px){.fnf-grid{grid-template-columns:1fr}}
+.fnf-panel{background:#fff;border:2px solid var(--black);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px}
+.fnf-panel-head{padding:15px 20px;background:var(--green-xs);border-bottom:2px solid var(--black);font-weight:800;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.fnf-panel-body{padding:20px}
+.fnf-section-title{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--green-dk);margin:18px 0 12px}
+.fnf-section-title:first-child{margin-top:0}
+.fnf-grid-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.fnf-grid-fields{grid-template-columns:1fr}}
+.fnf-field{display:flex;flex-direction:column;gap:5px}
+.fnf-field.full{grid-column:1/-1}
+.fnf-field label{font-size:12px;font-weight:800;color:var(--black)}
+.fnf-field input,.fnf-field select{width:100%;padding:12px;border:2px solid var(--border);border-radius:9px;background:#fff;color:var(--ink);font:600 14px var(--font);min-height:44px}
+.fnf-field input:focus,.fnf-field select:focus{outline:3px solid #D2DCD0;border-color:var(--green)}
+.fnf-help{font-size:11px;color:var(--muted);line-height:1.5}
+.fnf-note{background:#FFF8E8;border:1px solid #E8D4A8;border-radius:10px;padding:12px;font-size:12px;line-height:1.6;color:#5B4928;margin-top:14px}
+.fnf-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.fnf-btn{border:2px solid var(--black);border-radius:9px;padding:11px 16px;font:800 13px var(--font);cursor:pointer}
+.fnf-btn.primary{background:var(--green);color:#fff;box-shadow:var(--shadow-sm)}
+.fnf-btn.secondary{background:#fff;color:var(--black)}
+.fnf-result{position:sticky;top:82px}
+@media(max-width:820px){.fnf-result{position:static}}
+.fnf-total{background:var(--black);color:#fff;border-radius:12px;padding:20px;margin-bottom:16px}
+.fnf-total .label{font-size:12px;font-weight:700;color:#D2DCD0}
+.fnf-total .amount{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-1px;margin:5px 0}
+.fnf-total .sub{font-size:11px;color:#D4D4D4}
+.fnf-breakdown{width:100%;border-collapse:collapse;font-size:13px}
+.fnf-breakdown td{padding:10px 2px;border-bottom:1px solid #E5E9E3}
+.fnf-breakdown td:last-child{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+.fnf-breakdown tr.total td{border-top:2px solid var(--black);border-bottom:0;padding-top:14px;font-size:15px}
+.fnf-breakdown tr.deduction td:last-child{color:#B91C1C}
+.fnf-related{max-width:1000px;margin:30px auto 0;padding:24px;background:#fff;border:2px solid var(--black);border-radius:14px}
+.fnf-related h2{font-size:20px;margin:0 0 14px}
+.fnf-related a{display:inline-block;margin:5px 14px 5px 0;color:var(--green-dk);font-weight:800;font-size:13px}
+.fnf-faq{max-width:900px;margin:45px auto 0;padding:0 24px}
+.fnf-faq h2{font-size:26px;margin-bottom:16px}
+.fnf-faq details{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:9px 0}
+.fnf-faq summary{font-weight:800;cursor:pointer}
+.fnf-faq p{font-size:13px;color:var(--muted);margin-top:9px}
+</style>
+</head>
+<body>
+<nav aria-label="Primary">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </div>
+      Mailflix
+    </a>
+
+    <div class="nav-links">
+      <!-- Calculators -->
+      <div class="nav-item">
+        <button class="nav-trigger">
+          Calculators
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="dropdown-panel">
+          <a href="/notice-period-calculator" style="color:var(--black);font-weight:800">Notice Period Buyout</a>
+          <a href="/sip-calculator">SIP &amp; Step-Up Calc</a>
+          <a href="/nps-calculator">NPS Pension Calc</a>
+          <a href="/ctc-calculator">CTC to In-Hand</a>
+          <a href="/city-compare">City Salary Compare</a>
+          <a href="/hra-calculator">HRA Exemption</a>
+          <a href="/itr-calculator">ITR / Tax</a>
+          <a href="/increment-calculator">Govt Increment</a>
+          <a href="/leave-encashment">Leave Encashment</a>
+          <a href="/retirement-calculator">Retirement</a>
+        </div>
+      </div>
+      <!-- Documents -->
+      <div class="nav-item">
+        <button class="nav-trigger">
+          Documents
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="dropdown-panel">
+          <a href="/form-12bb">Form 12BB Generator</a>
+          <a href="/resignation">Resignation Kit</a>
+          <a href="/job-application">Job Application</a>
+          <a href="/sarkari-letter">Sarkari Letter</a>
+          <a href="/rent-receipt">Rent Receipt</a>
+          <a href="/gst-invoice">GST Invoice</a>
+        </div>
+      </div>
+      <!-- Utilities -->
+      <div class="nav-item">
+        <button class="nav-trigger">
+          Utilities
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="dropdown-panel">
+          <a href="/whatsapp-dhanda">WhatsApp Dhanda</a>
+          <a href="/paraphrase">Paraphrase Tool</a>
+          <a href="/photo-resizer">Photo Resizer</a>
+          <a href="/qr-generator">QR Generator</a>
+          <a href="/json-tools">JSON Tools</a>
+          <a href="/date-calculator">Date &amp; Age Calc</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="/ctc-calculator" class="nav-cta">Salary Calc</a>
+      <button aria-controls="mobilePanel" aria-expanded="false" class="mobile-toggle" id="mobileMenuBtn" aria-label="Open menu">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<main id="main-content">
+<section class="page-hero">
+  <div class="page-badge">💼 Salary &amp; Exit Calculator</div>
+  <h1>Full and Final <span class="accent">Settlement</span> Calculator</h1>
+  <p class="page-sub">Estimate your final dues when leaving a job — salary, leave encashment, gratuity, notice recovery and deductions in one clear breakdown.</p>
+</section>
+<div class="fnf-wrap">
+  <p class="fnf-intro">Enter the figures from your payslip, appointment letter and HR exit statement. The calculator runs in your browser and gives an estimate, not a guaranteed payroll or legal determination.</p>
+  <div class="fnf-grid">
+    <div>
+      <section class="fnf-panel">
+        <div class="fnf-panel-head"><span>1. Salary and final-month dues</span><span>₹ INR</span></div>
+        <div class="fnf-panel-body">
+          <div class="fnf-grid-fields">
+            <div class="fnf-field"><label for="monthlySalary">Monthly salary for unpaid days (₹)</label><input id="monthlySalary" type="number" min="0" step="any" value="60000"/></div>
+            <div class="fnf-field"><label for="unpaidDays">Unpaid days in final payroll</label><input id="unpaidDays" type="number" min="0" max="31" step="1" value="15"/></div>
+            <div class="fnf-field"><label for="salaryDivisor">Salary day divisor</label><select id="salaryDivisor"><option value="30">30 calendar days</option><option value="26">26 working days</option></select><span class="fnf-help">Use the payroll method stated by your employer.</span></div>
+            <div class="fnf-field"><label for="otherEarnings">Other payable dues (₹)</label><input id="otherEarnings" type="number" min="0" step="any" value="0"/><span class="fnf-help">Approved bonus, incentives, reimbursements or other unpaid amounts.</span></div>
+          </div>
+          <div class="fnf-section-title">2. Leave encashment</div>
+          <div class="fnf-grid-fields">
+            <div class="fnf-field"><label for="leaveDays">Eligible leave days to encash</label><input id="leaveDays" type="number" min="0" step="any" value="0"/></div>
+            <div class="fnf-field"><label for="leaveWage">Monthly leave-encashment wage base (₹)</label><input id="leaveWage" type="number" min="0" step="any" value="0"/><span class="fnf-help">Enter the wage base applicable under your policy and law.</span></div>
+            <div class="fnf-field"><label for="leaveDivisor">Leave encashment divisor</label><select id="leaveDivisor"><option value="26">26 days</option><option value="30">30 days</option></select></div>
+          </div>
+          <div class="fnf-section-title">3. Gratuity (optional estimate)</div>
+          <div class="fnf-grid-fields">
+            <div class="fnf-field"><label for="employmentType">Employment category</label><select id="employmentType"><option value="regular">Regular employee</option><option value="fixed">Direct fixed-term employee (contract expiry)</option><option value="contractor">Contract labour through contractor</option></select></div>
+            <div class="fnf-field"><label for="serviceYears">Completed service years</label><input id="serviceYears" type="number" min="0" step="1" value="0"/></div>
+            <div class="fnf-field"><label for="serviceMonths">Additional service months</label><input id="serviceMonths" type="number" min="0" max="11" step="1" value="0"/></div>
+            <div class="fnf-field"><label for="gratuityWage">Last-drawn monthly gratuity wage base (₹)</label><input id="gratuityWage" type="number" min="0" step="any" value="0"/><span class="fnf-help">Use the statutory wage definition, not automatically basic salary alone.</span></div>
+          </div>
+          <div class="fnf-note">The estimate applies the general five-year continuous-service condition to regular employees and the Ministry's one-year clarification to directly employed fixed-term employees. Contract labour engaged through a contractor is treated separately. Death, disablement, special awards and enhanced employer benefits are not modelled here.</div>
+          <div class="fnf-section-title">4. Notice recovery and other deductions</div>
+          <div class="fnf-grid-fields">
+            <div class="fnf-field"><label for="noticeDays">Notice shortfall days confirmed by HR</label><input id="noticeDays" type="number" min="0" step="1" value="0"/><span class="fnf-help">Enter the shortfall after any employer-approved adjustment.</span></div>
+            <div class="fnf-field"><label for="noticeWage">Monthly notice-recovery wage base (₹)</label><input id="noticeWage" type="number" min="0" step="any" value="0"/></div>
+            <div class="fnf-field"><label for="noticeDivisor">Notice recovery divisor</label><select id="noticeDivisor"><option value="30">30 days</option><option value="26">26 working days</option></select></div>
+            <div class="fnf-field"><label for="otherDeductions">Other authorised deductions (₹)</label><input id="otherDeductions" type="number" min="0" step="any" value="0"/><span class="fnf-help">Advances, loan balance, asset recovery or other documented items.</span></div>
+          </div>
+          <div class="fnf-actions">
+            <button type="button" class="fnf-btn primary" onclick="calculateFnf()">Calculate settlement</button>
+            <button type="button" class="fnf-btn secondary" onclick="resetFnf()">Reset inputs</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <aside class="fnf-result" aria-live="polite">
+      <section class="fnf-panel">
+        <div class="fnf-panel-head">Your estimated settlement</div>
+        <div class="fnf-panel-body">
+          <div class="fnf-total"><div class="label">Estimated net amount payable</div><div class="amount" id="netTotal">₹0</div><div class="sub" id="resultNote">Enter your exit details and calculate.</div></div>
+          <table class="fnf-breakdown" aria-label="Full and final settlement breakdown">
+            <tbody>
+              <tr><td>Unpaid salary</td><td id="salaryResult">₹0</td></tr>
+              <tr><td>Leave encashment estimate</td><td id="leaveResult">₹0</td></tr>
+              <tr><td>Gratuity estimate</td><td id="gratuityResult">₹0</td></tr>
+              <tr><td>Other payable dues</td><td id="earningsResult">₹0</td></tr>
+              <tr class="deduction"><td>Notice recovery</td><td id="noticeResult">−₹0</td></tr>
+              <tr class="deduction"><td>Other deductions</td><td id="deductionsResult">−₹0</td></tr>
+              <tr class="total"><td>Estimated net settlement</td><td id="netResult">₹0</td></tr>
+            </tbody>
+          </table>
+          <div class="fnf-note" id="gratuityNote">Gratuity is included only when the entered service category and duration meet the assumptions above.</div>
+          <div class="fnf-actions"><button type="button" class="fnf-btn secondary" onclick="window.print()">Print breakdown</button></div>
+        </div>
+      </section>
+    </aside>
+  </div>
+  <div class="fnf-related">
+    <h2>Continue your exit process</h2>
+    <a href="/resignation">Resignation Letter Generator</a>
+    <a href="/notice-period-calculator">Notice Period Buyout Calculator</a>
+    <a href="/leave-encashment">Leave Encashment Calculator</a>
+    <a href="/gratuity-rules-india">Gratuity Rules and Eligibility</a>
+  </div>
+</div>
+<section class="fnf-faq">
+<h2>Full and Final Settlement FAQs</h2>
+<details><summary>What is included in full and final settlement in India?</summary><p>A final settlement may include unpaid salary, eligible leave encashment, gratuity where payable, approved incentives or reimbursements, and other contractual dues, less authorised recoveries such as notice pay, advances, loans and other deductions.</p></details>
+<details><summary>Is notice period recovery mandatory in every resignation?</summary><p>Notice obligations and recovery are generally governed by the employment contract, applicable service rules and law. This calculator uses the shortfall days and salary basis you enter; it does not decide whether a recovery is legally or contractually valid.</p></details>
+<details><summary>Can I receive gratuity in my final settlement?</summary><p>Gratuity may be payable on resignation or termination if the statutory eligibility conditions are met. The general continuous-service condition is five years, with statutory exceptions. A directly employed fixed-term employee is eligible after one year under the contract, as clarified by the Ministry of Labour and Employment.</p></details>
+<details><summary>How is leave encashment calculated in the final settlement?</summary><p>A common estimate is eligible monthly leave-encashment wages divided by the employer's applicable divisor, multiplied by the eligible leave days. The wage base, divisor and entitlement depend on applicable law, worker classification, state rules and employment terms.</p></details>
+<details><summary>Is this final settlement amount guaranteed?</summary><p>No. This is an estimate based on user-entered values and assumptions. The employer's final calculation may differ due to payroll cut-off, contract terms, statutory coverage, tax treatment, approved leave, wage definitions and authorised deductions.</p></details>
+</section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>Mailflix</strong> — Free Workplace &amp; Salary Calculators for Indian Professionals.
+      <div style="margin-top:4px;font-size:12px">© 2026 Mailflix. All tools operate in-browser. Zero signup.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/notice-period-calculator">Notice Buyout</a>
+      <a href="/sip-calculator">SIP Calculator</a>
+      <a href="/form-12bb">Form 12BB</a>
+      <a href="/nps-calculator">NPS Calculator</a>
+      <a href="/ctc-calculator">CTC Calculator</a>
+      <a href="/sitemap">Sitemap</a> <a href="/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+<script>
+const fnfIds=["monthlySalary","unpaidDays","salaryDivisor","otherEarnings","leaveDays","leaveWage","leaveDivisor","employmentType","serviceYears","serviceMonths","gratuityWage","noticeDays","noticeWage","noticeDivisor","otherDeductions"];
+const fnfDefaults={monthlySalary:60000,unpaidDays:15,salaryDivisor:"30",otherEarnings:0,leaveDays:0,leaveWage:0,leaveDivisor:"26",employmentType:"regular",serviceYears:0,serviceMonths:0,gratuityWage:0,noticeDays:0,noticeWage:0,noticeDivisor:"30",otherDeductions:0};
+const inr=new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0});
+function val(id){const n=Number(document.getElementById(id).value);return Number.isFinite(n)&&n>0?n:0;}
+function put(id,n){document.getElementById(id).textContent=inr.format(Math.max(0,Math.round(n)));}
+function calculateFnf(){
+ const salary=val("monthlySalary")*val("unpaidDays")/Number(document.getElementById("salaryDivisor").value);
+ const leave=val("leaveWage")/Number(document.getElementById("leaveDivisor").value)*val("leaveDays");
+ const years=val("serviceYears"),months=Math.min(11,Math.floor(val("serviceMonths")));
+ const type=document.getElementById("employmentType").value;
+ const eligible=type==="fixed"?(years*12+months>=12):(type==="regular"?(years+(months>6?1:0)>=5):(years+(months>6?1:0)>=5));
+ const countedYears=years+(months>6?1:0);
+ const rawGratuity=eligible?(val("gratuityWage")*15*countedYears/26):0;
+ const gratuity=Math.min(rawGratuity,2000000);
+ const notice=val("noticeWage")/Number(document.getElementById("noticeDivisor").value)*val("noticeDays");
+ const earnings=val("otherEarnings"),deductions=val("otherDeductions");
+ const total=salary+leave+gratuity+earnings-notice-deductions;
+ put("salaryResult",salary);put("leaveResult",leave);put("gratuityResult",gratuity);put("earningsResult",earnings);
+ put("noticeResult",notice);put("deductionsResult",deductions);put("netResult",Math.max(0,total));
+ document.getElementById("netTotal").textContent=(total<0?"−":"")+inr.format(Math.abs(Math.round(total)));
+ document.getElementById("resultNote").textContent=total<0?"Estimated recoveries exceed the payable dues. Confirm the employer's itemised statement.":"Estimate only — final payroll may differ.";
+ document.getElementById("gratuityNote").textContent=eligible?(rawGratuity>2000000?"Gratuity estimate capped at the currently notified ₹20 lakh maximum; check any enhanced employer benefit.":"Gratuity included using the entered last-drawn wage base and service period. Confirm statutory wage components and eligibility."): "Gratuity not included: the entered service duration does not meet the general eligibility assumption. Statutory exceptions and special circumstances are not modelled.";
+}
+function resetFnf(){fnfIds.forEach(id=>{const el=document.getElementById(id);el.value=fnfDefaults[id];});calculateFnf();}
+fnfIds.forEach(id=>document.getElementById(id).addEventListener("input",calculateFnf));
+fnfIds.forEach(id=>document.getElementById(id).addEventListener("change",calculateFnf));
+calculateFnf();
+</script>
+</body>
+</html>
