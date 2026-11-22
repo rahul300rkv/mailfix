@@ -569,31 +569,41 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
       <div class="form-body">
         <div class="form-grid">
           <div class="form-group full">
-            <label for="basicSalary">Annual Basic Salary (₹)</label>
-            <input type="number" id="basicSalary" placeholder="e.g. 600000" oninput="calculate()"/>
+            <label for="avgSalary">Average Monthly Salary for Last 10 Months (₹)</label>
+            <input type="number" id="avgSalary" min="0" step="any" placeholder="e.g. 60000" oninput="calculate()"/>
+            <small style="color:var(--muted)">Basic + DA forming part of retirement benefits + turnover-based commission, if applicable.</small>
           </div>
           <div class="form-group">
-            <label for="leaveDays">Leave Balance (days)</label>
-            <input type="number" id="leaveDays" placeholder="e.g. 30" oninput="calculate()"/>
+            <label for="leaveDays">Earned Leave Balance (days)</label>
+            <input type="number" id="leaveDays" min="0" step="any" placeholder="e.g. 180" oninput="calculate()"/>
           </div>
           <div class="form-group">
-            <label for="workingDays">Working days/year</label>
-            <input type="number" id="workingDays" value="300" oninput="calculate()"/>
+            <label for="serviceYears">Completed Years of Service</label>
+            <input type="number" id="serviceYears" min="0" step="1" placeholder="e.g. 15" oninput="calculate()"/>
           </div>
           <div class="form-group full">
             <label for="empType">Employment type</label>
             <select id="empType" onchange="calculate()">
-              <option value="private">Private Sector</option>
-              <option value="govt">Government (Central/State)</option>
+              <option value="private">Non-government employee</option>
+              <option value="govt">Central / State Government employee</option>
             </select>
           </div>
-        </div>
-        <div style="background:#FFF0E8;border:2px solid #D94D14;border-radius:10px;padding:14px;margin-top:8px">
-          <div style="font-size:12px;font-weight:700;color:#6E1E33;margin-bottom:6px">📋 Tax exemption limits</div>
-          <div style="font-size:12px;font-weight:600;color:var(--ink);line-height:1.8">
-            Private: Exempt up to <strong>₹25 lakh</strong><br/>
-            Govt employees: <strong>Fully exempt</strong> under Section 10(10AA)
+          <div class="form-group full">
+            <label for="eventType">When are you encashing the leave?</label>
+            <select id="eventType" onchange="calculate()">
+              <option value="retirement">On retirement / resignation / termination</option>
+              <option value="service">During employment</option>
+            </select>
           </div>
+          <div class="form-group full">
+            <label for="priorExemption">Leave-encashment exemption already claimed earlier (₹)</label>
+            <input type="number" id="priorExemption" min="0" max="2500000" value="0" oninput="calculate()"/>
+            <small style="color:var(--muted)">For non-government employees, enter any amount previously exempt under Section 10(10AA)(ii), to apply the ₹25 lakh lifetime limit.</small>
+          </div>
+        </div>
+        <p id="calc-error" role="alert" style="display:none;color:#B91C1C;font-size:13px;font-weight:700;margin-top:12px"></p>
+        <div style="background:#FFF0E8;border:2px solid #D94D14;border-radius:10px;padding:14px;margin-top:8px;font-size:12px;line-height:1.7">
+          <strong>Section 10(10AA):</strong> Leave encashment during employment is fully taxable. At retirement, Central/State Government employees are fully exempt. For other employees, exemption is the least of the actual payout, eligible leave salary (leave credit capped at 30 days per completed service year), 10 months' average salary, and the remaining ₹25 lakh lifetime limit.
         </div>
       </div>
     </div>
@@ -605,12 +615,12 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
           <div class="lbl">Leave Encashment Amount</div>
         </div>
         <div class="breakdown-box">
-          <div class="bd-row"><span class="k">Daily basic salary</span><span class="v" id="r-daily">₹0</span></div>
+          <div class="bd-row"><span class="k">Daily salary basis (average ÷ 30)</span><span class="v" id="r-daily">₹0</span></div>
           <div class="bd-row"><span class="k">Leave days</span><span class="v" id="r-days">0</span></div>
           <div class="bd-row"><span class="k">Gross encashment</span><span class="v" id="r-gross">₹0</span></div>
           <div class="bd-row"><span class="k">Tax exemption limit</span><span class="v pos" id="r-exempt">₹0</span></div>
           <div class="bd-row"><span class="k">Taxable amount</span><span class="v" id="r-taxable">₹0</span></div>
-          <div class="bd-row"><span class="k">Net encashment (est.)</span><span class="v pos" id="r-net">₹0</span></div>
+          <div class="bd-row"><span class="k">Income tax on taxable portion</span><span class="v" id="r-net">Not estimated</span></div>
         </div>
       </div>
     </div>
@@ -619,10 +629,10 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 </div>
 
 
-<div style="padding:0 24px;max-width:900px;margin:28px auto 0"><p class="tool-context">Leave encashment is calculated on your Basic + DA. See how Basic fits into your full package using our <a href="/how-ctc-is-calculated">CTC components guide</a>. The tax exemption under Section 10(10AA) is explained alongside other exemptions in the <a href="/salary-glossary">salary terms glossary</a>.</p></div>
+<div style="padding:0 24px;max-width:900px;margin:28px auto 0"><p class="tool-context">The exemption calculation uses the average of the last 10 months of eligible salary (Basic + qualifying DA + eligible turnover-based commission), not full CTC. The gross payout uses a 30-day salary month. See how Basic fits into your full package using our <a href="/how-ctc-is-calculated">CTC components guide</a>. The tax exemption under Section 10(10AA) is explained alongside other exemptions in the <a href="/salary-glossary">salary terms glossary</a>.</p></div>
 <div class="section-how"><div class="section-how-inner">
   <h2>How Leave Encashment Calculator Works</h2><p class="how-sub">Calculate your leave encashment amount and tax exemption instantly.</p>
-  <div class="how-steps"><div class="how-step"><div class="how-step-num">1</div><h3>Enter Leave Balance</h3><p>Input the number of earned/privilege leaves you have accumulated in your leave balance.</p></div><div class="how-step"><div class="how-step-num">2</div><h3>Enter Salary Details</h3><p>Add your basic salary and dearness allowance (DA). Leave encashment is calculated on per-day basic+DA rate.</p></div><div class="how-step"><div class="how-step-num">3</div><h3>Check Tax Exemption</h3><p>The tool applies the Section 10(10AA) exemption formula and shows how much of your encashment is tax-free vs taxable.</p></div></div>
+  <div class="how-steps"><div class="how-step"><div class="how-step-num">1</div><h3>Enter Leave Balance</h3><p>Input the number of earned/privilege leaves you have accumulated in your leave balance.</p></div><div class="how-step"><div class="how-step-num">2</div><h3>Enter Salary Details</h3><p>Enter the average eligible monthly salary for the last 10 months. The calculation uses a 30-day salary month.</p></div><div class="how-step"><div class="how-step-num">3</div><h3>Check Tax Exemption</h3><p>The tool applies the applicable Section 10(10AA) exemption limits. The tax on any taxable portion depends on your total income and is not estimated here.</p></div></div>
 </div></div>
 <div class="section-faq"><div class="section-faq-inner">
   <h2>Frequently Asked Questions</h2>
@@ -638,29 +648,46 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 <script>
   function fmt(n){return '₹'+Math.round(Math.abs(n)).toLocaleString('en-IN')}
   function calculate(){
-    const basic=parseFloat(document.getElementById('basicSalary').value)||0;
-    const days=parseFloat(document.getElementById('leaveDays').value)||0;
-    const workDays=parseFloat(document.getElementById('workingDays').value)||300;
-    const isGovt=document.getElementById('empType').value==='govt';
-    if(!basic||!days){
-      document.getElementById('empty-state').style.display='block';
-      document.getElementById('results').style.display='none';return;
+    const el=id=>document.getElementById(id);
+    const salary=Number(el('avgSalary').value);
+    const days=Number(el('leaveDays').value);
+    const years=Number(el('serviceYears').value);
+    const prior=Number(el('priorExemption').value);
+    const isGovt=el('empType').value==='govt';
+    const atExit=el('eventType').value==='retirement';
+    const error=el('calc-error');
+    const fail=message=>{error.textContent=message;error.style.display='block';el('empty-state').style.display='block';el('results').style.display='none';};
+    error.style.display='none';
+    if(![salary,days,years,prior].every(Number.isFinite)){
+      fail('Please enter valid numbers in all fields.');return;
     }
-    const daily=basic/workDays;
+    if(salary<=0||days<=0||years<0||prior<0||prior>2500000||!Number.isInteger(years)){
+      fail('Enter a positive salary and leave balance, completed whole years of service, and a prior exemption between ₹0 and ₹25 lakh.');return;
+    }
+    if(atExit&&years<1&&!isGovt){
+      fail('Enter at least one completed year of service to calculate the non-government retirement exemption.');return;
+    }
+    const daily=salary/30;
     const gross=daily*days;
-    const exemptLimit=isGovt?gross:Math.min(gross,2500000);
-    const taxable=Math.max(0,gross-exemptLimit);
-    const tax=taxable>0?taxable*0.30:0; // rough 30% slab
-    const net=gross-tax;
-    document.getElementById('empty-state').style.display='none';
-    document.getElementById('results').style.display='block';
-    document.getElementById('encashAmt').textContent=fmt(gross);
-    document.getElementById('r-daily').textContent=fmt(daily);
-    document.getElementById('r-days').textContent=Math.round(days)+' days';
-    document.getElementById('r-gross').textContent=fmt(gross);
-    document.getElementById('r-exempt').textContent=isGovt?'Fully Exempt':fmt(exemptLimit);
-    document.getElementById('r-taxable').textContent=fmt(taxable);
-    document.getElementById('r-net').textContent=fmt(net);
+    let exempt=0, eligibleDays=0;
+    if(atExit&&isGovt){
+      exempt=gross;
+    }else if(atExit){
+      eligibleDays=Math.min(days,years*30);
+      const leaveSalaryLimit=eligibleDays*daily;
+      const tenMonthLimit=salary*10;
+      const lifetimeLimit=Math.max(0,2500000-prior);
+      exempt=Math.min(gross,leaveSalaryLimit,tenMonthLimit,lifetimeLimit);
+    }
+    const taxable=Math.max(0,gross-exempt);
+    el('empty-state').style.display='none';el('results').style.display='block';
+    el('encashAmt').textContent=fmt(gross);
+    el('r-daily').textContent=fmt(daily);
+    el('r-days').textContent=days.toLocaleString('en-IN',{maximumFractionDigits:2})+' days';
+    el('r-gross').textContent=fmt(gross);
+    el('r-exempt').textContent=fmt(exempt);
+    el('r-taxable').textContent=fmt(taxable);
+    el('r-net').textContent=taxable>0?'Depends on total taxable income':'No taxable portion';
   }
 
   const _mp=document.getElementById('mobilePanel');const _mb=document.getElementById('mobileMenuBtn');const _cb=document.getElementById('closeMobileBtn');
