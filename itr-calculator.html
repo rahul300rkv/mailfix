@@ -571,13 +571,13 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
   <div class="form-body">
     <div class="form-grid">
       <div class="form-group full">
-        <label for="grossIncome">Annual Gross Income (₹) <span>Before deductions</span></label>
+        <label for="grossIncome">Annual Gross Salary (₹) <span>Before deductions; assumes salary income</span></label>
         <input type="number" id="grossIncome" placeholder="e.g. 1200000" oninput="calculateTaxComparison(event)"/>
       </div>
       <div class="form-group"><label for="pf80c">80C Investments (₹) <span>PF + ELSS + LIC, max ₹1.5L</span></label><input type="number" id="pf80c" placeholder="150000" oninput="calculateTaxComparison(event)"/></div>
       <div class="form-group"><label for="hraExemption">HRA Exemption (₹) <span>Old regime only</span></label><input type="number" id="hraExemption" placeholder="0" oninput="calculateTaxComparison(event)"/></div>
       <div class="form-group"><label for="nps80ccd">NPS 80CCD(1B) (₹) <span>Additional NPS, max ₹50K</span></label><input type="number" id="nps80ccd" placeholder="0" oninput="calculateTaxComparison(event)"/></div>
-      <div class="form-group"><label for="otherDeductions">Other Deductions (₹) <span>80D health, home loan interest etc.</span></label><input type="number" id="otherDeductions" placeholder="0" oninput="calculateTaxComparison(event)"/></div>
+      <div class="form-group"><label for="otherDeductions">Other Eligible Deductions (₹) <span>Enter total after applicable statutory limits</span></label><input type="number" id="otherDeductions" placeholder="0" oninput="calculateTaxComparison(event)"/></div>
     </div>
   </div>
 
@@ -663,7 +663,8 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
       tax += (Math.min(ti, lim) - prev) * rate;
       prev = lim;
     }
-    if (ti <= 1200000) tax = 0;
+    // Section 87A rebate up to ₹12L; marginal relief limits tax just above ₹12L.
+    tax = ti <= 1200000 ? 0 : Math.min(tax, ti - 1200000);
     return tax * 1.04;
   }
 
@@ -674,10 +675,10 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
       document.getElementById('empty-state').style.display = 'block';
       document.getElementById('results').style.display = 'none'; return;
     }
-    const ded80c  = Math.min(parseFloat(document.getElementById('pf80c').value) || 0, 150000);
-    const hra     = parseFloat(document.getElementById('hraExemption').value) || 0;
-    const nps     = Math.min(parseFloat(document.getElementById('nps80ccd').value) || 0, 50000);
-    const other   = parseFloat(document.getElementById('otherDeductions').value) || 0;
+    const ded80c  = Math.min(Math.max(0, parseFloat(document.getElementById('pf80c').value) || 0), 150000);
+    const hra     = Math.max(0, parseFloat(document.getElementById('hraExemption').value) || 0);
+    const nps     = Math.min(Math.max(0, parseFloat(document.getElementById('nps80ccd').value) || 0), 50000);
+    const other   = Math.max(0, parseFloat(document.getElementById('otherDeductions').value) || 0);
 
     // New regime
     const newTaxable = Math.max(0, gross - 75000);
