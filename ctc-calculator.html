@@ -611,8 +611,16 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 
         <div class="old-deductions" id="oldDeductions">
           <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px">Old Regime Deductions</div>
+          <div class="form-group">
+            <label for="other80c">Other 80C Investments (₹/year) <span>ELSS, LIC, PPF etc.</span></label>
+            <input type="number" id="other80c" min="0" value="0" oninput="calculate()"/>
+          </div>
+          <div class="form-group">
+            <label for="annualRent">Annual Rent Paid (₹) <span>For HRA exemption</span></label>
+            <input type="number" id="annualRent" min="0" value="0" oninput="calculate()"/>
+          </div>
           <div class="toggle-row">
-            <div><div class="toggle-label">80C Deductions</div><div class="toggle-sub">PF + ELSS + LIC (up to ₹1.5L)</div></div>
+            <div><div class="toggle-label">80C Deduction</div><div class="toggle-sub">Employee PF + entered investments, combined cap ₹1.5L</div></div>
             <label class="toggle"><input type="checkbox" id="toggle80c" checked onchange="calculate()"/><span class="toggle-slider"></span></label>
           </div>
           <div class="toggle-row">
@@ -690,7 +698,8 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
         tax += (Math.min(taxableIncome, limit) - prev) * rate;
         prev = limit;
       }
-      if (taxableIncome <= 1200000) tax = 0;
+      // Section 87A rebate up to ₹12L and marginal relief immediately above ₹12L.
+      tax = taxableIncome <= 1200000 ? 0 : Math.min(tax, taxableIncome - 1200000);
       return tax * 1.04;
     } else {
       let tax = 0;
@@ -728,11 +737,17 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 
     let taxableIncome;
     if (taxRegime === 'new') {
-      taxableIncome = Math.max(0, gross - employeePF - stdDeduction);
+      // Employee PF reduces take-home pay, but is not deductible under the new regime.
+      taxableIncome = Math.max(0, gross - stdDeduction);
     } else {
-      let deductions = stdDeduction + employeePF;
-      if (document.getElementById('toggle80c').checked) deductions += Math.min(150000, employeePF + 50000);
-      if (document.getElementById('toggleHRA').checked) deductions += Math.min(hra, isMetro ? basic * 0.5 : basic * 0.4);
+      const other80c = Math.max(0, parseFloat(document.getElementById('other80c').value) || 0);
+      const annualRent = Math.max(0, parseFloat(document.getElementById('annualRent').value) || 0);
+      let deductions = stdDeduction;
+      if (document.getElementById('toggle80c').checked) deductions += Math.min(150000, employeePF + other80c);
+      if (document.getElementById('toggleHRA').checked) {
+        const hraExemption = Math.min(hra, Math.max(0, annualRent - basic * 0.10), basic * (isMetro ? 0.50 : 0.40));
+        deductions += hraExemption;
+      }
       if (document.getElementById('toggle80d').checked) deductions += 25000;
       taxableIncome = Math.max(0, gross - deductions - profTax);
     }
