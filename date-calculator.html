@@ -563,7 +563,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     </div>
   </div>
 </div>
-</div><aside class="tools-sidebar" aria-label="Other MailFix tools"><h2>Explore MailFix tools</h2><p class="sidebar-intro">Quick access to related workplace tools and calculators.</p><details><summary>AI writing tools</summary><a href="/">Email Fixer</a><a href="/job-application">Job Application Email</a><a href="/resignation">Resignation Kit</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/whatsapp-dhanda">WhatsApp Dhanda</a><a href="/hr-email-generator">HR Email Generator</a></details><details open><summary>Salary &amp; payroll</summary><a href="/ctc-calculator">CTC to In-Hand Calculator</a><a href="/salary-breakup-calculator">Salary Breakup Calculator</a><a href="/salary-slip-calculator" aria-current="page">Salary Slip Calculator</a><a href="/new-labour-code-salary-guide">New Labour Code Salary Guide</a></details><details><summary>Exit &amp; benefits</summary><a href="/full-and-final-settlement">Full &amp; Final Settlement Calculator</a><a href="/notice-period-calculator">Notice Period Buyout</a><a href="/leave-encashment">Leave Encashment Calculator</a><a href="/gratuity-rules-india">Gratuity Rules and Eligibility</a></details><details><summary>Provident fund &amp; tax</summary><a href="/pf-calculator">EPF Calculator</a><a href="/pf-transfer-guide">PF Transfer Guide</a><a href="/epf-withdrawal-guide">EPF Withdrawal Guide</a><a href="/itr-calculator">Income Tax Calculator</a></details><details open><summary>Everyday tools</summary><a href="/gst-invoice">GST Invoice Generator</a><a href="/photo-resizer">Photo Resizer</a><a href="/qr-generator">QR Generator</a><a href="/date-calculator" aria-current="page">Date &amp; Age Calculator</a></details><p class="sidebar-note">Figures are estimates. Review generated content and verify applicable rules before making financial, employment or compliance decisions.</p></aside></div>
+</div><aside class="tools-sidebar" aria-label="Other MailFix tools"><h2>Explore MailFix tools</h2><p class="sidebar-intro">Quick access to related workplace tools and calculators.</p><details><summary>AI writing tools</summary><a href="/">Email Fixer</a><a href="/job-application">Job Application Email</a><a href="/resignation">Resignation Kit</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/whatsapp-dhanda">WhatsApp Dhanda</a><a href="/hr-email-generator">HR Email Generator</a></details><details open><summary>Salary &amp; payroll</summary><a href="/ctc-calculator">CTC to In-Hand Calculator</a><a href="/salary-breakup-calculator">Salary Breakup Calculator</a><a href="/salary-slip-calculator">Salary Slip Calculator</a><a href="/new-labour-code-salary-guide">New Labour Code Salary Guide</a></details><details><summary>Exit &amp; benefits</summary><a href="/full-and-final-settlement">Full &amp; Final Settlement Calculator</a><a href="/notice-period-calculator">Notice Period Buyout</a><a href="/leave-encashment">Leave Encashment Calculator</a><a href="/gratuity-rules-india">Gratuity Rules and Eligibility</a></details><details><summary>Provident fund &amp; tax</summary><a href="/pf-calculator">EPF Calculator</a><a href="/pf-transfer-guide">PF Transfer Guide</a><a href="/epf-withdrawal-guide">EPF Withdrawal Guide</a><a href="/itr-calculator">Income Tax Calculator</a></details><details open><summary>Everyday tools</summary><a href="/gst-invoice">GST Invoice Generator</a><a href="/photo-resizer">Photo Resizer</a><a href="/qr-generator">QR Generator</a><a href="/date-calculator" aria-current="page">Date &amp; Age Calculator</a></details><p class="sidebar-note">Figures are estimates. Review generated content and verify applicable rules before making financial, employment or compliance decisions.</p></aside></div>
 
 <div class="section-how"><div class="section-how-inner">
   <h2>How the Date & Age Calculator Works</h2><p class="how-sub">Calculate date differences, your exact age, and deadline dates instantly.</p>
@@ -577,86 +577,85 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 <footer><div class="footer-inner"><div class="footer-top"><div class="footer-logo">MailFix</div><div class="footer-links"><a href="/">Email Tool</a><a href="/ctc-calculator">Salary Calc</a><a href="/income-tax-slabs">Tax Slabs</a><a href="/how-ctc-is-calculated">CTC Guide</a><a href="/new-vs-old-tax-regime">Tax Regime</a><a href="/salary-glossary">Glossary</a><a href="/city-compare">City Compare</a><a href="/whatsapp-dhanda">WA Dhanda</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/sitemap">Sitemap</a> <a href="/privacy">Privacy Policy</a></div></div><div class="footer-copy">© 2026 MailFix. Free Tools for Indian Professionals.</div></div></footer>
 <script>
   let activeTab = 'age';
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('asOn').value = today;
-  document.getElementById('diffEnd').value = today;
-  document.getElementById('addStart').value = today;
+  const DAY_MS = 86400000;
+  function parseLocalDate(value) {
+    if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(value || '')) return null;
+    const parts=value.split('-').map(Number), y=parts[0], m=parts[1], d=parts[2];
+    const date=new Date(y,m-1,d);
+    return date.getFullYear()===y && date.getMonth()===m-1 && date.getDate()===d ? date : null;
+  }
+  function dateKey(date) { return [date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-'); }
+  function dayNumber(date) { return Math.floor(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate())/DAY_MS); }
+  function dateFromDayNumber(number) { return new Date(number*DAY_MS); }
+  function formatDate(date) { return date.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}); }
+  const today=dateKey(new Date());
+  document.getElementById('asOn').value=today;
+  document.getElementById('diffEnd').value=today;
+  document.getElementById('addStart').value=today;
 
   function switchTab(tab) {
-    activeTab = tab;
-    ['age','diff','add'].forEach(t => {
-      document.getElementById('panel-'+t).style.display = t===tab ? 'block' : 'none';
-      document.getElementById('tab-'+t).className = t===tab ? 'btn btn-black' : 'btn btn-white';
+    activeTab=tab;
+    ['age','diff','add'].forEach(function(t){
+      document.getElementById('panel-'+t).style.display=t===tab?'block':'none';
+      document.getElementById('tab-'+t).className=t===tab?'btn btn-black':'btn btn-white';
     });
-    document.getElementById('output').innerHTML = '<div style="padding:28px;text-align:center;color:#6F7B6F;font-style:italic">Select a date to see the result</div>';
+    document.getElementById('output').innerHTML='<div style="padding:28px;text-align:center;color:#6F7B6F;font-style:italic">Select a date to see the result</div>';
   }
-
-  function row(k, v, cls='') { return `<div class="bd-row"><span class="k">${k}</span><span class="v ${cls}">${v}</span></div>`; }
+  function row(k,v,cls) { return '<div class="bd-row"><span class="k">'+k+'</span><span class="v '+(cls||'')+'">'+v+'</span></div>'; }
 
   function calcAge() {
-    const dob = new Date(document.getElementById('dob').value);
-    const asOn = new Date(document.getElementById('asOn').value);
-    if (isNaN(dob)||isNaN(asOn)||dob>asOn) { document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">Invalid dates</div>'; return; }
-    let yrs=asOn.getFullYear()-dob.getFullYear(), mos=asOn.getMonth()-dob.getMonth(), days=asOn.getDate()-dob.getDate();
-    if(days<0){mos--;const prev=new Date(asOn.getFullYear(),asOn.getMonth(),0);days+=prev.getDate();}
-    if(mos<0){yrs--;mos+=12;}
-    const totalDays=Math.floor((asOn-dob)/(1000*60*60*24));
-    const totalWeeks=Math.floor(totalDays/7);
-    const totalMonths=yrs*12+mos;
-    const nextBday=new Date(asOn.getFullYear(),dob.getMonth(),dob.getDate());
-    if(nextBday<=asOn)nextBday.setFullYear(asOn.getFullYear()+1);
-    const daysToNext=Math.floor((nextBday-asOn)/(1000*60*60*24));
+    const dob=parseLocalDate(document.getElementById('dob').value), asOn=parseLocalDate(document.getElementById('asOn').value);
+    if(!dob||!asOn||dayNumber(dob)>dayNumber(asOn)){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">Enter valid dates. The date of birth cannot be after the As on Date.</div>';return;}
+    let years=asOn.getFullYear()-dob.getFullYear(), months=asOn.getMonth()-dob.getMonth(), days=asOn.getDate()-dob.getDate();
+    if(days<0){months--;days+=new Date(asOn.getFullYear(),asOn.getMonth(),0).getDate();}
+    if(months<0){years--;months+=12;}
+    const totalDays=dayNumber(asOn)-dayNumber(dob), totalWeeks=Math.floor(totalDays/7), totalMonths=years*12+months;
+    function birthdayIn(year){const lastDay=new Date(year,dob.getMonth()+1,0).getDate();return new Date(year,dob.getMonth(),Math.min(dob.getDate(),lastDay));}
+    let nextBirthday=birthdayIn(asOn.getFullYear());
+    if(dayNumber(nextBirthday)<=dayNumber(asOn))nextBirthday=birthdayIn(asOn.getFullYear()+1);
+    const daysToNext=dayNumber(nextBirthday)-dayNumber(asOn);
     const zodiac=['Capricorn','Aquarius','Pisces','Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn'];
-    const zodiacDays=[20,19,20,20,21,21,22,23,23,23,22,21];
-    const m=dob.getMonth(),d=dob.getDate();
-    const sign=d<=zodiacDays[m]?zodiac[m]:zodiac[m+1];
-    document.getElementById('output').innerHTML =
-      `<div class="sec-head">Age</div>`+
-      row('Age',''+yrs+' years, '+mos+' months, '+days+' days')+
-      row('Total months',''+totalMonths.toLocaleString('en-IN')+' months')+
-      row('Total weeks',''+totalWeeks.toLocaleString('en-IN')+' weeks')+
-      row('Total days',''+totalDays.toLocaleString('en-IN')+' days')+
-      `<div class="sec-head">Upcoming</div>`+
-      row('Next birthday in',''+daysToNext+' days')+
-      row('Zodiac sign',sign)+
+    const zodiacDays=[20,19,20,20,21,21,22,23,23,23,22,21], month=dob.getMonth(), day=dob.getDate();
+    const sign=day<=zodiacDays[month]?zodiac[month]:zodiac[month+1];
+    document.getElementById('output').innerHTML='<div class="sec-head">Age as of '+formatDate(asOn)+'</div>'+
+      row('Age',years+' years, '+months+' months, '+days+' days')+
+      row('Total months',totalMonths.toLocaleString('en-IN')+' months')+
+      row('Total weeks',totalWeeks.toLocaleString('en-IN')+' weeks')+
+      row('Total days',totalDays.toLocaleString('en-IN')+' days')+
+      '<div class="sec-head">Upcoming</div>'+row('Next birthday in',daysToNext+' days')+row('Zodiac sign',sign)+
       row('Day of birth',dob.toLocaleDateString('en-IN',{weekday:'long'}));
   }
 
   function calcDiff() {
-    const s=new Date(document.getElementById('diffStart').value);
-    const e=new Date(document.getElementById('diffEnd').value);
-    if(isNaN(s)||isNaN(e)){return;}
-    const swap=e<s;
-    const [from,to]=swap?[e,s]:[s,e];
-    const totalDays=Math.floor((to-from)/(1000*60*60*24));
-    let yrs=to.getFullYear()-from.getFullYear(),mos=to.getMonth()-from.getMonth(),days=to.getDate()-from.getDate();
-    if(days<0){mos--;const prev=new Date(to.getFullYear(),to.getMonth(),0);days+=prev.getDate();}
-    if(mos<0){yrs--;mos+=12;}
-    const weekdays=Array.from({length:totalDays},(_,i)=>{const d=new Date(from);d.setDate(from.getDate()+i);return d.getDay();}).filter(d=>d>0&&d<6).length;
-    document.getElementById('output').innerHTML =
-      `<div class="sec-head">Difference${swap?' (reversed)':''}</div>`+
-      row('Duration',''+yrs+'y '+mos+'m '+days+'d')+
-      row('Total days',''+totalDays.toLocaleString('en-IN'))+
-      row('Weekdays (approx)',''+weekdays.toLocaleString('en-IN'))+
-      row('Weekends',''+Math.floor(totalDays/7)*2+' (approx)')+
-      row('Total weeks',''+Math.floor(totalDays/7))+
-      row('Total months',''+Math.floor(totalDays/30.44).toFixed(1));
+    const startDate=parseLocalDate(document.getElementById('diffStart').value), endDate=parseLocalDate(document.getElementById('diffEnd').value);
+    if(!startDate||!endDate){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">Enter both valid dates to calculate the difference.</div>';return;}
+    const reversed=dayNumber(endDate)<dayNumber(startDate), dates=reversed?[endDate,startDate]:[startDate,endDate], from=dates[0], to=dates[1];
+    const first=dayNumber(from), last=dayNumber(to), totalDays=last-first;
+    let years=to.getFullYear()-from.getFullYear(), months=to.getMonth()-from.getMonth(), days=to.getDate()-from.getDate();
+    if(days<0){months--;days+=new Date(to.getFullYear(),to.getMonth(),0).getDate();}
+    if(months<0){years--;months+=12;}
+    let weekdays=0;
+    for(let n=first;n<last;n++){const weekday=dateFromDayNumber(n).getUTCDay();if(weekday!==0&&weekday!==6)weekdays++;}
+    const weekends=totalDays-weekdays, businessOnly=document.getElementById('businessDaysOnly').checked;
+    let result='<div class="sec-head">Difference'+(reversed?' (dates reversed for calculation)':'')+'</div>'+
+      row('Duration',years+' years, '+months+' months, '+days+' days')+row('Calendar days',totalDays.toLocaleString('en-IN'))+
+      row('Weekdays (Mon–Fri)',weekdays.toLocaleString('en-IN'))+row('Weekend days',weekends.toLocaleString('en-IN'));
+    result+=businessOnly?row('Business days (selected)',weekdays.toLocaleString('en-IN'))+row('Count basis','Monday to Friday; public holidays included'):row('Total weeks',Math.floor(totalDays/7).toLocaleString('en-IN'))+row('Average months',(totalDays/30.436875).toFixed(1));
+    document.getElementById('output').innerHTML=result;
   }
 
   function calcAdd() {
-    const s=new Date(document.getElementById('addStart').value);
-    const d=parseInt(document.getElementById('addDays').value)||0;
-    if(isNaN(s)){return;}
-    const result=new Date(s);result.setDate(result.getDate()+d);
-    const label=d<0?'Subtracted '+Math.abs(d)+' days':'Added '+d+' days';
-    document.getElementById('output').innerHTML =
-      `<div class="sec-head">${label}</div>`+
-      row('Start date',s.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}))+
-      row('Result date',result.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}),'pos')+
-      row('Day of week',result.toLocaleDateString('en-IN',{weekday:'long'}))+
-      row('Days moved',''+Math.abs(d)+' days '+(d<0?'back':'forward'));
+    const startDate=parseLocalDate(document.getElementById('addStart').value), raw=document.getElementById('addDays').value;
+    if(!startDate||raw===''){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--muted)">Enter a valid start date and number of days.</div>';return;}
+    const days=Number(raw);
+    if(!Number.isSafeInteger(days)||Math.abs(days)>1000000){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">Enter a whole number between −1,000,000 and 1,000,000.</div>';return;}
+    const result=new Date(startDate);result.setDate(result.getDate()+days);
+    if(isNaN(result.getTime())){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">The resulting date is outside the supported range.</div>';return;}
+    const label=days<0?'Subtracted '+Math.abs(days)+' days':'Added '+days+' days';
+    document.getElementById('output').innerHTML='<div class="sec-head">'+label+'</div>'+row('Start date',formatDate(startDate))+
+      row('Result date',formatDate(result),'pos')+row('Day of week',result.toLocaleDateString('en-IN',{weekday:'long'}))+
+      row('Days moved',Math.abs(days)+' days '+(days<0?'back':'forward'));
   }
-
   const _mp=document.getElementById('mobilePanel');const _mb=document.getElementById('mobileMenuBtn');const _cb=document.getElementById('closeMobileBtn');
   if(_mb)_mb.addEventListener('click',()=>{_mp.classList.add('open');document.body.style.overflow='hidden'});
   if(_cb)_cb.addEventListener('click',()=>{_mp.classList.remove('open');document.body.style.overflow=''});
