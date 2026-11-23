@@ -111,7 +111,7 @@ function calculate(){
  const ceiling=25000;
  const invalidNewJoiner=membership==='neweligible' && wages>ceiling;
  const excludedScenarioMismatch=membership==='newexcluded' && wages<=ceiling;
- const covered=membership==='newexcluded'?!excludedScenarioMismatch:!invalidNewJoiner;
+ const covered=membership==='newexcluded'?excludedScenarioMismatch:!invalidNewJoiner;
  const contributionWage=basis==='actual'?wages:Math.min(wages,ceiling);
  const employerWage=covered?contributionWage:0;
  const employeeWage=covered?contributionWage:0;
