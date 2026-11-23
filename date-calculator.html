@@ -109,7 +109,7 @@
       "name": "How do I calculate the number of days between two dates?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. Weekends and holidays are included unless you select business days only."
+        "text": "Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. You can also select business days only to count Monday through Friday. Public holidays are not excluded."
       }
     },
     {
@@ -141,7 +141,7 @@
       "name": "Can I calculate business days excluding weekends?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Toggle the 'Business Days Only' option and the calculator will exclude Saturdays and Sundays from the day count. Public holiday exclusion is not currently supported."
+        "text": "Yes. Select the 'Count business days only' option to count Monday through Friday between the dates. Public holidays are not excluded."
       }
     }
   ]
@@ -397,6 +397,15 @@ details.faq-item summary:hover{background:var(--green-xs)}
 details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 .faq-body{padding:14px 20px 18px;font-size:13px;font-weight:500;color:#525D52;line-height:1.7;border-top:2px solid var(--black)}
 
+
+/* Shared tool-page layout and sidebar */
+.page-layout{max-width:1240px;margin:0 auto;padding:0 24px 72px;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}
+.page-layout .form-wrap{max-width:none;margin:0;padding:0}
+.business-days-toggle input{width:16px;height:16px;accent-color:var(--green-dk)}
+.tools-sidebar{position:sticky;top:82px;background:var(--card);border:2px solid var(--black);border-radius:15px;box-shadow:var(--shadow);padding:16px}.tools-sidebar h2{font-size:16px;margin-bottom:4px}.tools-sidebar .sidebar-intro{font-size:11px;color:var(--muted);margin-bottom:12px}.tools-sidebar details{border-top:1px solid var(--border);padding:10px 0}.tools-sidebar summary{font-size:12px;font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:8px}.tools-sidebar summary::-webkit-details-marker{display:none}.tools-sidebar summary::after{content:"+";font-size:16px;line-height:1}.tools-sidebar details[open] summary::after{content:"−"}.tools-sidebar details a{display:block;padding:7px 8px;margin-top:5px;border-radius:7px;background:var(--green-xs);font-size:11px;font-weight:700;text-decoration:none}.tools-sidebar details a:hover{text-decoration:underline;background:#d8e3d2}.tools-sidebar .sidebar-note{font-size:10px;color:var(--muted);line-height:1.5;margin-top:12px}@media(max-width:1100px){.page-layout{grid-template-columns:1fr}.tools-sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.tools-sidebar h2,.tools-sidebar .sidebar-intro,.tools-sidebar .sidebar-note{grid-column:1/-1}}
+@media(max-width:1100px){.page-layout{grid-template-columns:1fr}.tools-sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.tools-sidebar h2,.tools-sidebar .sidebar-intro,.tools-sidebar .sidebar-note{grid-column:1/-1}}
+@media(max-width:768px){.page-layout{padding:0 16px 60px;gap:24px}.tools-sidebar{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.tools-sidebar{grid-template-columns:1fr}}
 </style>
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://mailfix.vercel.app/sitemap.xml"/>
@@ -416,7 +425,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
       <div class="logo-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
       </div>
-      Mailflix
+      MailFix
     </a>
     <div class="nav-links">
       <div class="nav-item">
@@ -470,7 +479,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 </nav>
 <div class="mobile-panel" id="mobilePanel">
   <div class="mobile-panel-head">
-    <a href="/" class="logo">Mailflix</a>
+    <a href="/" class="logo">MailFix</a>
     <button aria-label="Close menu" class="close-btn" id="closeMobileBtn">
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
@@ -510,9 +519,9 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 <div class="page-hero" style="padding-bottom:28px">
   <div class="page-badge">📅 Utility Tool</div>
   <h1>Date & Age <span class="accent">Calculator</span></h1>
-  <p class="page-sub">Calculate exact age, find date differences, or add/subtract days from any date. Includes zodiac, weekday count and next birthday.</p>
+  <p class="page-sub">Calculate exact age, compare two dates, count weekdays, or add and subtract days from any date — with leap-year-aware results.</p>
 </div>
-<div class="form-wrap">
+<div class="page-layout"><div class="primary-column"><div class="form-wrap">
 
 <div class="form-card">
   <div class="form-card-header"><span class="form-card-title">📅 Date & Age Calculator</span></div>
@@ -554,11 +563,11 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     </div>
   </div>
 </div>
-</div>
+</div><aside class="tools-sidebar" aria-label="Other MailFix tools"><h2>Explore MailFix tools</h2><p class="sidebar-intro">Quick access to related workplace tools and calculators.</p><details><summary>AI writing tools</summary><a href="/">Email Fixer</a><a href="/job-application">Job Application Email</a><a href="/resignation">Resignation Kit</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/whatsapp-dhanda">WhatsApp Dhanda</a><a href="/hr-email-generator">HR Email Generator</a></details><details open><summary>Salary &amp; payroll</summary><a href="/ctc-calculator">CTC to In-Hand Calculator</a><a href="/salary-breakup-calculator">Salary Breakup Calculator</a><a href="/salary-slip-calculator" aria-current="page">Salary Slip Calculator</a><a href="/new-labour-code-salary-guide">New Labour Code Salary Guide</a></details><details><summary>Exit &amp; benefits</summary><a href="/full-and-final-settlement">Full &amp; Final Settlement Calculator</a><a href="/notice-period-calculator">Notice Period Buyout</a><a href="/leave-encashment">Leave Encashment Calculator</a><a href="/gratuity-rules-india">Gratuity Rules and Eligibility</a></details><details><summary>Provident fund &amp; tax</summary><a href="/pf-calculator">EPF Calculator</a><a href="/pf-transfer-guide">PF Transfer Guide</a><a href="/epf-withdrawal-guide">EPF Withdrawal Guide</a><a href="/itr-calculator">Income Tax Calculator</a></details><details open><summary>Everyday tools</summary><a href="/gst-invoice">GST Invoice Generator</a><a href="/photo-resizer">Photo Resizer</a><a href="/qr-generator">QR Generator</a><a href="/date-calculator" aria-current="page">Date &amp; Age Calculator</a></details><p class="sidebar-note">Figures are estimates. Review generated content and verify applicable rules before making financial, employment or compliance decisions.</p></aside></div>
 
 <div class="section-how"><div class="section-how-inner">
   <h2>How the Date & Age Calculator Works</h2><p class="how-sub">Calculate date differences, your exact age, and deadline dates instantly.</p>
-  <div class="how-steps"><div class="how-step"><div class="how-step-num">1</div><h3>Choose Calculation Type</h3><p>Select what you want — date difference between two dates, add/subtract days to a date, or calculate age from a birth date.</p></div><div class="how-step"><div class="how-step-num">2</div><h3>Enter Your Dates</h3><p>Pick dates from the calendar or type them in. The tool accepts any date from the past or future.</p></div><div class="how-step"><div class="how-step-num">3</div><h3>Get Instant Results</h3><p>See the exact number of years, months, days, hours and minutes between dates — or your precise age to the day.</p></div></div>
+  <div class="how-steps"><div class="how-step"><div class="how-step-num">1</div><h3>Choose Calculation Type</h3><p>Select what you want — date difference between two dates, add/subtract days to a date, or calculate age from a birth date.</p></div><div class="how-step"><div class="how-step-num">2</div><h3>Enter Your Dates</h3><p>Pick dates from the calendar or type them in. The tool accepts any date from the past or future.</p></div><div class="how-step"><div class="how-step-num">3</div><h3>Get Instant Results</h3><p>See the exact calendar-day difference, weekday and weekend counts, or your precise age in years, months and days.</p></div></div>
 </div></div>
 <div class="section-faq"><div class="section-faq-inner">
   <h2>Frequently Asked Questions</h2>
