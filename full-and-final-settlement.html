@@ -185,7 +185,7 @@ footer{background:white;border-top:3px solid var(--black);padding:48px 24px;font
   .seo-box{padding:24px 18px}
 }
 
-.fnf-wrap{max-width:1100px;margin:0 auto;padding:0 24px 72px}
+.fnf-wrap{max-width:1400px;margin:0 auto;padding:0 24px 72px}.fnf-page-layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:24px;align-items:start}.fnf-main-column{min-width:0}.fnf-tools-sidebar{position:sticky;top:82px;background:#fff;border:2px solid var(--black);border-radius:16px;box-shadow:var(--shadow);padding:16px}.fnf-tools-sidebar h2{font-size:16px;margin:0 0 4px}.fnf-tools-sidebar>p{font-size:11px;color:var(--muted);margin-bottom:10px}.fnf-tools-sidebar details{border-top:1px solid var(--border);padding:10px 0}.fnf-tools-sidebar summary{font-size:12px;font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between}.fnf-tools-sidebar summary::-webkit-details-marker{display:none}.fnf-tools-sidebar summary:after{content:"+"}.fnf-tools-sidebar details[open] summary:after{content:"−"}.fnf-tools-sidebar details a{display:block;margin-top:6px;padding:7px 8px;background:var(--green-xs);border-radius:7px;font-size:11px;font-weight:700;text-decoration:none}.fnf-tools-sidebar details a:hover{text-decoration:underline}.fnf-tools-sidebar .sidebar-foot{font-size:10px;line-height:1.5;color:var(--muted);margin-top:10px}@media(max-width:1100px){.fnf-page-layout{grid-template-columns:1fr}.fnf-tools-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.fnf-tools-sidebar h2,.fnf-tools-sidebar>p,.fnf-tools-sidebar .sidebar-foot{grid-column:1/-1}}
 .fnf-intro{max-width:850px;margin:0 auto 24px;color:var(--muted);font-size:14px}
 .fnf-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
 @media(max-width:820px){.fnf-grid{grid-template-columns:1fr}}
@@ -339,7 +339,7 @@ footer{background:white;border-top:3px solid var(--black);padding:48px 24px;font
   <h1>Full and Final <span class="accent">Settlement</span> Calculator</h1>
   <p class="page-sub">Estimate your final dues when leaving a job — salary, leave encashment, gratuity, notice recovery and deductions in one clear breakdown.</p>
 </section>
-<div class="fnf-wrap">
+<div class="fnf-wrap"><div class="fnf-page-layout"><div class="fnf-main-column">
   <p class="fnf-intro">Enter the figures from your payslip, appointment letter and HR exit statement. The calculator runs in your browser and gives an estimate, not a guaranteed payroll or legal determination.</p>
   <div class="fnf-grid">
     <div>
@@ -409,7 +409,7 @@ footer{background:white;border-top:3px solid var(--black);padding:48px 24px;font
     <a href="/leave-encashment">Leave Encashment Calculator</a>
     <a href="/gratuity-rules-india">Gratuity Rules and Eligibility</a>
   </div>
-</div>
+</div><aside class="fnf-tools-sidebar" aria-label="Related MailFix tools"><h2>Explore related tools</h2><p>Quick links for salary, notice period and exit formalities.</p><details open><summary>Salary calculators</summary><a href="/ctc-calculator">CTC to In-Hand Calculator</a><a href="/salary-breakup-calculator">Salary Breakup Calculator</a><a href="/pf-calculator">EPF Calculator</a><a href="/salary-slip-calculator">Salary Slip Calculator</a></details><details><summary>Exit and benefits</summary><a href="/notice-period-calculator">Notice Period Buyout</a><a href="/leave-encashment">Leave Encashment Calculator</a><a href="/gratuity-rules-india">Gratuity Rules and Eligibility</a><a href="/pf-transfer-guide">PF Transfer Guide</a></details><details><summary>Letters and documents</summary><a href="/resignation">Resignation Letter Generator</a><a href="/hr-email-generator">HR Email Generator</a><a href="/sarkari-letter">Sarkari Letter</a></details><p class="sidebar-foot">Estimates are informational. Confirm dues, deductions and eligibility with your employer and applicable authorities.</p></aside></div>
 <section class="fnf-faq">
 <h2>Full and Final Settlement FAQs</h2>
 <details><summary>What is included in full and final settlement in India?</summary><p>A final settlement may include unpaid salary, eligible leave encashment, gratuity where payable, approved incentives or reimbursements, and other contractual dues, less authorised recoveries such as notice pay, advances, loans and other deductions.</p></details>
@@ -446,8 +446,9 @@ function calculateFnf(){
  const leave=val("leaveWage")/Number(document.getElementById("leaveDivisor").value)*val("leaveDays");
  const years=val("serviceYears"),months=Math.min(11,Math.floor(val("serviceMonths")));
  const type=document.getElementById("employmentType").value;
- const eligible=type==="fixed"?(years*12+months>=12):(type==="regular"?(years+(months>6?1:0)>=5):(years+(months>6?1:0)>=5));
- const countedYears=years+(months>6?1:0);
+ const totalServiceMonths=years*12+months;
+ const eligible=type==="fixed"?(totalServiceMonths>=12):(totalServiceMonths>=60);
+ const countedYears=type==="fixed"?totalServiceMonths/12:years+(months>6?1:0);
  const rawGratuity=eligible?(val("gratuityWage")*15*countedYears/26):0;
  const gratuity=Math.min(rawGratuity,2000000);
  const notice=val("noticeWage")/Number(document.getElementById("noticeDivisor").value)*val("noticeDays");
