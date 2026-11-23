@@ -109,7 +109,7 @@
       "name": "How do I calculate the number of days between two dates?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. Weekends and holidays are included unless you select business days only."
+        "text": "Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. You can also select business days only to count Monday through Friday. Public holidays are not excluded."
       }
     },
     {
@@ -141,7 +141,7 @@
       "name": "Can I calculate business days excluding weekends?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Toggle the 'Business Days Only' option and the calculator will exclude Saturdays and Sundays from the day count. Public holiday exclusion is not currently supported."
+        "text": "Yes. Select the 'Count business days only' option to count Monday through Friday between the dates. Public holidays are not excluded."
       }
     }
   ]
@@ -397,6 +397,15 @@ details.faq-item summary:hover{background:var(--green-xs)}
 details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 .faq-body{padding:14px 20px 18px;font-size:13px;font-weight:500;color:#525D52;line-height:1.7;border-top:2px solid var(--black)}
 
+
+/* Shared tool-page layout and sidebar */
+.page-layout{max-width:1240px;margin:0 auto;padding:0 24px 72px;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}
+.page-layout .form-wrap{max-width:none;margin:0;padding:0}
+.business-days-toggle input{width:16px;height:16px;accent-color:var(--green-dk)}
+.tools-sidebar{position:sticky;top:82px;background:var(--card);border:2px solid var(--black);border-radius:15px;box-shadow:var(--shadow);padding:16px}.tools-sidebar h2{font-size:16px;margin-bottom:4px}.tools-sidebar .sidebar-intro{font-size:11px;color:var(--muted);margin-bottom:12px}.tools-sidebar details{border-top:1px solid var(--border);padding:10px 0}.tools-sidebar summary{font-size:12px;font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:8px}.tools-sidebar summary::-webkit-details-marker{display:none}.tools-sidebar summary::after{content:"+";font-size:16px;line-height:1}.tools-sidebar details[open] summary::after{content:"−"}.tools-sidebar details a{display:block;padding:7px 8px;margin-top:5px;border-radius:7px;background:var(--green-xs);font-size:11px;font-weight:700;text-decoration:none}.tools-sidebar details a:hover{text-decoration:underline;background:#d8e3d2}.tools-sidebar .sidebar-note{font-size:10px;color:var(--muted);line-height:1.5;margin-top:12px}@media(max-width:1100px){.page-layout{grid-template-columns:1fr}.tools-sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.tools-sidebar h2,.tools-sidebar .sidebar-intro,.tools-sidebar .sidebar-note{grid-column:1/-1}}
+@media(max-width:1100px){.page-layout{grid-template-columns:1fr}.tools-sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.tools-sidebar h2,.tools-sidebar .sidebar-intro,.tools-sidebar .sidebar-note{grid-column:1/-1}}
+@media(max-width:768px){.page-layout{padding:0 16px 60px;gap:24px}.tools-sidebar{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.tools-sidebar{grid-template-columns:1fr}}
 </style>
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://mailfix.vercel.app/sitemap.xml"/>
@@ -416,7 +425,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
       <div class="logo-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
       </div>
-      Mailflix
+      MailFix
     </a>
     <div class="nav-links">
       <div class="nav-item">
@@ -470,7 +479,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 </nav>
 <div class="mobile-panel" id="mobilePanel">
   <div class="mobile-panel-head">
-    <a href="/" class="logo">Mailflix</a>
+    <a href="/" class="logo">MailFix</a>
     <button aria-label="Close menu" class="close-btn" id="closeMobileBtn">
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
@@ -510,9 +519,9 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 <div class="page-hero" style="padding-bottom:28px">
   <div class="page-badge">📅 Utility Tool</div>
   <h1>Date & Age <span class="accent">Calculator</span></h1>
-  <p class="page-sub">Calculate exact age, find date differences, or add/subtract days from any date. Includes zodiac, weekday count and next birthday.</p>
+  <p class="page-sub">Calculate exact age, compare two dates, count weekdays, or add and subtract days from any date — with leap-year-aware results.</p>
 </div>
-<div class="form-wrap">
+<div class="page-layout"><div class="primary-column"><div class="form-wrap">
 
 <div class="form-card">
   <div class="form-card-header"><span class="form-card-title">📅 Date & Age Calculator</span></div>
@@ -537,6 +546,8 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
         <div class="form-group"><label for="diffStart">Start Date</label><input type="date" id="diffStart" onchange="calcDiff()"/></div>
         <div class="form-group"><label for="diffEnd">End Date</label><input type="date" id="diffEnd" onchange="calcDiff()"/></div>
       </div>
+      <label class="business-days-toggle" style="display:flex;align-items:center;gap:9px;margin-top:16px;font-size:13px;font-weight:700"><input type="checkbox" id="businessDaysOnly" onchange="calcDiff()"/> Count business days only (Monday–Friday)</label>
+      <p style="font-size:11px;color:var(--muted);margin-top:5px">Public holidays are not excluded.</p>
     </div>
 
     <!-- Add/Subtract -->
@@ -554,100 +565,99 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     </div>
   </div>
 </div>
-</div>
+</div><aside class="tools-sidebar" aria-label="Other MailFix tools"><h2>Explore MailFix tools</h2><p class="sidebar-intro">Quick access to related workplace tools and calculators.</p><details><summary>AI writing tools</summary><a href="/">Email Fixer</a><a href="/job-application">Job Application Email</a><a href="/resignation">Resignation Kit</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/whatsapp-dhanda">WhatsApp Dhanda</a><a href="/hr-email-generator">HR Email Generator</a></details><details open><summary>Salary &amp; payroll</summary><a href="/ctc-calculator">CTC to In-Hand Calculator</a><a href="/salary-breakup-calculator">Salary Breakup Calculator</a><a href="/salary-slip-calculator">Salary Slip Calculator</a><a href="/new-labour-code-salary-guide">New Labour Code Salary Guide</a></details><details><summary>Exit &amp; benefits</summary><a href="/full-and-final-settlement">Full &amp; Final Settlement Calculator</a><a href="/notice-period-calculator">Notice Period Buyout</a><a href="/leave-encashment">Leave Encashment Calculator</a><a href="/gratuity-rules-india">Gratuity Rules and Eligibility</a></details><details><summary>Provident fund &amp; tax</summary><a href="/pf-calculator">EPF Calculator</a><a href="/pf-transfer-guide">PF Transfer Guide</a><a href="/epf-withdrawal-guide">EPF Withdrawal Guide</a><a href="/itr-calculator">Income Tax Calculator</a></details><details open><summary>Everyday tools</summary><a href="/gst-invoice">GST Invoice Generator</a><a href="/photo-resizer">Photo Resizer</a><a href="/qr-generator">QR Generator</a><a href="/date-calculator" aria-current="page">Date &amp; Age Calculator</a></details><p class="sidebar-note">Figures are estimates. Review generated content and verify applicable rules before making financial, employment or compliance decisions.</p></aside></div>
 
 <div class="section-how"><div class="section-how-inner">
   <h2>How the Date & Age Calculator Works</h2><p class="how-sub">Calculate date differences, your exact age, and deadline dates instantly.</p>
-  <div class="how-steps"><div class="how-step"><div class="how-step-num">1</div><h3>Choose Calculation Type</h3><p>Select what you want — date difference between two dates, add/subtract days to a date, or calculate age from a birth date.</p></div><div class="how-step"><div class="how-step-num">2</div><h3>Enter Your Dates</h3><p>Pick dates from the calendar or type them in. The tool accepts any date from the past or future.</p></div><div class="how-step"><div class="how-step-num">3</div><h3>Get Instant Results</h3><p>See the exact number of years, months, days, hours and minutes between dates — or your precise age to the day.</p></div></div>
+  <div class="how-steps"><div class="how-step"><div class="how-step-num">1</div><h3>Choose Calculation Type</h3><p>Select what you want — date difference between two dates, add/subtract days to a date, or calculate age from a birth date.</p></div><div class="how-step"><div class="how-step-num">2</div><h3>Enter Your Dates</h3><p>Pick dates from the calendar or type them in. The tool accepts any date from the past or future.</p></div><div class="how-step"><div class="how-step-num">3</div><h3>Get Instant Results</h3><p>See the exact calendar-day difference, weekday and weekend counts, or your precise age in years, months and days.</p></div></div>
 </div></div>
 <div class="section-faq"><div class="section-faq-inner">
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-list"><details class="faq-item"><summary>How do I calculate the number of days between two dates?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. Weekends and holidays are included unless you select business days only.</div></details><details class="faq-item"><summary>Can I calculate my exact age in years, months, and days?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. Select the 'Age Calculator' tab, enter your date of birth, and the tool shows your age as of today in years, months, and days — along with your next birthday countdown.</div></details><details class="faq-item"><summary>How do I find a date 90 days from today?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Use the 'Add Days to Date' option. Enter today's date (or any start date) and add 90 days — the tool will show the exact future date. This is useful for calculating notice period end dates, contract deadlines, or visa validity.</div></details><details class="faq-item"><summary>Does the calculator handle leap years correctly?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. The calculator fully accounts for leap years in all calculations. February 29th dates are handled correctly, and year-long gaps across leap years are calculated accurately.</div></details><details class="faq-item"><summary>Can I calculate business days excluding weekends?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. Toggle the 'Business Days Only' option and the calculator will exclude Saturdays and Sundays from the day count. Public holiday exclusion is not currently supported.</div></details></div>
+  <div class="faq-list"><details class="faq-item"><summary>How do I calculate the number of days between two dates?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. You can also select business days only to count Monday through Friday. Public holidays are not excluded.</div></details><details class="faq-item"><summary>Can I calculate my exact age in years, months, and days?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. Select the 'Age Calculator' tab, enter your date of birth, and the tool shows your age as of today in years, months, and days — along with your next birthday countdown.</div></details><details class="faq-item"><summary>How do I find a date 90 days from today?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Use the 'Add Days to Date' option. Enter today's date (or any start date) and add 90 days — the tool will show the exact future date. This is useful for calculating notice period end dates, contract deadlines, or visa validity.</div></details><details class="faq-item"><summary>Does the calculator handle leap years correctly?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. The calculator fully accounts for leap years in all calculations. February 29th dates are handled correctly, and year-long gaps across leap years are calculated accurately.</div></details><details class="faq-item"><summary>Can I calculate business days excluding weekends?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. Select the 'Count business days only' option to count Monday through Friday between the dates. Public holidays are not excluded.</div></details></div>
 </div></div>
 </main>
 <footer><div class="footer-inner"><div class="footer-top"><div class="footer-logo">MailFix</div><div class="footer-links"><a href="/">Email Tool</a><a href="/ctc-calculator">Salary Calc</a><a href="/income-tax-slabs">Tax Slabs</a><a href="/how-ctc-is-calculated">CTC Guide</a><a href="/new-vs-old-tax-regime">Tax Regime</a><a href="/salary-glossary">Glossary</a><a href="/city-compare">City Compare</a><a href="/whatsapp-dhanda">WA Dhanda</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/sitemap">Sitemap</a> <a href="/privacy">Privacy Policy</a></div></div><div class="footer-copy">© 2026 MailFix. Free Tools for Indian Professionals.</div></div></footer>
 <script>
   let activeTab = 'age';
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('asOn').value = today;
-  document.getElementById('diffEnd').value = today;
-  document.getElementById('addStart').value = today;
+  const DAY_MS = 86400000;
+  function parseLocalDate(value) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return null;
+    const parts=value.split('-').map(Number), y=parts[0], m=parts[1], d=parts[2];
+    const date=new Date(y,m-1,d);
+    return date.getFullYear()===y && date.getMonth()===m-1 && date.getDate()===d ? date : null;
+  }
+  function dateKey(date) { return [date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-'); }
+  function dayNumber(date) { return Math.floor(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate())/DAY_MS); }
+  function dateFromDayNumber(number) { return new Date(number*DAY_MS); }
+  function formatDate(date) { return date.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}); }
+  const today=dateKey(new Date());
+  document.getElementById('asOn').value=today;
+  document.getElementById('diffEnd').value=today;
+  document.getElementById('addStart').value=today;
 
   function switchTab(tab) {
-    activeTab = tab;
-    ['age','diff','add'].forEach(t => {
-      document.getElementById('panel-'+t).style.display = t===tab ? 'block' : 'none';
-      document.getElementById('tab-'+t).className = t===tab ? 'btn btn-black' : 'btn btn-white';
+    activeTab=tab;
+    ['age','diff','add'].forEach(function(t){
+      document.getElementById('panel-'+t).style.display=t===tab?'block':'none';
+      document.getElementById('tab-'+t).className=t===tab?'btn btn-black':'btn btn-white';
     });
-    document.getElementById('output').innerHTML = '<div style="padding:28px;text-align:center;color:#6F7B6F;font-style:italic">Select a date to see the result</div>';
+    document.getElementById('output').innerHTML='<div style="padding:28px;text-align:center;color:#6F7B6F;font-style:italic">Select a date to see the result</div>';
   }
-
-  function row(k, v, cls='') { return `<div class="bd-row"><span class="k">${k}</span><span class="v ${cls}">${v}</span></div>`; }
+  function row(k,v,cls) { return '<div class="bd-row"><span class="k">'+k+'</span><span class="v '+(cls||'')+'">'+v+'</span></div>'; }
 
   function calcAge() {
-    const dob = new Date(document.getElementById('dob').value);
-    const asOn = new Date(document.getElementById('asOn').value);
-    if (isNaN(dob)||isNaN(asOn)||dob>asOn) { document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">Invalid dates</div>'; return; }
-    let yrs=asOn.getFullYear()-dob.getFullYear(), mos=asOn.getMonth()-dob.getMonth(), days=asOn.getDate()-dob.getDate();
-    if(days<0){mos--;const prev=new Date(asOn.getFullYear(),asOn.getMonth(),0);days+=prev.getDate();}
-    if(mos<0){yrs--;mos+=12;}
-    const totalDays=Math.floor((asOn-dob)/(1000*60*60*24));
-    const totalWeeks=Math.floor(totalDays/7);
-    const totalMonths=yrs*12+mos;
-    const nextBday=new Date(asOn.getFullYear(),dob.getMonth(),dob.getDate());
-    if(nextBday<=asOn)nextBday.setFullYear(asOn.getFullYear()+1);
-    const daysToNext=Math.floor((nextBday-asOn)/(1000*60*60*24));
+    const dob=parseLocalDate(document.getElementById('dob').value), asOn=parseLocalDate(document.getElementById('asOn').value);
+    if(!dob||!asOn||dayNumber(dob)>dayNumber(asOn)){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">Enter valid dates. The date of birth cannot be after the As on Date.</div>';return;}
+    let years=asOn.getFullYear()-dob.getFullYear(), months=asOn.getMonth()-dob.getMonth(), days=asOn.getDate()-dob.getDate();
+    if(days<0){months--;days+=new Date(asOn.getFullYear(),asOn.getMonth(),0).getDate();}
+    if(months<0){years--;months+=12;}
+    const totalDays=dayNumber(asOn)-dayNumber(dob), totalWeeks=Math.floor(totalDays/7), totalMonths=years*12+months;
+    function birthdayIn(year){const lastDay=new Date(year,dob.getMonth()+1,0).getDate();return new Date(year,dob.getMonth(),Math.min(dob.getDate(),lastDay));}
+    let nextBirthday=birthdayIn(asOn.getFullYear());
+    if(dayNumber(nextBirthday)<=dayNumber(asOn))nextBirthday=birthdayIn(asOn.getFullYear()+1);
+    const daysToNext=dayNumber(nextBirthday)-dayNumber(asOn);
     const zodiac=['Capricorn','Aquarius','Pisces','Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn'];
-    const zodiacDays=[20,19,20,20,21,21,22,23,23,23,22,21];
-    const m=dob.getMonth(),d=dob.getDate();
-    const sign=d<=zodiacDays[m]?zodiac[m]:zodiac[m+1];
-    document.getElementById('output').innerHTML =
-      `<div class="sec-head">Age</div>`+
-      row('Age',''+yrs+' years, '+mos+' months, '+days+' days')+
-      row('Total months',''+totalMonths.toLocaleString('en-IN')+' months')+
-      row('Total weeks',''+totalWeeks.toLocaleString('en-IN')+' weeks')+
-      row('Total days',''+totalDays.toLocaleString('en-IN')+' days')+
-      `<div class="sec-head">Upcoming</div>`+
-      row('Next birthday in',''+daysToNext+' days')+
-      row('Zodiac sign',sign)+
+    const zodiacDays=[20,19,20,20,21,21,22,23,23,23,22,21], month=dob.getMonth(), day=dob.getDate();
+    const sign=day<=zodiacDays[month]?zodiac[month]:zodiac[month+1];
+    document.getElementById('output').innerHTML='<div class="sec-head">Age as of '+formatDate(asOn)+'</div>'+
+      row('Age',years+' years, '+months+' months, '+days+' days')+
+      row('Total months',totalMonths.toLocaleString('en-IN')+' months')+
+      row('Total weeks',totalWeeks.toLocaleString('en-IN')+' weeks')+
+      row('Total days',totalDays.toLocaleString('en-IN')+' days')+
+      '<div class="sec-head">Upcoming</div>'+row('Next birthday in',daysToNext+' days')+row('Zodiac sign',sign)+
       row('Day of birth',dob.toLocaleDateString('en-IN',{weekday:'long'}));
   }
 
   function calcDiff() {
-    const s=new Date(document.getElementById('diffStart').value);
-    const e=new Date(document.getElementById('diffEnd').value);
-    if(isNaN(s)||isNaN(e)){return;}
-    const swap=e<s;
-    const [from,to]=swap?[e,s]:[s,e];
-    const totalDays=Math.floor((to-from)/(1000*60*60*24));
-    let yrs=to.getFullYear()-from.getFullYear(),mos=to.getMonth()-from.getMonth(),days=to.getDate()-from.getDate();
-    if(days<0){mos--;const prev=new Date(to.getFullYear(),to.getMonth(),0);days+=prev.getDate();}
-    if(mos<0){yrs--;mos+=12;}
-    const weekdays=Array.from({length:totalDays},(_,i)=>{const d=new Date(from);d.setDate(from.getDate()+i);return d.getDay();}).filter(d=>d>0&&d<6).length;
-    document.getElementById('output').innerHTML =
-      `<div class="sec-head">Difference${swap?' (reversed)':''}</div>`+
-      row('Duration',''+yrs+'y '+mos+'m '+days+'d')+
-      row('Total days',''+totalDays.toLocaleString('en-IN'))+
-      row('Weekdays (approx)',''+weekdays.toLocaleString('en-IN'))+
-      row('Weekends',''+Math.floor(totalDays/7)*2+' (approx)')+
-      row('Total weeks',''+Math.floor(totalDays/7))+
-      row('Total months',''+Math.floor(totalDays/30.44).toFixed(1));
+    const startDate=parseLocalDate(document.getElementById('diffStart').value), endDate=parseLocalDate(document.getElementById('diffEnd').value);
+    if(!startDate||!endDate){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">Enter both valid dates to calculate the difference.</div>';return;}
+    const reversed=dayNumber(endDate)<dayNumber(startDate), dates=reversed?[endDate,startDate]:[startDate,endDate], from=dates[0], to=dates[1];
+    const first=dayNumber(from), last=dayNumber(to), totalDays=last-first;
+    let years=to.getFullYear()-from.getFullYear(), months=to.getMonth()-from.getMonth(), days=to.getDate()-from.getDate();
+    if(days<0){months--;days+=new Date(to.getFullYear(),to.getMonth(),0).getDate();}
+    if(months<0){years--;months+=12;}
+    let weekdays=0;
+    for(let n=first;n<last;n++){const weekday=dateFromDayNumber(n).getUTCDay();if(weekday!==0&&weekday!==6)weekdays++;}
+    const weekends=totalDays-weekdays, businessOnly=document.getElementById('businessDaysOnly').checked;
+    let result='<div class="sec-head">Difference'+(reversed?' (dates reversed for calculation)':'')+'</div>'+
+      row('Duration',years+' years, '+months+' months, '+days+' days')+row('Calendar days',totalDays.toLocaleString('en-IN'))+
+      row('Weekdays (Mon–Fri)',weekdays.toLocaleString('en-IN'))+row('Weekend days',weekends.toLocaleString('en-IN'));
+    result+=businessOnly?row('Business days (selected)',weekdays.toLocaleString('en-IN'))+row('Count basis','Monday to Friday; public holidays included'):row('Total weeks',Math.floor(totalDays/7).toLocaleString('en-IN'))+row('Average months',(totalDays/30.436875).toFixed(1));
+    document.getElementById('output').innerHTML=result;
   }
 
   function calcAdd() {
-    const s=new Date(document.getElementById('addStart').value);
-    const d=parseInt(document.getElementById('addDays').value)||0;
-    if(isNaN(s)){return;}
-    const result=new Date(s);result.setDate(result.getDate()+d);
-    const label=d<0?'Subtracted '+Math.abs(d)+' days':'Added '+d+' days';
-    document.getElementById('output').innerHTML =
-      `<div class="sec-head">${label}</div>`+
-      row('Start date',s.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}))+
-      row('Result date',result.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}),'pos')+
-      row('Day of week',result.toLocaleDateString('en-IN',{weekday:'long'}))+
-      row('Days moved',''+Math.abs(d)+' days '+(d<0?'back':'forward'));
+    const startDate=parseLocalDate(document.getElementById('addStart').value), raw=document.getElementById('addDays').value;
+    if(!startDate||raw===''){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--muted)">Enter a valid start date and number of days.</div>';return;}
+    const days=Number(raw);
+    if(!Number.isSafeInteger(days)||Math.abs(days)>1000000){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">Enter a whole number between −1,000,000 and 1,000,000.</div>';return;}
+    const result=new Date(startDate);result.setDate(result.getDate()+days);
+    if(isNaN(result.getTime())){document.getElementById('output').innerHTML='<div style="padding:20px;text-align:center;color:var(--red);font-weight:700">The resulting date is outside the supported range.</div>';return;}
+    const label=days<0?'Subtracted '+Math.abs(days)+' days':'Added '+days+' days';
+    document.getElementById('output').innerHTML='<div class="sec-head">'+label+'</div>'+row('Start date',formatDate(startDate))+
+      row('Result date',formatDate(result),'pos')+row('Day of week',result.toLocaleDateString('en-IN',{weekday:'long'}))+
+      row('Days moved',Math.abs(days)+' days '+(days<0?'back':'forward'));
   }
-
   const _mp=document.getElementById('mobilePanel');const _mb=document.getElementById('mobileMenuBtn');const _cb=document.getElementById('closeMobileBtn');
   if(_mb)_mb.addEventListener('click',()=>{_mp.classList.add('open');document.body.style.overflow='hidden'});
   if(_cb)_cb.addEventListener('click',()=>{_mp.classList.remove('open');document.body.style.overflow=''});
