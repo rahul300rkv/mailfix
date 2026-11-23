@@ -1,4 +1,4 @@
-# MailFix — Free AI Email Writer & Salary Calculators for India 🇮🇳
+# MailFix — Free AI Email Writer & Salary Calculators for India 🇮🇳 
 
 [![Live Demo](https://img.shields.io/badge/Live%20Website-mailfix.vercel.app-22c55e?style=for-the-badge&logo=vercel&logoColor=white)](https://mailfix.vercel.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](https://opensource.org/licenses/MIT)
