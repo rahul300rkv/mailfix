@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#6E1E33">
+<title>EMI Calculator India – Home, Car & Personal Loan EMI | MailFix</title>
+<link rel="canonical" href="https://mailfix.vercel.app/emi-calculator">
+<meta name="description" content="Calculate monthly loan EMI for home, car, personal, education, gold and business loans in India. See total interest, repayment schedule and prepayment savings. Free EMI calculator.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta property="og:type" content="website"><meta property="og:url" content="https://mailfix.vercel.app/emi-calculator"><meta property="og:title" content="EMI Calculator India – Home, Car & Personal Loan | MailFix"><meta property="og:description" content="Calculate loan EMI, total interest, fees and prepayment savings for different loan types."><meta property="og:image" content="https://mailfix.vercel.app/og-image.png"><meta property="og:site_name" content="MailFix">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="EMI Calculator India | MailFix"><meta name="twitter:description" content="Free home, car, personal, education, gold and business loan EMI calculator."><meta name="twitter:image" content="https://mailfix.vercel.app/og-image.png">
+<link rel="alternate" hreflang="en-IN" href="https://mailfix.vercel.app/emi-calculator"><link rel="alternate" hreflang="x-default" href="https://mailfix.vercel.app/emi-calculator">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"EMI Calculator India","url":"https://mailfix.vercel.app/emi-calculator","description":"Free EMI calculator for home, car, personal, education, gold and business loans in India. Estimates monthly instalments, total interest, fees and prepayment savings using the reducing-balance method.","applicationCategory":"FinanceApplication","operatingSystem":"Any — runs in web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"MailFix","url":"https://mailfix.vercel.app/"},"inLanguage":"en-IN","isAccessibleForFree":true,"featureList":["Home loan EMI","Car loan EMI","Personal loan EMI","Education loan EMI","Gold loan EMI","Business loan EMI","Extra monthly prepayment estimate","Month-wise amortisation schedule"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mailfix.vercel.app/"},{"@type":"ListItem","position":2,"name":"EMI Calculator","item":"https://mailfix.vercel.app/emi-calculator"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is EMI calculated?","acceptedAnswer":{"@type":"Answer","text":"For a standard fixed-rate reducing-balance loan, EMI is calculated using the principal, monthly interest rate and number of monthly instalments. The formula is P × r × (1+r)^n ÷ ((1+r)^n−1), where P is principal, r is monthly interest rate and n is the number of months."}},{"@type":"Question","name":"Can I calculate home, car and personal loan EMI with this tool?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose home, car, personal, education, gold, business or other loan. Each option fills an illustrative starting interest rate and tenure; replace them with the terms offered by your lender."}},{"@type":"Question","name":"Does making an extra monthly payment reduce loan interest?","acceptedAnswer":{"@type":"Answer","text":"An additional amount paid towards principal each month can reduce the outstanding balance faster and lower estimated interest. This calculator assumes the regular EMI stays unchanged and the extra amount is applied to principal after the monthly instalment. Actual lender rules and prepayment charges may differ."}},{"@type":"Question","name":"Does the EMI include processing fees and insurance?","acceptedAnswer":{"@type":"Answer","text":"No. The EMI is calculated on the loan principal and interest rate. The optional processing fee is shown separately as an upfront estimate. Insurance, stamp duty, taxes and other lender charges are not included unless you add them to your own cost assessment."}},{"@type":"Question","name":"Are the interest rates shown by loan type current bank offers?","acceptedAnswer":{"@type":"Answer","text":"No. The preset rates are illustrative starting values, not live bank quotes or guaranteed offers. Enter the annual rate from your lender's sanction letter or latest quotation for a more relevant estimate."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--green:#86243E;--green-dk:#6E1E33;--green-xs:#E3E9DF;--black:#1E1317;--paper:#EFF2EC;--white:#FCFDFB;--muted:#525D52;--border:#C3CEC0;--card:#FCFDFB;--shadow:4px 4px 0 #1E1317;--shadow-sm:2px 2px 0 #1E1317;--font:'Plus Jakarta Sans',sans-serif}
+body{font-family:var(--font);background:var(--paper);color:#191718;font-size:15px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}a{color:var(--green-dk)}button,input,select{font:inherit}
+nav{position:sticky;top:0;z-index:20;background:rgba(252,253,251,.96);border-bottom:2px solid var(--black);backdrop-filter:blur(10px)}.nav-inner{max-width:1200px;margin:auto;padding:0 22px;height:64px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:21px;font-weight:800;color:var(--black);text-decoration:none}.logo span{color:var(--green)}.nav-links{display:flex;gap:16px;align-items:center}.nav-links a{font-size:12px;font-weight:800;text-decoration:none;color:var(--muted)}.nav-cta{background:var(--green);color:white!important;border:2px solid var(--black);padding:8px 13px;border-radius:8px;box-shadow:var(--shadow-sm)}
+.breadcrumb{max-width:1200px;margin:auto;padding:13px 22px;font-size:12px;color:var(--muted)}.breadcrumb a{text-decoration:none;font-weight:800}
+.hero{text-align:center;padding:35px 20px 25px}.badge{display:inline-block;background:var(--green-xs);border:1.5px solid var(--black);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:800;margin-bottom:13px}.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.14;letter-spacing:-1.4px;font-weight:800}.hero h1 span{color:var(--green)}.hero p{max-width:760px;margin:11px auto 0;color:var(--muted);font-size:15px}
+.tool-shell{max-width:1400px;margin:0 auto;padding:0 22px 58px}.page-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:start}.primary-column{min-width:0}.intro{max-width:900px;margin:0 auto 18px;color:var(--muted);font-size:13px}
+.tools-sidebar{position:sticky;top:82px;background:var(--card);border:2px solid var(--black);border-radius:15px;box-shadow:var(--shadow);padding:16px}.tools-sidebar h2{font-size:16px;margin-bottom:4px}.tools-sidebar .sidebar-intro{font-size:11px;color:var(--muted);margin-bottom:12px}.tools-sidebar details{border-top:1px solid var(--border);padding:10px 0}.tools-sidebar summary{font-size:12px;font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:8px}.tools-sidebar summary::-webkit-details-marker{display:none}.tools-sidebar summary:after{content:"+";font-size:16px;line-height:1}.tools-sidebar details[open] summary:after{content:"−"}.tools-sidebar details a{display:block;padding:7px 8px;margin-top:5px;border-radius:7px;background:var(--green-xs);font-size:11px;font-weight:700;text-decoration:none}.tools-sidebar details a:hover{text-decoration:underline;background:#d8e3d2}.tools-sidebar details a[aria-current=page]{background:var(--green);color:#fff}.tools-sidebar .sidebar-note{font-size:10px;color:var(--muted);line-height:1.5;margin-top:12px}
+.card{background:var(--card);border:2px solid var(--black);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px}.card-head{padding:14px 18px;background:var(--green-xs);border-bottom:2px solid var(--black);font-size:14px;font-weight:800;display:flex;justify-content:space-between;gap:10px}.card-body{padding:20px}.loan-types{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-bottom:20px}.loan-type{border:1.5px solid var(--border);background:#fff;border-radius:9px;padding:10px 5px;text-align:center;cursor:pointer;font-size:11px;font-weight:800;color:var(--muted)}.loan-type span{display:block;font-size:21px;margin-bottom:2px}.loan-type.active{border:2px solid var(--black);background:var(--green-xs);color:var(--black);box-shadow:var(--shadow-sm);transform:translate(-1px,-1px)}
+.calc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.85fr);gap:20px;align-items:start}.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800}.field input,.field select{width:100%;min-width:0;padding:10px 11px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--black);font-size:14px;font-weight:700}.field input:focus,.field select:focus{outline:2px solid var(--green);outline-offset:1px}.field small{font-size:10px;color:var(--muted)}.input-unit{position:relative}.input-unit input{padding-left:34px}.input-unit:before{content:"₹";position:absolute;left:12px;top:9px;font-weight:800;color:var(--muted)}
+.range-row{display:flex;align-items:center;gap:12px}.range-row input[type=range]{width:100%;accent-color:var(--green)}.range-value{min-width:78px;text-align:right;font-size:12px;font-weight:800}
+.result-panel{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:18px}.result-label{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.06em}.emi-value{font-size:clamp(27px,4vw,36px);font-weight:800;letter-spacing:-1px;color:var(--green-dk);line-height:1.2;margin:5px 0 15px}.result-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:var(--paper);border-radius:8px;padding:10px}.stat span{display:block;font-size:10px;color:var(--muted);font-weight:700}.stat strong{font-size:15px;display:block;margin-top:3px;overflow-wrap:anywhere}.stack-bar{height:14px;border-radius:20px;background:#e7e9e4;overflow:hidden;display:flex;margin:17px 0 7px}.principal-bar{background:var(--green);height:100%}.interest-bar{background:#e5a34b;height:100%}.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:10px;color:var(--muted)}.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}.fee-line{font-size:11px;color:var(--muted);margin-top:12px;border-top:1px solid var(--border);padding-top:10px}.notice{background:var(--green-xs);border:1.5px solid var(--black);border-radius:9px;padding:11px 12px;margin-top:14px;font-size:11px;line-height:1.6}
+.schedule-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}.schedule-head h2{font-size:18px}.schedule-head select{padding:7px 9px;border:1px solid var(--border);border-radius:7px;background:white;font-size:12px;font-weight:700}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:9px}table{width:100%;border-collapse:collapse;min-width:650px;font-size:11px}th{background:var(--green-xs);text-align:right;padding:10px 9px;font-size:10px;white-space:nowrap}th:first-child,td:first-child{text-align:left}td{text-align:right;padding:9px;border-top:1px solid #e2e6df;white-space:nowrap}tbody tr:nth-child(even){background:#fafbf8}.table-note{font-size:10px;color:var(--muted);margin-top:9px}
+.content-section{max-width:900px;margin:26px auto 0}.content-section h2{font-size:21px;margin-bottom:10px}.content-section p,.content-section li{font-size:13px;color:var(--muted);line-height:1.8}.content-section ul{padding-left:20px;margin:8px 0}.faq details{background:#fff;border:1.5px solid var(--border);border-radius:9px;padding:12px 14px;margin:8px 0}.faq summary{font-size:12px;font-weight:800;cursor:pointer}.faq details p{margin-top:7px}.related{display:flex;gap:8px;flex-wrap:wrap}.related a{background:var(--green-xs);border:1.5px solid var(--black);border-radius:8px;padding:8px 11px;text-decoration:none;font-size:11px;font-weight:800}
+footer{border-top:2px solid var(--black);background:var(--white);padding:22px;text-align:center;color:var(--muted);font-size:11px}footer a{font-weight:800;text-decoration:none;margin:0 7px}
+@media(max-width:1100px){.page-layout{grid-template-columns:1fr}.tools-sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.tools-sidebar h2,.tools-sidebar .sidebar-intro,.tools-sidebar .sidebar-note{grid-column:1/-1}}
+@media(max-width:760px){.calc-grid{grid-template-columns:1fr}.loan-types{grid-template-columns:repeat(4,minmax(0,1fr))}.nav-links a:not(.nav-cta){display:none}.tool-shell{padding-left:13px;padding-right:13px}.card{box-shadow:var(--shadow-sm)}}
+@media(max-width:480px){.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.card-body{padding:14px}.tools-sidebar{grid-template-columns:1fr}.tools-sidebar h2,.tools-sidebar .sidebar-intro,.tools-sidebar .sidebar-note{grid-column:auto}.loan-types{grid-template-columns:repeat(3,minmax(0,1fr))}.result-stats{gap:7px}.stat strong{font-size:13px}}
+</style>
+</head>
+<body>
+<nav aria-label="Primary"><div class="nav-inner"><a class="logo" href="/">Mail<span>Fix</span></a><div class="nav-links"><a href="/ctc-calculator">CTC Calculator</a><a href="/salary-breakup-calculator">Salary Breakup</a><a href="/pf-calculator">PF Calculator</a><a class="nav-cta" href="/#main-tool">Free Tools</a></div></div></nav>
+<div class="breadcrumb"><a href="/">Home</a> &nbsp;›&nbsp; <span aria-current="page">EMI Calculator</span></div>
+<header class="hero"><div class="badge">₹ Loan &amp; Finance Calculator</div><h1>EMI <span>Calculator</span></h1><p>Estimate your monthly instalment for a home, car, personal or other loan. Compare interest, total repayment and the impact of extra monthly payments.</p></header>
+<main class="tool-shell"><div class="page-layout"><div class="primary-column">
+<p class="intro">Choose a loan category to load an illustrative starting rate and tenure, then enter the figures from your lender. Results use the standard monthly reducing-balance method and are estimates, not loan offers.</p>
+<section class="card"><div class="card-head"><span>1. Choose your loan type</span><span>India · INR</span></div><div class="card-body">
+<div class="loan-types" role="group" aria-label="Loan type">
+<button type="button" class="loan-type active" data-type="home"><span>🏠</span>Home</button><button type="button" class="loan-type" data-type="car"><span>🚗</span>Car</button><button type="button" class="loan-type" data-type="personal"><span>👤</span>Personal</button><button type="button" class="loan-type" data-type="education"><span>🎓</span>Education</button><button type="button" class="loan-type" data-type="gold"><span>🪙</span>Gold</button><button type="button" class="loan-type" data-type="business"><span>🏢</span>Business</button><button type="button" class="loan-type" data-type="other"><span>＋</span>Other</button>
+</div>
+<div class="calc-grid"><div>
+<div class="fields">
+<div class="field full"><label for="loanAmount">Loan amount (principal)</label><div class="input-unit"><input id="loanAmount" type="number" min="1000" max="1000000000" step="1000" value="5000000" inputmode="numeric"></div><small id="amountHint">Enter the amount you plan to borrow, not the property price.</small></div>
+<div class="field"><label for="rate">Annual interest rate (%)</label><input id="rate" type="number" min="0" max="60" step="0.01" value="8.5" inputmode="decimal"><small>Use the lender's offered rate.</small></div>
+<div class="field"><label for="tenureYears">Loan tenure (years)</label><input id="tenureYears" type="number" min="0" max="40" step="1" value="20" inputmode="numeric"><small>Enter years; months can be added below.</small></div>
+<div class="field"><label for="tenureMonths">Additional months</label><input id="tenureMonths" type="number" min="0" max="11" step="1" value="0" inputmode="numeric"><small>Optional, from 0 to 11.</small></div>
+<div class="field"><label for="fee">Processing fee (%)</label><input id="fee" type="number" min="0" max="10" step="0.1" value="0.5" inputmode="decimal"><small>Shown separately as an upfront estimate.</small></div>
+<div class="field"><label for="extra">Extra payment per month (₹)</label><input id="extra" type="number" min="0" max="10000000" step="500" value="0" inputmode="numeric"><small>Optional principal prepayment each month.</small></div>
+</div>
+<div class="notice"><strong>Loan presets are illustrative.</strong> Interest rates and tenures vary by lender, credit profile, loan-to-value ratio, collateral and other conditions. Replace the preset with your actual quote.</div>
+</div>
+<div class="result-panel" aria-live="polite"><div class="result-label">Estimated monthly EMI</div><div class="emi-value" id="emi">₹43,391</div>
+<div class="result-stats"><div class="stat"><span>Principal amount</span><strong id="principalOut">₹50,00,000</strong></div><div class="stat"><span>Total interest</span><strong id="interestOut">₹54,13,840</strong></div><div class="stat"><span>Total repayment</span><strong id="totalOut">₹1,04,13,840</strong></div><div class="stat"><span>Loan tenure</span><strong id="durationOut">240 months</strong></div></div>
+<div class="stack-bar" aria-label="Principal and interest composition"><div class="principal-bar" id="principalBar" style="width:48%"></div><div class="interest-bar" id="interestBar" style="width:52%"></div></div><div class="legend"><span><i style="background:var(--green)"></i>Principal</span><span><i style="background:#e5a34b"></i>Interest</span></div>
+<div class="fee-line" id="feeOut">Estimated processing fee: ₹25,000 (upfront; not included in EMI)</div><div class="fee-line" id="prepayOut" hidden></div>
+</div></div></div></section>
+<section class="card"><div class="card-head"><span>2. Loan repayment schedule</span><span id="scheduleCaption">Monthly breakdown</span></div><div class="card-body"><div class="schedule-head"><h2>Amortisation schedule</h2><select id="scheduleMode" aria-label="Schedule view"><option value="monthly">First 12 months</option><option value="yearly">Year-wise summary</option><option value="all">All months</option></select></div><div class="table-wrap"><table><thead><tr><th>Period</th><th>Opening balance</th><th>EMI</th><th>Interest</th><th>Principal paid</th><th>Extra payment</th><th>Closing balance</th></tr></thead><tbody id="scheduleBody"><tr><td colspan="7">Enter loan details to view the schedule.</td></tr></tbody></table></div><p class="table-note" id="scheduleNote">The schedule assumes a constant interest rate and monthly payments in arrears. Actual lender rounding and payment dates may differ.</p></div></section>
+<section class="content-section"><h2>How to use this EMI calculator</h2><ol style="padding-left:20px"><li>Choose home, car, personal, education, gold, business or another loan category.</li><li>Enter the principal amount, annual interest rate and repayment tenure.</li><li>Add a processing fee percentage if you want to estimate the upfront fee separately.</li><li>Optionally enter an extra amount you plan to pay towards principal every month.</li><li>Review the EMI, total interest, total repayment and amortisation schedule.</li></ol></section>
+<section class="content-section"><h2>What is EMI?</h2><p>Equated Monthly Instalment (EMI) is the fixed monthly amount a borrower pays to repay a loan over an agreed tenure. For a standard fixed-rate reducing-balance loan, each instalment contains an interest component and a principal component. The interest portion generally falls as the outstanding principal reduces.</p><p style="margin-top:8px">The standard EMI formula is:</p><p style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px;margin-top:8px;text-align:center;color:var(--black);font-weight:800">EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</p><p style="margin-top:8px">Here, P is the loan principal, r is the monthly interest rate (annual rate divided by 12 and 100), and n is the total number of monthly instalments. When the interest rate is zero, EMI is simply principal divided by tenure in months.</p></section>
+<section class="content-section"><h2>EMI calculator for different loan types</h2><p>Home loans usually have longer tenures, while car and personal loans often have shorter repayment periods. Education, gold and business loans can have different repayment structures, moratoriums, collateral requirements or fees. The presets in this calculator only provide a starting point; they are not market averages or current bank quotations.</p><ul><li><strong>Home loan:</strong> Estimate instalments for a residential property loan.</li><li><strong>Car loan:</strong> Estimate repayments for a new or used vehicle loan.</li><li><strong>Personal loan:</strong> Calculate EMI for an unsecured personal loan.</li><li><strong>Education loan:</strong> Estimate a standard repayment after the loan enters repayment; moratorium-period interest is not modelled.</li><li><strong>Gold and business loans:</strong> Use the calculator only when your lender's repayment terms follow a standard monthly reducing-balance schedule.</li></ul></section>
+<section class="content-section faq"><h2>Frequently asked questions</h2>
+<details><summary>How is EMI calculated?</summary><p>For a standard fixed-rate reducing-balance loan, EMI is calculated using the principal, monthly interest rate and number of monthly instalments. The formula is P × r × (1+r)^n ÷ ((1+r)^n−1).</p></details>
+<details><summary>Can I calculate home, car and personal loan EMI?</summary><p>Yes. Choose home, car, personal, education, gold, business or other loan. Each option fills an illustrative starting rate and tenure. Replace these with the terms offered by your lender.</p></details>
+<details><summary>Does making an extra monthly payment reduce interest?</summary><p>Usually, paying extra towards principal reduces the outstanding balance faster and can lower interest. This calculator assumes the regular EMI stays unchanged and the extra amount is applied to principal after the monthly instalment. Lender rules and prepayment charges may differ.</p></details>
+<details><summary>Does EMI include processing fees and insurance?</summary><p>No. EMI is calculated on principal and interest. The optional processing fee is shown separately as an upfront estimate. Insurance, stamp duty, taxes and other lender charges are not included.</p></details>
+<details><summary>Are the preset interest rates current bank offers?</summary><p>No. Preset rates are illustrative starting values, not live bank quotes or guaranteed offers. Enter the annual rate from your lender's sanction letter or quotation.</p></details>
+<details><summary>Can I use this calculator for a floating-rate loan?</summary><p>You can estimate EMI using the rate entered, but the calculator does not forecast future rate changes. If your lender changes the floating rate, recalculate using the revised rate and remaining tenure or the lender's revised repayment schedule.</p></details>
+</section>
+<section class="content-section"><h2>Related calculators and tools</h2><div class="related"><a href="/home-loan-tax-benefit-calculator">Home Loan Tax Benefits</a><a href="/ctc-calculator">CTC Calculator</a><a href="/itr-calculator">Income Tax Calculator</a><a href="/sip-calculator">SIP Calculator</a><a href="/pf-calculator">EPF Calculator</a></div></section>
+</div>
+<aside class="tools-sidebar" aria-label="Other MailFix tools"><h2>Explore MailFix tools</h2><p class="sidebar-intro">Quick access to related workplace tools and calculators.</p>
+<details><summary>AI writing tools</summary><a href="/">Email Fixer</a><a href="/job-application">Job Application Email</a><a href="/resignation">Resignation Kit</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/whatsapp-dhanda">WhatsApp Dhanda</a><a href="/hr-email-generator">HR Email Generator</a></details>
+<details><summary>Salary &amp; payroll</summary><a href="/ctc-calculator">CTC to In-Hand Calculator</a><a href="/salary-breakup-calculator">Salary Breakup Calculator</a><a href="/salary-slip-calculator">Salary Slip Calculator</a><a href="/new-labour-code-salary-guide">New Labour Code Salary Guide</a></details>
+<details><summary>Exit &amp; benefits</summary><a href="/full-and-final-settlement">Full &amp; Final Settlement Calculator</a><a href="/notice-period-calculator">Notice Period Buyout</a><a href="/leave-encashment">Leave Encashment Calculator</a><a href="/gratuity-rules-india">Gratuity Rules and Eligibility</a></details>
+<details><summary>Provident fund &amp; tax</summary><a href="/pf-calculator">EPF Calculator</a><a href="/pf-transfer-guide">PF Transfer Guide</a><a href="/epf-withdrawal-guide">EPF Withdrawal Guide</a><a href="/itr-calculator">Income Tax Calculator</a></details>
+<details open><summary>Everyday tools</summary><a href="/gst-invoice">GST Invoice Generator</a><a href="/photo-resizer">Photo Resizer</a><a href="/qr-generator">QR Generator</a><a href="/date-calculator">Date &amp; Age Calculator</a><a href="/emi-calculator" aria-current="page">EMI Calculator</a></details>
+<p class="sidebar-note">Figures are estimates. Review generated content and verify applicable rules before making financial, employment or compliance decisions.</p></aside>
+</div></main>
+<footer><p>© MailFix · Free tools for India</p><p style="margin-top:7px"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/sitemap">All tools</a></p></footer>
+<script>
+(function(){
+'use strict';
+const presets={home:{amount:5000000,rate:8.5,years:20,fee:.5},car:{amount:1000000,rate:9.5,years:7,fee:1},personal:{amount:500000,rate:12,years:5,fee:2},education:{amount:1500000,rate:9,years:10,fee:1},gold:{amount:300000,rate:10,years:3,fee:1},business:{amount:2000000,rate:13,years:5,fee:1.5},other:{amount:500000,rate:11,years:5,fee:1}};
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(Math.max(0,n||0));
+const number=n=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:0}).format(Math.max(0,n||0));
+let rows=[],current={};
+function val(id){return Number($(id).value)}
+function calculate(){
+ const p=val('loanAmount'),annual=val('rate'),years=val('tenureYears'),months=val('tenureMonths'),feePct=val('fee'),extra=val('extra'),n=years*12+months;
+ if(!Number.isFinite(p)||p<1000||p>1e9||!Number.isFinite(annual)||annual<0||annual>60||!Number.isInteger(years)||years<0||years>40||!Number.isInteger(months)||months<0||months>11||n<1||n>480||!Number.isFinite(feePct)||feePct<0||feePct>10||!Number.isFinite(extra)||extra<0||extra>1e7){
+  $('emi').textContent='Check your inputs';return;
+ }
+ const r=annual/1200;
+ const emi=r===0?p/n:p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+ let balance=p,totalInterest=0,totalPrincipal=0,totalExtra=0,month=0;
+ rows=[];
+ while(balance>0.005&&month<600){
+  month++;
+  const opening=balance,interest=opening*r;
+  let regular=Math.min(emi,opening+interest);
+  let principal=Math.min(opening,Math.max(0,regular-interest));
+  let extraPaid=Math.min(extra,Math.max(0,opening-principal));
+  if(month===n&&extra===0)principal=opening;
+  balance=Math.max(0,opening-principal-extraPaid);
+  totalInterest+=interest;totalPrincipal+=principal;totalExtra+=extraPaid;
+  rows.push({period:month,opening,emi:regular,interest,principal,extra:extraPaid,closing:balance});
+ }
+ const total=totalPrincipal+totalExtra+totalInterest,fee=p*feePct/100;
+ current={p,annual,n,emi,month,totalInterest,total,fee,extra,totalExtra,interestWithoutExtra:0};
+ if(extra>0){
+  let b=p,interestNo=0;
+  for(let i=0;i<n&&b>0.005;i++){const it=b*r;interestNo+=it;const pr=Math.min(b,Math.max(0,emi-it));b=Math.max(0,b-pr)}
+  current.interestWithoutExtra=interestNo;
+ }
+ $('emi').textContent=money(emi);
+ $('principalOut').textContent=money(p);
+ $('interestOut').textContent=money(totalInterest);
+ $('totalOut').textContent=money(total);
+ $('durationOut').textContent=month+' months'+(month!==n?' (with prepayment)':'');
+ const principalShare=total>0?(totalPrincipal+totalExtra)/total*100:100;
+ $('principalBar').style.width=principalShare+'%';$('interestBar').style.width=(100-principalShare)+'%';
+ $('feeOut').textContent='Estimated processing fee: '+money(fee)+' (upfront; not included in EMI)';
+ if(extra>0){
+  const saved=Math.max(0,current.interestWithoutExtra-totalInterest),savedMonths=Math.max(0,n-month);
+  $('prepayOut').hidden=false;$('prepayOut').textContent='With '+money(extra)+' extra each month: estimated interest saved '+money(saved)+' · loan closed '+savedMonths+' months earlier.';
+ }else{$('prepayOut').hidden=true}
+ renderSchedule();
+}
+function renderSchedule(){
+ const mode=$('scheduleMode').value;let display=[];
+ if(mode==='monthly')display=rows.slice(0,12);
+ else if(mode==='all')display=rows;
+ else{
+  for(let i=0;i<rows.length;i+=12){
+   const group=rows.slice(i,i+12),last=group[group.length-1];
+   display.push({period:'Year '+(Math.floor(i/12)+1),opening:group[0].opening,emi:group.reduce((s,x)=>s+x.emi,0),interest:group.reduce((s,x)=>s+x.interest,0),principal:group.reduce((s,x)=>s+x.principal,0),extra:group.reduce((s,x)=>s+x.extra,0),closing:last.closing});
+  }
+ }
+ $('scheduleCaption').textContent=mode==='monthly'?'First 12 months':mode==='yearly'?'Year-wise summary':'Full loan tenure';
+ $('scheduleBody').innerHTML=display.map(x=>'<tr><td>'+x.period+'</td><td>'+money(x.opening)+'</td><td>'+money(x.emi)+'</td><td>'+money(x.interest)+'</td><td>'+money(x.principal)+'</td><td>'+money(x.extra)+'</td><td>'+money(x.closing)+'</td></tr>').join('')||'<tr><td colspan="7">No repayment rows to display.</td></tr>';
+ $('scheduleNote').textContent=mode==='monthly'?'Showing the first 12 instalments. Choose Year-wise summary or All months to inspect the remaining tenure.':'The schedule assumes a constant interest rate and monthly payments in arrears. Actual lender rounding and payment dates may differ.';
+}
+document.querySelectorAll('.loan-type').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.loan-type').forEach(b=>b.classList.toggle('active',b===btn));
+ const p=presets[btn.dataset.type];$('loanAmount').value=p.amount;$('rate').value=p.rate;$('tenureYears').value=p.years;$('tenureMonths').value=0;$('fee').value=p.fee;$('extra').value=0;calculate();
+}));
+['loanAmount','rate','tenureYears','tenureMonths','fee','extra'].forEach(id=>$(id).addEventListener('input',calculate));
+$('scheduleMode').addEventListener('change',renderSchedule);
+calculate();
+})();
+</script>
+</body></html>
