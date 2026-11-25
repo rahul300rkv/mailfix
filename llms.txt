@@ -29,19 +29,19 @@ MailFix is made for salaried employees, small business owners, freelancers, stud
 
 ## Utility Tools
 
-- [Date & Age Calculator](https://mailfix.vercel.app/date-calculator): Calculate exact date difference in years/months/days, add or subtract days from a date, or compute age from date of birth. Supports business-days-only mode and handles leap years.
+- [Date & Age Calculator](https://mailfix.vercel.app/date-calculator): Calculate exact date difference in years/months/days, add or subtract days from a date, or compute age from date of birth. Counts Monday–Friday working days (excluding weekends, not public holidays) and handles leap years.
 - [Health Calculator Suite](https://mailfix.vercel.app/health-calculator): BMI (Body Mass Index), BMR (Basal Metabolic Rate), TDEE (Total Daily Energy Expenditure), Ideal Weight (Devine formula), and Body Fat percentage. Metric and imperial units. Includes Asia-specific BMI threshold guidance.
 - [Vehicle Scrappage Calculator](https://mailfix.vercel.app/vehicle-scrappage): Estimates scrap value for vehicles eligible under India's Voluntary Vehicle Fleet Modernisation Programme (V-VMP). Covers petrol vehicles 15+ years and diesel vehicles 10+ years. Shows road tax rebate and registration fee waiver on new vehicle.
 - [QR Code Generator](https://mailfix.vercel.app/qr-generator): Generates static QR codes for URLs, UPI payments (GPay/PhonePe/Paytm/BHIM compatible), WiFi networks, vCard contacts, plain text, email, and SMS. Downloads as high-resolution PNG. No server upload.
-- [Photo Resizer](https://mailfix.vercel.app/photo-resizer): Client-side image resizer using HTML5 Canvas. Presets for Indian passport photo (35×45mm), government portal uploads (Aadhaar, PAN, UPSC/SSC). Supports JPG, PNG, WebP. Adjustable quality slider. Nothing uploaded to servers.
+- [Photo Resizer](https://mailfix.vercel.app/photo-resizer): Client-side image resizer using HTML5 Canvas. Includes editable generic square-photo, portrait-photo and landscape-signature starting presets plus custom pixel and KB controls. These are not official portal specifications; users must verify each current exam or authority notice. Supports JPG, PNG and WebP. Browser-based processing.
 - [JSON Tools](https://mailfix.vercel.app/json-tools): Format (pretty-print), minify, validate with error line numbers, convert JSON to CSV and YAML. Tree viewer for nested objects. All processing in-browser — no data leaves the device.
 
-## Document Generators
+## Document Generators & PDF Utilities
 
 - [Form 12BB Generator](https://mailfix.vercel.app/form-12bb): Free official Form 12BB investment declaration under Rule 26C for employer payroll TDS. Includes HRA landlord PAN verification, Section 24b home loan interest, and Chapter VI-A deductions (80C, 80D, 80CCD 1B). Instant printable A4 format and copyable text for HRMS portals.
 
 - [GST Invoice Generator](https://mailfix.vercel.app/gst-invoice): Generates valid GST tax invoices with GSTIN, HSN codes, CGST/SGST (intrastate) and IGST (interstate) breakdown. Print or download as PDF. Covers all GST rates (5%, 12%, 18%, 28%).
-- [Rent Receipt Generator](https://mailfix.vercel.app/rent-receipt): Printable rent receipts in the format accepted by Indian employers for HRA claims. Includes revenue stamp guidance for cash payments above ₹5,000. Supports bank transfer, UPI, cheque payment modes.
+- [Rent Receipt Generator](https://mailfix.vercel.app/rent-receipt): Printable rent receipts in the format accepted by Indian employers for HRA claims. Includes revenue stamp guidance for cash payments above ₹5,000. Supports bank transfer, UPI, cheque payment modes.\n- [PDF to Images Converter](https://mailfix.vercel.app/pdf-to-image): Renders PDF pages as JPG or PNG images and downloads the converted pages together in a ZIP file. Conversion runs in the browser.\n- [Images to PDF Converter](https://mailfix.vercel.app/image-to-pdf): Combines one or multiple JPG, PNG or WebP images into a single PDF. Reorder images, choose A4 or Letter page size, orientation and margins. Processing runs in the browser.
 
 ## Other Pages
 

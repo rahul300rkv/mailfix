@@ -15,7 +15,7 @@
     "SoftwareApplication"
   ],
   "name": "Date Difference & Age Calculator",
-  "description": "Calculates exact date difference in years, months, and days; computes age from date of birth; adds or subtracts days from any date. Supports business-days-only mode and handles leap years accurately.",
+  "description": "Calculates exact date difference in years, months, and days; computes age from date of birth; adds or subtracts days from any date. Supports working-days-only mode and handles leap years accurately.",
   "url": "https://mailfix.vercel.app/date-calculator",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any — runs in web browser",
@@ -54,7 +54,7 @@
     }
   }
 }</script>
-<meta name="description" content="Calculate exact age, date difference in days/months/years, and add or subtract days from any date. Free, instant. No signup."/>
+<meta name="description" content="Calculate exact age, date difference, calendar days and working days between dates, or add and subtract days. Free online date calculator."/>
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
@@ -112,7 +112,7 @@
       "name": "How do I calculate the number of days between two dates?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. You can also select business days only to count Monday through Friday. Public holidays are not excluded."
+        "text": "Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. You can also select working days only to count Monday through Friday. Public holidays are not excluded."
       }
     },
     {
@@ -141,10 +141,10 @@
     },
     {
       "@type": "Question",
-      "name": "Can I calculate business days excluding weekends?",
+      "name": "How do I calculate working days between two dates?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Select the 'Count business days only' option to count Monday through Friday between the dates. Public holidays are not excluded."
+        "text": "Enter the start and end dates in Date Difference, then select Count working days only. The calculator counts Monday to Friday and excludes Saturdays and Sundays. It does not automatically exclude public or bank holidays."
       }
     }
   ]
@@ -553,7 +553,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
         <div class="form-group"><label for="diffStart">Start Date</label><input type="date" id="diffStart" onchange="calcDiff()"/></div>
         <div class="form-group"><label for="diffEnd">End Date</label><input type="date" id="diffEnd" onchange="calcDiff()"/></div>
       </div>
-      <label class="business-days-toggle" style="display:flex;align-items:center;gap:9px;margin-top:16px;font-size:13px;font-weight:700"><input type="checkbox" id="businessDaysOnly" onchange="calcDiff()"/> Count business days only (Monday–Friday)</label>
+      <label class="business-days-toggle" style="display:flex;align-items:center;gap:9px;margin-top:16px;font-size:13px;font-weight:700"><input type="checkbox" id="businessDaysOnly" onchange="calcDiff()"/> Count working days only (Monday–Friday)</label>
       <p style="font-size:11px;color:var(--muted);margin-top:5px">Public holidays are not excluded.</p>
     </div>
 
@@ -580,7 +580,10 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 </div></div>
 <div class="section-faq"><div class="section-faq-inner">
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-list"><details class="faq-item"><summary>How do I calculate the number of days between two dates?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. You can also select business days only to count Monday through Friday. Public holidays are not excluded.</div></details><details class="faq-item"><summary>Can I calculate my exact age in years, months, and days?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. Select the 'Age Calculator' tab, enter your date of birth, and the tool shows your age as of today in years, months, and days — along with your next birthday countdown.</div></details><details class="faq-item"><summary>How do I find a date 90 days from today?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Use the 'Add Days to Date' option. Enter today's date (or any start date) and add 90 days — the tool will show the exact future date. This is useful for calculating notice period end dates, contract deadlines, or visa validity.</div></details><details class="faq-item"><summary>Does the calculator handle leap years correctly?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. The calculator fully accounts for leap years in all calculations. February 29th dates are handled correctly, and year-long gaps across leap years are calculated accurately.</div></details><details class="faq-item"><summary>Can I calculate business days excluding weekends?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. Select the 'Count business days only' option to count Monday through Friday between the dates. Public holidays are not excluded.</div></details></div>
+  <div class="faq-list"><details class="faq-item"><summary>How do I calculate the number of days between two dates?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Select the 'Date Difference' option, then enter your start date and end date. The calculator shows the exact gap in years, months, days, and also the total number of calendar days. You can also select working days only to count Monday through Friday. Public holidays are not excluded.</div></details><details class="faq-item"><summary>Can I calculate my exact age in years, months, and days?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. Select the 'Age Calculator' tab, enter your date of birth, and the tool shows your age as of today in years, months, and days — along with your next birthday countdown.</div></details><details class="faq-item"><summary>How do I find a date 90 days from today?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Use the 'Add Days to Date' option. Enter today's date (or any start date) and add 90 days — the tool will show the exact future date. This is useful for calculating notice period end dates, contract deadlines, or visa validity.</div></details><details class="faq-item"><summary>Does the calculator handle leap years correctly?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. The calculator fully accounts for leap years in all calculations. February 29th dates are handled correctly, and year-long gaps across leap years are calculated accurately.</div></details><details class="faq-item"><summary>How do I calculate working days between two dates?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Open Date Difference, enter the start date and end date, and select Count working days only. The result counts Monday through Friday between the dates. Saturdays and Sundays are excluded; public holidays are not automatically removed.</div></details>
+<details class="faq-item"><summary>Does the working days calculator include the start and end dates?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">The calculator counts weekdays from the start date up to, but not including, the end date. If you need to count both boundary dates, add one day to the end date and check the result.</div></details>
+<details class="faq-item"><summary>Are Indian public and bank holidays excluded from working days?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">No. The working days result excludes Saturdays and Sundays only. National, state, bank and company holidays are not included because holiday calendars differ by location and employer.</div></details>
+<details class="faq-item"><summary>Can I calculate working days for a notice period or delivery deadline?<div class="faq-arrow"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 4l4 4 4-4"/></svg></div></summary><div class="faq-body">Yes. Enter the relevant start and end dates to estimate weekdays for a notice period, service-level agreement, project schedule or delivery window. Check your contract or organisation's holiday policy separately.</div></details></div>
 </div></div>
 </main>
 <footer><div class="footer-inner"><div class="footer-top"><div class="footer-logo">MailFix</div><div class="footer-links"><a href="/">Email Tool</a><a href="/ctc-calculator">Salary Calc</a><a href="/income-tax-slabs">Tax Slabs</a><a href="/how-ctc-is-calculated">CTC Guide</a><a href="/new-vs-old-tax-regime">Tax Regime</a><a href="/salary-glossary">Glossary</a><a href="/city-compare">City Compare</a><a href="/whatsapp-dhanda">WA Dhanda</a><a href="/sarkari-letter">Sarkari Letter</a><a href="/sitemap">Sitemap</a> <a href="/privacy">Privacy Policy</a></div></div><div class="footer-copy">© 2026 MailFix. Free Tools for Indian Professionals.</div></div></footer>
@@ -649,7 +652,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     let result='<div class="sec-head">Difference'+(reversed?' (dates reversed for calculation)':'')+'</div>'+
       row('Duration',years+' years, '+months+' months, '+days+' days')+row('Calendar days',totalDays.toLocaleString('en-IN'))+
       row('Weekdays (Mon–Fri)',weekdays.toLocaleString('en-IN'))+row('Weekend days',weekends.toLocaleString('en-IN'));
-    result+=businessOnly?row('Business days (selected)',weekdays.toLocaleString('en-IN'))+row('Count basis','Monday to Friday; public holidays included'):row('Total weeks',Math.floor(totalDays/7).toLocaleString('en-IN'))+row('Average months',(totalDays/30.436875).toFixed(1));
+    result+=businessOnly?row('Working days (selected)',weekdays.toLocaleString('en-IN'))+row('Working-day basis','Monday to Friday; public holidays included'):row('Total weeks',Math.floor(totalDays/7).toLocaleString('en-IN'))+row('Average months',(totalDays/30.436875).toFixed(1));
     document.getElementById('output').innerHTML=result;
   }
 
