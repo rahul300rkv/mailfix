@@ -411,6 +411,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQCT27KW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->ools-sidebar .sidebar-note{font-size:10px;color:var(--muted);line-height:1.5;margin-top:12px}@media(max-width:1100px){.page-layout{grid-template-columns:1fr}.tools-sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.tools-sidebar h2,.tools-sidebar .sidebar-intro,.tools-sidebar .sidebar-note{grid-column:1/-1}}.form-wrap{max-width:none;margin:0 auto}</style>
+<link rel="stylesheet" href="/mobile-menu.css">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -751,7 +752,8 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     win.opener=null;
     win.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>GST Tax Invoice</title><style>'+
       'body{font-family:Arial,sans-serif;margin:12mm;color:#111;font-size:10pt}.invoice-print{width:100%}.invoice-head{display:flex;justify-content:space-between;gap:24px;border-bottom:2px solid #222;padding-bottom:14px;margin-bottom:16px}.invoice-head h1{font-size:22px;margin:0 0 6px}.invoice-head p,.supplier p,.invoice-parties p{font-size:9pt;margin:3px 0}.supplier{text-align:right}.invoice-parties{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:16px;font-size:10pt}.invoice-table{width:100%;border-collapse:collapse;font-size:8pt;margin:10px 0 18px}.invoice-table th,.invoice-table td{border:1px solid #bbb;padding:6px;text-align:left}.invoice-table th{background:#eee}.invoice-table .num{text-align:right;white-space:nowrap}.summary-title{font-size:12pt;margin:18px 0 6px}.invoice-total{text-align:right;margin-top:10px}.invoice-total p{margin:4px 0}.grand-total{font-size:15pt;font-weight:800;border-top:2px solid #222;padding-top:8px}.amount-words{margin-top:14px;font-size:9pt}.signatory{display:flex;justify-content:flex-end;margin-top:42px}.signatory div{width:210px;border-top:1px solid #333;padding-top:6px;text-align:center;font-size:9pt}.signatory span,.signatory strong{display:block}.invoice-footnote{font-size:8pt;color:#555;margin-top:22px}@page{size:A4 landscape;margin:10mm}@media print{body{margin:0}}'+
-      '</style></head><body>'+content+'</body></html>');
+      '</style></head><body>'+content+'<script src="/mobile-menu.js"></script>
+</body></html>');
     win.document.close();win.focus();win.print();
   };
   const mobilePanel=document.getElementById('mobilePanel'),menuButton=document.getElementById('mobileMenuBtn'),closeButton=document.getElementById('closeMobileBtn');

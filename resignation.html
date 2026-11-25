@@ -455,6 +455,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 :focus-visible{outline:3px solid #6E1E33;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
+<link rel="stylesheet" href="/mobile-menu.css">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -774,7 +775,8 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
     if (!lastLetter) return;
     const win = window.open('', '_blank');
     win.document.write(`<!DOCTYPE html><html><head><title>Resignation Letter Generator India: Notice &amp; Exit | MailFix</title><style>body{font-family:'Times New Roman',serif;font-size:14pt;line-height:1.8;margin:2cm;color:#1E1317}pre{white-space:pre-wrap;font-family:inherit}</style><link rel="sitemap" type="application/xml" title="Sitemap" href="https://mailfix.vercel.app/sitemap.xml"/>
-</head><body><pre>${lastLetter}</pre></body></html>`);
+</head><body><pre>${lastLetter}</pre><script src="/mobile-menu.js"></script>
+</body></html>`);
     win.document.close(); win.print();
   }
 

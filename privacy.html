@@ -287,6 +287,7 @@ footer{background:var(--black);color:white;padding:40px 24px;border-top:4px soli
 .breadcrumb-sep{opacity:.65}
 .breadcrumb [aria-current="page"]{opacity:.75}
 </style>
+<link rel="stylesheet" href="/mobile-menu.css">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -438,5 +439,6 @@ sync();
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&p.classList.contains('open')){var c=document.getElementById('closeMobileBtn');if(c)c.click();b.focus();}});
 })();
 </script>
+<script src="/mobile-menu.js"></script>
 </body>
 </html>

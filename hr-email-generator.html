@@ -25,6 +25,7 @@ nav{position:sticky;top:0;z-index:10;background:rgba(252,253,251,.96);border-bot
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQCT27KW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->{gap:8px}.nav-links a{font-size:10px}.nav-links a:nth-child(n+3){display:none}.example-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.nav-inner{padding:0 15px}.wrap{padding-left:13px;padding-right:13px}.card{box-shadow:var(--shadow-sm)}.card-body{padding:15px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.hero{padding-top:28px}.output{min-height:190px}}
 </style>
+<link rel="stylesheet" href="/mobile-menu.css">
 </head>
 <body>
 <a href="#main-content" class="skip">Skip to main content</a>
@@ -84,5 +85,6 @@ async function copy(){if(!lastOutput)return;try{await navigator.clipboard.writeT
 document.querySelectorAll('.tone').forEach(btn=>{btn.setAttribute('aria-pressed',btn.classList.contains('active')?'true':'false');btn.addEventListener('click',()=>{setTone(btn);document.querySelectorAll('.tone').forEach(x=>x.setAttribute('aria-pressed',x===btn?'true':'false'));});});document.querySelectorAll('.example').forEach(btn=>btn.addEventListener('click',()=>{$('scenario').value=btn.dataset.scenario;$('context').value=btn.dataset.text;updateCount();$('context').focus();window.scrollTo({top:0,behavior:'smooth'})}));$('context').addEventListener('input',updateCount);$('generateBtn').addEventListener('click',generate);$('clearBtn').addEventListener('click',clearAll);$('retryBtn').addEventListener('click',()=>{if(lastPrompt)generate()});$('copyBtn').addEventListener('click',copy);updateCount();updateUsage();
 })();
 </script>
+<script src="/mobile-menu.js"></script>
 </body>
 </html>

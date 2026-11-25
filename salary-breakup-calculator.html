@@ -359,6 +359,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 .sb-faq p{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.7}
 @media print{body{background:#fff}.sb-inputs,.sb-actions,.nav-inner,.mobile-panel,.breadcrumb,.page-hero{display:none!important}.sb-layout{display:block}.sb-result{position:static}.sb-card{box-shadow:none}}
 </style>
+<link rel="stylesheet" href="/mobile-menu.css">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -614,5 +615,6 @@ if(_sbMobile&&_sbMenu&&_sbClose){_sbMenu.addEventListener("click",()=>{_sbMobile
 <script>
 (function(){var p=document.getElementById('mobilePanel'),b=document.getElementById('mobileMenuBtn');if(!p||!b)return;function sync(){var o=p.classList.contains('open');b.setAttribute('aria-expanded',o?'true':'false');p.inert=!o;}if(window.MutationObserver)new MutationObserver(sync).observe(p,{attributes:true,attributeFilter:['class']});sync();document.addEventListener('keydown',function(e){if(e.key==='Escape'&&p.classList.contains('open')){var c=document.getElementById('closeMobileBtn');if(c)c.click();b.focus();}});})();
 </script>
+<script src="/mobile-menu.js"></script>
 </body>
 </html>
