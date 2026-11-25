@@ -237,6 +237,7 @@ footer{border-top:4px solid var(--black);background:var(--black);color:#FCFDFB;p
 :focus-visible{outline:3px solid #6E1E33;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
+<link rel="stylesheet" href="/mobile-menu.css">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -464,5 +465,6 @@ sync();
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&p.classList.contains('open')){var c=document.getElementById('closeMobileBtn');if(c)c.click();b.focus();}});
 })();
 </script>
+<script src="/mobile-menu.js"></script>
 </body>
 </html>

@@ -415,6 +415,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 .article-sources li{overflow-wrap:anywhere}
 @media(max-width:640px){.article-hero{padding-top:34px}.article-wrap{padding-left:16px;padding-right:16px}.article-card{box-shadow:var(--shadow-sm)}}
 </style>
+<link rel="stylesheet" href="/mobile-menu.css">
 </head>
 <body>
 
@@ -649,5 +650,6 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 const _sbMobile=document.getElementById("mobilePanel"),_sbMenu=document.getElementById("mobileMenuBtn"),_sbClose=document.getElementById("closeMobileBtn");
 if(_sbMobile&&_sbMenu&&_sbClose){_sbMenu.addEventListener("click",()=>{_sbMobile.classList.add("open");document.body.style.overflow="hidden";});_sbClose.addEventListener("click",()=>{_sbMobile.classList.remove("open");document.body.style.overflow="";});_sbMobile.querySelectorAll(".mobile-link,.mobile-cta").forEach(a=>a.addEventListener("click",()=>{_sbMobile.classList.remove("open");document.body.style.overflow="";}));document.addEventListener("keydown",e=>{if(e.key==="Escape"){_sbMobile.classList.remove("open");document.body.style.overflow="";}});}
 </script>
+<script src="/mobile-menu.js"></script>
 </body>
 </html>

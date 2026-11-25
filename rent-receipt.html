@@ -442,6 +442,7 @@ details[open] .faq-arrow{transform:rotate(180deg);background:var(--green-xs)}
 :focus-visible{outline:3px solid #6E1E33;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
+<link rel="stylesheet" href="/mobile-menu.css">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -698,7 +699,8 @@ Tenant: ${tenant}			Landlord: ${landlord}`;
     const content = document.getElementById('receiptPreview').innerHTML;
     const win = window.open('','_blank');
     win.document.write(`<!DOCTYPE html><html><head><title>Rent Receipt Generator India: Free HRA Claim PDF | MailFix</title><style>body{font-family:'Times New Roman',serif;margin:2cm;font-size:14pt}@media print{body{margin:1.5cm}}</style><link rel="sitemap" type="application/xml" title="Sitemap" href="https://mailfix.vercel.app/sitemap.xml"/>
-</head><body>${content}</body></html>`);
+</head><body>${content}<script src="/mobile-menu.js"></script>
+</body></html>`);
     win.document.close(); win.print();
   }
 

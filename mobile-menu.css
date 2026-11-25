@@ -1,0 +1,24 @@
+/* Shared MailFix mobile navigation — source of truth: homepage drawer */
+.mobile-menu-toggle{display:none;align-items:center;justify-content:center;flex:0 0 auto;width:48px;height:48px;padding:9px;background:#87243f;color:#fff;border:3px solid #211519;border-radius:13px;box-shadow:3px 3px 0 #211519;cursor:pointer}
+.mobile-menu-toggle svg{display:block;width:25px;height:25px}
+.mobile-menu-toggle:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #211519}
+.mobile-menu-panel{display:block;position:fixed;inset:0;z-index:9999;background:#fcfdfb;overflow-y:auto;overscroll-behavior:contain;transform:translateX(105%);visibility:hidden;transition:transform .28s ease,visibility .28s ease;border-left:3px solid #211519}
+.mobile-menu-panel.is-open{transform:translateX(0);visibility:visible}
+.mobile-menu-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#e3e9df;border-bottom:3px solid #211519}
+.mobile-menu-brand{font-size:23px;font-weight:900;color:#211519;text-decoration:none;letter-spacing:-.7px}
+.mobile-menu-close{display:grid;place-items:center;width:42px;height:42px;background:#fff;color:#211519;border:2px solid #211519;border-radius:10px;box-shadow:2px 2px 0 #211519;cursor:pointer}
+.mobile-menu-close svg{width:22px;height:22px}
+.mobile-menu-body{display:flex;flex-direction:column;gap:11px;padding:22px 20px 40px}
+.mobile-menu-cta{display:block;padding:14px 16px;text-align:center;background:#87243f;color:#fff!important;border:2px solid #211519;border-radius:12px;box-shadow:3px 3px 0 #211519;font-weight:850;text-decoration:none}
+.mobile-menu-section{margin:12px 0 0;padding:0 4px;color:#6b756b;font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.mobile-menu-link{display:flex;align-items:center;gap:11px;padding:13px 15px;background:#fff;color:#211519!important;border:2px solid #c4cec1;border-radius:11px;font-size:15px;font-weight:750;text-decoration:none}
+.mobile-menu-link:focus-visible,.mobile-menu-cta:focus-visible,.mobile-menu-toggle:focus-visible,.mobile-menu-close:focus-visible{outline:3px solid #e66b38;outline-offset:3px}
+body.mobile-menu-open{overflow:hidden}
+@media(max-width:768px){
+ .nav-inner{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
+ .nav-inner>.nav-links{display:none!important}
+ .mobile-menu-toggle{display:inline-flex!important}
+ .mobile-menu-panel{display:block}
+}
+@media(min-width:769px){.mobile-menu-toggle,.mobile-menu-panel{display:none!important}}
+@media(prefers-reduced-motion:reduce){.mobile-menu-panel,.mobile-menu-toggle{transition:none!important}}
